@@ -10,7 +10,7 @@ import versioneer
 min_version = (3, 6)
 if sys.version_info < min_version:
     error = """
-ubcs-lauxiliary does not support Python {0}.{1}.
+ubcs-auxiliary does not support Python {0}.{1}.
 Python {2}.{3} and above is required. Check your Python version like so:
 
 python3 --version
@@ -34,7 +34,7 @@ with open(path.join(here, 'requirements.txt')) as requirements_file:
 
 
 setup(
-    name='ubcs-lauxiliary',
+    name='ubcs-auxiliary',
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     description="UBCS LCP auxiliarty package library",

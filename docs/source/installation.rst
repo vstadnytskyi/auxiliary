@@ -4,4 +4,4 @@ Installation
 
 At the command line::
 
-    $ pip install ubcs-lauxiliary
+    $ pip install ubcs-auxiliary

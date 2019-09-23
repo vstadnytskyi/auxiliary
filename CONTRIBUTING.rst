@@ -54,7 +54,7 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `ubcs-lauxiliary` for local development.
+Ready to contribute? Here's how to set up `ubcs-auxiliary` for local development.
 
 1. Fork the `auxiliary` repo on GitHub.
 2. Clone your fork locally::
@@ -101,4 +101,3 @@ Before you submit a pull request, check that it meets these guidelines:
 3. The pull request should work for Python 2.7, 3.3, 3.4, 3.5 and for PyPy. Check
    https://travis-ci.org/vstadnytskyi/auxiliary/pull_requests
    and make sure that the tests pass for all supported Python versions.
-
