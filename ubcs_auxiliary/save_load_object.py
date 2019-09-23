@@ -9,15 +9,14 @@ __vesrion__ = '0.0.0'
 def save_to_file(filename,object,):
     """
     save a python object to a file
-:param startHnd: Start index, defaults to 1
-        :type startHnd: int, optional
+
     Parameters
     ----------
     :param filename:
     :type filename: str
     :param object:
     :type object: python object
-    
+
     Returns
     -------
 
