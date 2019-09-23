@@ -1,6 +1,6 @@
-===============================
+==================================
 UBCS LCP auxiliary package library
-===============================
+==================================
 
 .. image:: https://img.shields.io/travis/vstadnytskyi/auxiliary.svg
         :target: https://travis-ci.org/vstadnytskyi/auxiliary
