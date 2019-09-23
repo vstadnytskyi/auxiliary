@@ -185,7 +185,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'ubcs-auxiliary', 'UBCS LCP auxiliary package library Documentation',
-     author, 'ubcs-auxiliary', 'UBCS LCP auxiliarty package library',
+     author, 'ubcs-auxiliary', 'UBCS LCP auxiliary package library',
      'Miscellaneous'),
 ]
 
