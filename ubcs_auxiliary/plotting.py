@@ -31,7 +31,7 @@ def generate_plot(x,y):
     axis.plot(x,y)
     return figure
 
-from anfinrud_auxiliary import save_object, load_object
+from ubcs_auxiliary import save_object, load_object
 
 
 if __name__ == '__main__':

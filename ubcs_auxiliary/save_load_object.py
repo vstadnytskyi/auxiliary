@@ -36,17 +36,19 @@ def load_from_file(filename):
     Parameters
     ----------
     filename : string
-        the full path and filenam
+        the full path and filename
 
     Returns
     -------
-        object : object
-            input object to save.
+    object : object
+        input object to save.
+
     Examples
     --------
     the example of usage
 
     >>> list_out = load_from_file('list.extension')
+    
     """
     from pickle import load
     with open(filename,'rb') as f:

@@ -53,10 +53,7 @@ def precision_sleep(t = 0.02, min_time = 0.017):
 
 def interupt_sleep(t= 0.02,dt = 0.01, interupt = None):
     """precision sleep function with interupt capabilities
-        input:
-            t - time to sleep
-            dt - check intervals
-            interupt - interupt function that return boolean
+    input:t - time to sleep, dt - check intervals, interupt - interupt function that return boolean
     """
     from time import perf_counter,sleep,time
     import types
