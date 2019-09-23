@@ -12,10 +12,10 @@ def save_to_file(filename,object,):
 
     Parameters
     ----------
-    :param filename:
-    :type filename: str
-    :param object:
-    :type object: python object
+    filename : string
+        the full path and filename
+    object : python object
+        a python object
 
     Returns
     -------
