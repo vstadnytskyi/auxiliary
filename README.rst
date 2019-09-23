@@ -6,7 +6,7 @@ UBCS LCP auxiliary package library
         :target: https://travis-ci.org/vstadnytskyi/auxiliary
 
 .. image:: https://img.shields.io/pypi/v/auxiliary.svg
-        :target: https://pypi.python.org/pypi/auxiliary
+        :target: https://pypi.python.org/pypi/ubcs-auxiliary
 
 
 UBCS LCP auxiliary package library
