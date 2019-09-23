@@ -6,13 +6,13 @@ UBCS LCP auxiliary package library
         :target: https://travis-ci.org/vstadnytskyi/ubcs_auxiliary
 
 .. image:: https://img.shields.io/pypi/v/auxiliary.svg
-        :target: https://pypi.python.org/pypi/auxiliary
+        :target: https://pypi.python.org/pypi/ubcs_auxiliary
 
 
 UBCS LCP auxiliarty package library
 
 * Free software: 3-clause BSD license
-* Documentation: (COMING SOON!) https://vstadnytskyi.github.io/auxiliary.
+* Documentation: (COMING SOON!) https://vstadnytskyi.github.io/ubcs_auxiliary.
 
 Features
 --------
