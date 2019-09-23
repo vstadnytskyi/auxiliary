@@ -9,13 +9,15 @@ __vesrion__ = '0.0.0'
 def save_to_file(filename,object,):
     """
     save a python object to a file
-
+:param startHnd: Start index, defaults to 1
+        :type startHnd: int, optional
     Parameters
     ----------
-    filename : string
-        the full path and filenam
-    object : object
-        input object to save.
+    :param filename:
+    :type filename: str
+    :param object:
+    :type object: python object
+    
     Returns
     -------
 
@@ -48,7 +50,7 @@ def load_from_file(filename):
     the example of usage
 
     >>> list_out = load_from_file('list.extension')
-    
+
     """
     from pickle import load
     with open(filename,'rb') as f:
