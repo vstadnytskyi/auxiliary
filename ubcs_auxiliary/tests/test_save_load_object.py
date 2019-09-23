@@ -1,6 +1,6 @@
 from numpy import zeros, array_equal
 
-from anfinrud_auxiliary import save_object, load_object
+from ubcs_auxiliary import save_object, load_object
 
 def test_save_load(tmpdir):
     arr_in = zeros((10,5))

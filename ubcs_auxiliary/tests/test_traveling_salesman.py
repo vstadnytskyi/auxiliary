@@ -1,6 +1,6 @@
 from numpy import zeros, array_equal
 
-from anfinrud_auxiliary import traveling_salesman as ts
+from ubcs_auxiliary import traveling_salesman as ts
 
 def test_euclidian_distance():
     x = (1,2,3)
@@ -33,4 +33,4 @@ def test_total_distance():
        [ 0.        ,  0.        ]])
     vary = array([0., 1., 1., 1., 1., 1., 1., 1., 1., 0.])
     assert round(ts.total_distance(arr),7) == round(53.30737952083856,7)
-    # rounded to 7 decimals due to precisiob in arr 
+    # rounded to 7 decimals due to precisiob in arr

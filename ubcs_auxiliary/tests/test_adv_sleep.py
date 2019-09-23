@@ -1,6 +1,6 @@
 from numpy import zeros, array_equal
 
-from anfinrud_auxiliary import precision_sleep, interupt_sleep
+from ubcs_auxiliary import precision_sleep, interupt_sleep
 from time import time
 import random
 
