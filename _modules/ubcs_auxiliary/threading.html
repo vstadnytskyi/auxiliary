@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.threading &mdash; UBCS LCP auxiliary package library 0.0.2.post17+g5635d58 documentation</title>
+  <title>ubcs_auxiliary.threading &mdash; UBCS LCP auxiliary package library 0.0.2.post18+g7f3f1bc documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.2.post17+g5635d58
+                0.0.2.post18+g7f3f1bc
               </div>
             
           
@@ -153,9 +153,16 @@
            <div itemprop="articleBody">
             
   <h1>Source code for ubcs_auxiliary.threading</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="start_new_thread"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.threading.start_new_thread">[docs]</a><span></span><span class="k">def</span> <span class="nf">start_new_thread</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span> <span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<div class="viewcode-block" id="start_new_safe_thread"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.threading.start_new_safe_thread">[docs]</a><span class="k">def</span> <span class="nf">start_new_safe_thread</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span> <span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    launches the input &#39;function&#39; in a separate thread with daemon == True</span>
+<span class="sd">    launches the input &#39;function&#39; in a separate thread with daemon == True.</span>
+
+<span class="sd">    Explanation: Some threads do background tasks, like sending keepalive packets, or performing periodic garbage collection, or whatever. These are only useful when the main program is running, and it&#39;s okay to kill them off once the other, non-daemon, threads have exited.</span>
+
+<span class="sd">    Without daemon threads, you&#39;d have to keep track of them, and tell them to exit, before your program can completely quit. By setting them as daemon threads, you can let them run and forget about them, and when your program quits, any daemon threads are killed automatically.</span>
+<span class="sd">    @Chris Jester-Young https://stackoverflow.com/a/190017/8436767</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -163,42 +170,38 @@
 <span class="sd">        function object</span>
 <span class="sd">    *args:</span>
 <span class="sd">        iterable of arguments</span>
+<span class="sd">    daemon:</span>
+<span class="sd">        flag, if the thread is daemon(True) or not(False).</span>
 <span class="sd">    **kwargs:</span>
 <span class="sd">        dictionary of keywords</span>
 
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
+<span class="sd">    thread:</span>
+<span class="sd">        thread object</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    the example of usage</span>
 
-<span class="sd">    &gt;&gt;&gt; def func(*arg,**kwargs):</span>
+<span class="sd">    &gt;&gt;&gt; def func(*args,**kwargs):</span>
 <span class="sd">            from time import time,sleep</span>
 <span class="sd">            t1 = time()</span>
 <span class="sd">            sleep(N)</span>
 <span class="sd">            t2 = time()</span>
 <span class="sd">            print(&#39;this thread slept for {} seconds&#39;.format(t2-t1))</span>
-<span class="sd">            print(&#39;input parameters: args = {}, kwargs = {!r}&#39;.format(arg[0],kwargs[&#39;keyword&#39;]))</span>
-<span class="sd">    &gt;&gt;&gt; start_new_thread(func, 1, keyword = &#39;this is key 1 value&#39;)</span>
+<span class="sd">            print(&#39;input parameters: args = {}, kwargs = {!r}&#39;.format(args[0],kwargs[&#39;keyword&#39;]))</span>
+<span class="sd">    &gt;&gt;&gt; start_new_safe_thread(func, 1, keyword = &#39;this is key 1 value&#39;)</span>
 <span class="sd">    this thread slept for 1.002244234085083 seconds</span>
 <span class="sd">    input parameters: args = 1, kwargs = &#39;keywords argument&#39;</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">threading</span> <span class="k">import</span> <span class="n">Thread</span>
     <span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">function</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">)</span>
-    <span class="n">thread</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
-
-<span class="k">def</span> <span class="nf">test_start_new_thread</span><span class="p">(</span><span class="n">N</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span><span class="n">M</span> <span class="o">=</span> <span class="s1">&#39;this is key 1 value&#39;</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span><span class="p">,</span><span class="n">sleep</span>
-        <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-        <span class="n">sleep</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
-        <span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;this thread slept for </span><span class="si">{}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="p">))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;input parameters: args = </span><span class="si">{}</span><span class="s1">, kwargs = </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;keyword&#39;</span><span class="p">]))</span>
-    <span class="n">start_new_thread</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">N</span> <span class="p">,</span> <span class="n">keyword</span> <span class="o">=</span> <span class="n">M</span><span class="p">)</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="n">daemon</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">thread</span></div>
 </pre></div>
 
            </div>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; UBCS LCP auxiliary package library 0.0.2.post17+g5635d58 documentation</title>
+  <title>Usage &mdash; UBCS LCP auxiliary package library 0.0.2.post18+g7f3f1bc documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.2.post17+g5635d58
+                0.0.2.post18+g7f3f1bc
               </div>
             
           
@@ -163,9 +163,12 @@
 </pre></div>
 </div>
 <span class="target" id="module-ubcs_auxiliary.threading"></span><dl class="function">
-<dt id="ubcs_auxiliary.threading.start_new_thread">
-<code class="sig-prename descclassname">ubcs_auxiliary.threading.</code><code class="sig-name descname">start_new_thread</code><span class="sig-paren">(</span><em class="sig-param">function</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/threading.html#start_new_thread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.threading.start_new_thread" title="Permalink to this definition">¶</a></dt>
-<dd><p>launches the input ‘function’ in a separate thread with daemon == True</p>
+<dt id="ubcs_auxiliary.threading.start_new_safe_thread">
+<code class="sig-prename descclassname">ubcs_auxiliary.threading.</code><code class="sig-name descname">start_new_safe_thread</code><span class="sig-paren">(</span><em class="sig-param">function</em>, <em class="sig-param">*args</em>, <em class="sig-param">daemon=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/threading.html#start_new_safe_thread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.threading.start_new_safe_thread" title="Permalink to this definition">¶</a></dt>
+<dd><p>launches the input ‘function’ in a separate thread with daemon == True.</p>
+<p>Explanation: Some threads do background tasks, like sending keepalive packets, or performing periodic garbage collection, or whatever. These are only useful when the main program is running, and it’s okay to kill them off once the other, non-daemon, threads have exited.</p>
+<p>Without daemon threads, you’d have to keep track of them, and tell them to exit, before your program can completely quit. By setting them as daemon threads, you can let them run and forget about them, and when your program quits, any daemon threads are killed automatically.
+&#64;Chris Jester-Young <a class="reference external" href="https://stackoverflow.com/a/190017/8436767">https://stackoverflow.com/a/190017/8436767</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -173,21 +176,29 @@
 </dd>
 <dt><strong>*args:</strong></dt><dd><p>iterable of arguments</p>
 </dd>
+<dt><strong>daemon:</strong></dt><dd><p>flag, if the thread is daemon(True) or not(False).</p>
+</dd>
 <dt><strong>**kwargs:</strong></dt><dd><p>dictionary of keywords</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>thread:</dt><dd><p>thread object</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
 <p>the example of usage</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="go">        from time import time,sleep</span>
 <span class="go">        t1 = time()</span>
 <span class="go">        sleep(N)</span>
 <span class="go">        t2 = time()</span>
 <span class="go">        print(&#39;this thread slept for {} seconds&#39;.format(t2-t1))</span>
-<span class="go">        print(&#39;input parameters: args = {}, kwargs = {!r}&#39;.format(arg[0],kwargs[&#39;keyword&#39;]))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">keyword</span> <span class="o">=</span> <span class="s1">&#39;this is key 1 value&#39;</span><span class="p">)</span>
+<span class="go">        print(&#39;input parameters: args = {}, kwargs = {!r}&#39;.format(args[0],kwargs[&#39;keyword&#39;]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start_new_safe_thread</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">keyword</span> <span class="o">=</span> <span class="s1">&#39;this is key 1 value&#39;</span><span class="p">)</span>
 <span class="go">this thread slept for 1.002244234085083 seconds</span>
 <span class="go">input parameters: args = 1, kwargs = &#39;keywords argument&#39;</span>
 </pre></div>
