@@ -1,6 +1,6 @@
 def start_new_thread(function, *args , **kwargs):
     """
-    lunches the input 'function' in a separate thread with daemon == True
+    launches the input 'function' in a separate thread with daemon == True
 
     Parameters
     ----------
