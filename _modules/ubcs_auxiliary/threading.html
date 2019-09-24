@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.save_load_object &mdash; UBCS LCP auxiliary package library 0.0.2.post15+g9e2780a documentation</title>
+  <title>ubcs_auxiliary.threading &mdash; UBCS LCP auxiliary package library 0.0.2.post15+g9e2780a documentation</title>
   
 
   
@@ -137,7 +137,7 @@
         
           <li><a href="../index.html">Module code</a> &raquo;</li>
         
-      <li>ubcs_auxiliary.save_load_object</li>
+      <li>ubcs_auxiliary.threading</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -152,26 +152,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for ubcs_auxiliary.save_load_object</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Auxiliary functions</span>
-<span class="sd">author: Valentyn Stadnytskyi</span>
-<span class="sd">created: Sept 9 2019</span>
-
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="n">__vesrion__</span> <span class="o">=</span> <span class="s1">&#39;0.0.0&#39;</span>
-
-<div class="viewcode-block" id="save_to_file"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.save_load_object.save_to_file">[docs]</a><span class="k">def</span> <span class="nf">save_to_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="nb">object</span><span class="p">,):</span>
+  <h1>Source code for ubcs_auxiliary.threading</h1><div class="highlight"><pre>
+<div class="viewcode-block" id="start_new_thread"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.threading.start_new_thread">[docs]</a><span></span><span class="k">def</span> <span class="nf">start_new_thread</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span> <span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    save a python object to a file</span>
+<span class="sd">    lunches the input &#39;function&#39; in a separate thread with daemon == True</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    Args:</span>
-<span class="sd">        filename (string)</span>
-<span class="sd">            the full path and filename</span>
-<span class="sd">        object (python object)</span>
-<span class="sd">            a python object</span>
+<span class="sd">    function:</span>
+<span class="sd">        function object</span>
+<span class="sd">    *args:</span>
+<span class="sd">        iterable of arguments</span>
+<span class="sd">    **kwargs:</span>
+<span class="sd">        dictionary of keywords</span>
+
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -180,37 +174,31 @@
 <span class="sd">    --------</span>
 <span class="sd">    the example of usage</span>
 
-<span class="sd">    &gt;&gt;&gt; save_to_file(&#39;test.pkl&#39;,[1,2,3])</span>
+<span class="sd">    &gt;&gt;&gt; def func(*arg,**kwargs):</span>
+<span class="sd">            from time import time,sleep</span>
+<span class="sd">            t1 = time()</span>
+<span class="sd">            sleep(N)</span>
+<span class="sd">            t2 = time()</span>
+<span class="sd">            print(&#39;this thread slept for {} seconds&#39;.format(t2-t1))</span>
+<span class="sd">            print(&#39;input parameters: args = {}, kwargs = {!r}&#39;.format(arg[0],kwargs[&#39;keyword&#39;]))</span>
+<span class="sd">    &gt;&gt;&gt; start_new_thread(func,N, keyword = M)</span>
+<span class="sd">    this thread slept for 1.002244234085083 seconds</span>
+<span class="sd">    input parameters: args = 1, kwargs = &#39;keywords argument&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">pickle</span> <span class="k">import</span> <span class="n">dump</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">dump</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span><span class="n">f</span><span class="p">)</span></div>
+    <span class="kn">from</span> <span class="nn">threading</span> <span class="k">import</span> <span class="n">Thread</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">function</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="load_from_file"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.save_load_object.load_from_file">[docs]</a><span class="k">def</span> <span class="nf">load_from_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    read object from a file</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    filename : string</span>
-<span class="sd">        the full path and filename</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    object : object</span>
-<span class="sd">        input object to save.</span>
-
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    the example of usage</span>
-
-<span class="sd">    &gt;&gt;&gt; list_out = load_from_file(&#39;list.extension&#39;)</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">pickle</span> <span class="k">import</span> <span class="n">load</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;bytes&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">data</span></div>
+<span class="k">def</span> <span class="nf">test_start_new_thread</span><span class="p">(</span><span class="n">N</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span><span class="n">M</span> <span class="o">=</span> <span class="s1">&#39;this is key 1 value&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span><span class="p">,</span><span class="n">sleep</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+        <span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;this thread slept for </span><span class="si">{}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;input parameters: args = </span><span class="si">{}</span><span class="s1">, kwargs = </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;keyword&#39;</span><span class="p">]))</span>
+    <span class="n">start_new_thread</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">N</span><span class="p">,</span> <span class="n">keyword</span> <span class="o">=</span> <span class="n">M</span><span class="p">)</span>
 </pre></div>
 
            </div>

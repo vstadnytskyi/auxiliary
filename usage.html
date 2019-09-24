@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; UBCS LCP auxiliary package library 0.0.2.post14+gdfba011 documentation</title>
+  <title>Usage &mdash; UBCS LCP auxiliary package library 0.0.2.post15+g9e2780a documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.2.post14+gdfba011
+                0.0.2.post15+g9e2780a
               </div>
             
           
@@ -162,6 +162,38 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ubcs_auxiliary</span>
 </pre></div>
 </div>
+<span class="target" id="module-ubcs_auxiliary.threading"></span><dl class="function">
+<dt id="ubcs_auxiliary.threading.start_new_thread">
+<code class="sig-prename descclassname">ubcs_auxiliary.threading.</code><code class="sig-name descname">start_new_thread</code><span class="sig-paren">(</span><em class="sig-param">function</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/threading.html#start_new_thread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.threading.start_new_thread" title="Permalink to this definition">¶</a></dt>
+<dd><p>lunches the input ‘function’ in a separate thread with daemon == True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>function:</strong></dt><dd><p>function object</p>
+</dd>
+<dt><strong>*args:</strong></dt><dd><p>iterable of arguments</p>
+</dd>
+<dt><strong>**kwargs:</strong></dt><dd><p>dictionary of keywords</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>the example of usage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="go">        from time import time,sleep</span>
+<span class="go">        t1 = time()</span>
+<span class="go">        sleep(N)</span>
+<span class="go">        t2 = time()</span>
+<span class="go">        print(&#39;this thread slept for {} seconds&#39;.format(t2-t1))</span>
+<span class="go">        print(&#39;input parameters: args = {}, kwargs = {!r}&#39;.format(arg[0],kwargs[&#39;keyword&#39;]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">N</span><span class="p">,</span> <span class="n">keyword</span> <span class="o">=</span> <span class="n">M</span><span class="p">)</span>
+<span class="go">this thread slept for 1.002244234085083 seconds</span>
+<span class="go">input parameters: args = 1, kwargs = &#39;keywords argument&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
 <span class="target" id="module-ubcs_auxiliary.advsleep"></span><p>advance Sleep functions
 author: Valentyn Stadnytskyi
 data: 2017 - Nov 17 2018</p>
@@ -445,9 +477,12 @@ created: Sept 9 2019</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>filename</strong><span class="classifier">string</span></dt><dd><p>the full path and filename</p>
+<dt><strong>Args:</strong></dt><dd><dl class="simple">
+<dt>filename (string)</dt><dd><p>the full path and filename</p>
 </dd>
-<dt><strong>object</strong><span class="classifier">python object</span></dt><dd><p>a python object</p>
+<dt>object (python object)</dt><dd><p>a python object</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd>

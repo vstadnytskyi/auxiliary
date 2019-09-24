@@ -4,6 +4,7 @@
 ./_modules/ubcs_auxiliary/numerical.html
 ./_modules/ubcs_auxiliary/os.html
 ./_modules/ubcs_auxiliary/save_load_object.html
+./_modules/ubcs_auxiliary/threading.html
 ./_sources/index.rst.txt
 ./_sources/installation.rst.txt
 ./_sources/min_versions.rst.txt
