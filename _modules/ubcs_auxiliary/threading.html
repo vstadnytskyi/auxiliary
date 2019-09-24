@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.threading &mdash; UBCS LCP auxiliary package library 0.0.2.post15+g9e2780a documentation</title>
+  <title>ubcs_auxiliary.threading &mdash; UBCS LCP auxiliary package library 0.0.2.post16+gccb33cd documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.2.post15+g9e2780a
+                0.0.2.post16+gccb33cd
               </div>
             
           
@@ -181,7 +181,7 @@
 <span class="sd">            t2 = time()</span>
 <span class="sd">            print(&#39;this thread slept for {} seconds&#39;.format(t2-t1))</span>
 <span class="sd">            print(&#39;input parameters: args = {}, kwargs = {!r}&#39;.format(arg[0],kwargs[&#39;keyword&#39;]))</span>
-<span class="sd">    &gt;&gt;&gt; start_new_thread(func,N, keyword = M)</span>
+<span class="sd">    &gt;&gt;&gt; start_new_thread(func, 1, keyword = &#39;this is key 1 value&#39;)</span>
 <span class="sd">    this thread slept for 1.002244234085083 seconds</span>
 <span class="sd">    input parameters: args = 1, kwargs = &#39;keywords argument&#39;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -198,7 +198,7 @@
         <span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;this thread slept for </span><span class="si">{}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="p">))</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;input parameters: args = </span><span class="si">{}</span><span class="s1">, kwargs = </span><span class="si">{!r}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;keyword&#39;</span><span class="p">]))</span>
-    <span class="n">start_new_thread</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">N</span><span class="p">,</span> <span class="n">keyword</span> <span class="o">=</span> <span class="n">M</span><span class="p">)</span>
+    <span class="n">start_new_thread</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">N</span> <span class="p">,</span> <span class="n">keyword</span> <span class="o">=</span> <span class="n">M</span><span class="p">)</span>
 </pre></div>
 
            </div>
