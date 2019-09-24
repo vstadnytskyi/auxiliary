@@ -12,10 +12,11 @@ def save_to_file(filename,object,):
 
     Parameters
     ----------
-    filename : string
-        the full path and filename
-    object : python object
-        a python object
+    Args:
+        filename (string)
+            the full path and filename
+        object (python object)
+            a python object
 
     Returns
     -------

@@ -8,6 +8,9 @@ Start by importing UBCS LCP auxiliary package library.
 
     import ubcs_auxiliary
 
+.. automodule:: ubcs_auxiliary.threading
+  :members:
+
 .. automodule:: ubcs_auxiliary.advsleep
   :members:
 
