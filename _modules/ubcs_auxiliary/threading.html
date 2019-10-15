@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.threading &mdash; UBCS LCP auxiliary package library 0.0.2.post18+g7f3f1bc documentation</title>
+  <title>ubcs_auxiliary.threading &mdash; UBCS LCP auxiliary package library 0.0.5.post1+g046976b documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.2.post18+g7f3f1bc
+                0.0.5.post1+g046976b
               </div>
             
           
@@ -155,7 +155,7 @@
   <h1>Source code for ubcs_auxiliary.threading</h1><div class="highlight"><pre>
 <span></span><span class="ch">#!/usr/bin/python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
-<div class="viewcode-block" id="start_new_safe_thread"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.threading.start_new_safe_thread">[docs]</a><span class="k">def</span> <span class="nf">start_new_safe_thread</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span> <span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="new_thread"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.threading.new_thread">[docs]</a><span class="k">def</span> <span class="nf">new_thread</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span> <span class="p">,</span> <span class="n">daemon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    launches the input &#39;function&#39; in a separate thread with daemon == True.</span>
 
@@ -202,6 +202,8 @@
     <span class="n">thread</span><span class="o">.</span><span class="n">daemon</span> <span class="o">=</span> <span class="n">daemon</span>
     <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">thread</span></div>
+
+<span class="n">start_new_safe_thread</span> <span class="o">=</span> <span class="n">new_thread</span>
 </pre></div>
 
            </div>
