@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-def start_new_safe_thread(function, *args , daemon=True, **kwargs):
+def new_thread(function, *args , daemon=True, **kwargs):
     """
     launches the input 'function' in a separate thread with daemon == True.
 
@@ -47,3 +47,5 @@ def start_new_safe_thread(function, *args , daemon=True, **kwargs):
     thread.daemon = daemon
     thread.start()
     return thread
+
+start_new_safe_thread = new_thread
