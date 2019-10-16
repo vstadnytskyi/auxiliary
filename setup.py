@@ -37,7 +37,7 @@ setup(
     name='ubcs-auxiliary',
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
-    description="UBCS LCP auxiliarty package library",
+    description="LCP-NIH auxiliary package library",
     long_description=readme,
     author="Valentyn Stadnytskyi",
     author_email='v.stadnytskyi@gmail.com',

@@ -47,5 +47,3 @@ def new_thread(function, *args , daemon=True, **kwargs):
     thread.daemon = daemon
     thread.start()
     return thread
-
-start_new_safe_thread = new_thread
