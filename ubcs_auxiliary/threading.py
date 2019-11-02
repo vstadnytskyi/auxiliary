@@ -47,3 +47,14 @@ def new_thread(function, *args , daemon=True, **kwargs):
     thread.daemon = daemon
     thread.start()
     return thread
+
+def start_new_safe_thread(function, *args , daemon=True, **kwargs):
+    """
+    alias for new_thread for back compatibility
+    """
+    import warnings
+    warnings.warn(
+            "start_new_safe_thread will be deprecated in version 0.0.7, use new_thread instead",
+             PendingDeprecationWarning
+        )
+    return new_thread(function, args , kwargs)
