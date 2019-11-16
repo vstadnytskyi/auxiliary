@@ -1,5 +1,5 @@
 ===================
-Parallel Processing
+Multiprocessing
 ===================
 
 This is a specialized wrapper around multiprocessing.Process object. It
@@ -19,7 +19,7 @@ you may need to upgrade the library if it was installed before
 
   pip3 install --upgrade ubcs_auxiliary
 
->>> from ubcs_auxiliary.multi_processing import ParallelProcessing
+>>> from ubcs_auxiliary.multi_processing import MultiProcessing
 >>> def function(N, **kwargs):
       """
       an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.
@@ -36,7 +36,7 @@ you may need to upgrade the library if it was installed before
       sleep(N)
       print('[{} s] Done sleeping for {} seconds'.format(round(time()-t1,4),N))
 >>> kwargs = {'text': 'my new text', 'var' : 15.64, 'dict' : {'key':'my new value'}}
->>> mp = ParallelProcessing(function, (1,2,3), kwargs = kwargs)
+>>> mp = MultiProcessing(function, (1,2,3), kwargs = kwargs)
 kwarg text = my new text
 kwarg dict = {'key': 'my new value'}
 kwarg var = 15.64
@@ -61,7 +61,7 @@ In [3]: [1.0013 s] Done sleeping for 1 seconds
 
   Or you can import
 
->>> from ubcs_auxiliary.multi_processing import ParallelProcessing, test, function
+>>> from ubcs_auxiliary.multi_processing import MultiProcessing, test, function
 >>> test()
 kwarg text = my new text
 kwarg dict = {'key': 'my new value'}
@@ -85,7 +85,7 @@ In [3]: [1.0013 s] Done sleeping for 1 seconds
 [2.0001 s] Done sleeping for 2 seconds
 [3.0002 s] Done sleeping for 3 seconds
 
-.. autoclass:: ubcs_auxiliary.multi_processing.ParallelProcessing
+.. autoclass:: ubcs_auxiliary.multi_processing.MultiProcessing
   :members:
 
   .. automethod:: __init__

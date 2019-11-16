@@ -1,5 +1,5 @@
 class ParallelProcessing():
-    def __init__(self, function, args, **kwargs):
+    def __init__(self, function, iter, *args, **kwargs):
         """
         This is a specialized wrapper around multiprocessing.Process object. It
         launches multiple separate processes with the same input 'function' but different argument that comes from an iterable object like tuple or list.
@@ -32,14 +32,37 @@ class ParallelProcessing():
 
 class MultiProcessing():
     def __init__(self, function, args, **kwargs):
-        parallel_processing = ParallelProcessing(function, args, **kwargs)
-        self.jobs = parallel_processing.jobs
-        self.deprecation_warning()
+        """
+        This is a specialized wrapper around multiprocessing.Process object. It
+        launches multiple separate processes with the same input 'function' but different argument that comes from an iterable object like tuple or list.
 
-    def deprecation_warning(self):
+        Parameters
+        ----------
+        function :: function
+            function object
+        args :: list or tuple
+            iterable of arguments
+        kwargs :: dictionary
+            keyword arguments that will be passed to the function
+
+        Returns
+        -------
+        jobs :: list
+            list of jobs
+
+        Examples
+        --------
+        >>> mp = ParallelProcessing(function, (1,2,3))
+        """
+        from multiprocessing import Process
+        print(args,kwargs)
+        self.jobs = []
+        for arg in args:
+            p = Process(target=function,args=(arg,), **kwargs)
+            p.start()
+            self.jobs.append(p)
         import warnings
         warnings.warn("MultuProcessing class will be deprecated in future versions. The new name is ParallelProcessing", DeprecationWarning)
-
 
 def function(N, **kwargs):
     """
