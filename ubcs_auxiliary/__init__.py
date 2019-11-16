@@ -10,3 +10,4 @@ from . import os
 from . import traveling_salesman
 from . import numerical
 from . import threading
+from . import multi_processing
