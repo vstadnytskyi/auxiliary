@@ -1,6 +1,7 @@
 ./_images/numerical_bin_data.png
 ./_modules/index.html
 ./_modules/ubcs_auxiliary/advsleep.html
+./_modules/ubcs_auxiliary/multi_processing.html
 ./_modules/ubcs_auxiliary/numerical.html
 ./_modules/ubcs_auxiliary/os.html
 ./_modules/ubcs_auxiliary/save_load_object.html
@@ -8,6 +9,7 @@
 ./_sources/index.rst.txt
 ./_sources/installation.rst.txt
 ./_sources/min_versions.rst.txt
+./_sources/multiprocessing.rst.txt
 ./_sources/release-history.rst.txt
 ./_sources/usage.rst.txt
 ./_static/basic.css
@@ -74,6 +76,7 @@
 ./index.html
 ./installation.html
 ./min_versions.html
+./multiprocessing.html
 ./objects.inv
 ./py-modindex.html
 ./release-history.html

@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Multi Processing &mdash; UBCS LCP auxiliary package library 0.0.6.post4+g4edd565 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+        <script type="text/javascript" src="_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Release History" href="release-history.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> UBCS LCP auxiliary package library
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.6.post4+g4edd565
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Multi Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-history.html">Release History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="min_versions.html">Minimum Version of Python and NumPy</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UBCS LCP auxiliary package library</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Multi Processing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/multiprocessing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="multi-processing">
+<h1>Multi Processing<a class="headerlink" href="#multi-processing" title="Permalink to this headline">¶</a></h1>
+<p>Start by importing UBCS LCP auxiliary package library.</p>
+<p>first you can install the auxiliary library</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip3 install ubcs_auxiliary
+</pre></div>
+</div>
+<p>you may need to upgrade the library if it was installed before</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip3 install --upgrade ubcs_auxiliary
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ubcs_auxiliary.multi_processing</span> <span class="k">import</span> <span class="n">MultiProcessing</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+<span class="go">        from time import time, sleep</span>
+<span class="go">        import os</span>
+<span class="go">        print(&#39;Starting Process: pid: {}&#39;.format(os.getpid()))</span>
+<span class="go">        t1 = time()</span>
+<span class="go">        print(&#39;[{} s] Start sleeping for {} seconds&#39;.format(round(time()-t1,4),N))</span>
+<span class="go">        print(&#39;[{} s] Sleeping... &#39;.format(round(time()-t1,4)))</span>
+<span class="go">        sleep(N)</span>
+<span class="go">        print(&#39;[{} s] Done sleeping for {} seconds&#39;.format(round(time()-t1,4),N))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span> <span class="o">=</span> <span class="n">MultiProcessing</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="go">    Starting Process: pid: 91038</span>
+<span class="go">    [0.0 s] Start sleeping for 1 seconds</span>
+<span class="go">    [0.0001 s] Sleeping...</span>
+<span class="go">    Starting Process: pid: 91039</span>
+<span class="go">    [0.0 s] Start sleeping for 2 seconds</span>
+<span class="go">    [0.0001 s] Sleeping...</span>
+<span class="go">    Starting Process: pid: 91040</span>
+<span class="go">    [0.0 s] Start sleeping for 3 seconds</span>
+<span class="go">    [0.0002 s] Sleeping...</span>
+<span class="go">    [1.0003 s] Done sleeping for 1 seconds</span>
+<span class="go">    [2.0001 s] Done sleeping for 2 seconds</span>
+<span class="go">    [3.0013 s] Done sleeping for 3 seconds</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="ubcs_auxiliary.multi_processing.MultiProcessing">
+<em class="property">class </em><code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">MultiProcessing</code><span class="sig-paren">(</span><em class="sig-param">function</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#MultiProcessing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.MultiProcessing" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="ubcs_auxiliary.multi_processing.MultiProcessing.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">function</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#MultiProcessing.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.MultiProcessing.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>launches the input ‘function’ in a separate process. the args atribute has to be itterable. The class will initiate as many processes as itterables in the args.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>function:</strong></dt><dd><p>function object</p>
+</dd>
+<dt><strong>*args:</strong></dt><dd><p>iterable of arguments</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>jobs :: list</dt><dd><p>list of jobs</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span> <span class="o">=</span> <span class="n">MultiProcessing</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-ubcs_auxiliary.multi_processing"></span><dl class="function">
+<dt id="ubcs_auxiliary.multi_processing.function">
+<code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">function</code><span class="sig-paren">(</span><em class="sig-param">N</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.function" title="Permalink to this definition">¶</a></dt>
+<dd><p>an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubcs_auxiliary.multi_processing.test">
+<code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>simple test showing how to use</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="release-history.html" class="btn btn-neutral float-right" title="Release History" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Valentyn Stadnytskyi
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
