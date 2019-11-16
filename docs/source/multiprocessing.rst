@@ -26,7 +26,7 @@ you may need to upgrade the library if it was installed before
         print('[{} s] Sleeping... '.format(round(time()-t1,4)))
         sleep(N)
         print('[{} s] Done sleeping for {} seconds'.format(round(time()-t1,4),N))
->>> kwargs = {'text': '', 'var' : 15.6, 'dict' : {'key':'value'}}
+>>> kwargs = {'text': 'my new text', 'var' : 15.64, 'dict' : {'key':'my new value'}}
 >>> mp = MultiProcessing(function, (1,2,3), kwargs = kwargs)
     Starting Process: pid: 91038
     [0.0 s] Start sleeping for 1 seconds
@@ -40,6 +40,11 @@ you may need to upgrade the library if it was installed before
     [1.0003 s] Done sleeping for 1 seconds
     [2.0001 s] Done sleeping for 2 seconds
     [3.0013 s] Done sleeping for 3 seconds
+
+  Or you can import
+
+  >>> from ubcs_auxiliary.multi_processing import MultiProcessing
+  >>> test()
 
 .. autoclass:: ubcs_auxiliary.multi_processing.MultiProcessing
   :members:

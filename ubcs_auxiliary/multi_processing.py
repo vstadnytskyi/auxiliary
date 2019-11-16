@@ -1,16 +1,17 @@
 class MultiProcessing():
     def __init__(self, function, args, **kwargs):
         """
-        launches the input 'function' in a separate process. the args atribute has to be itterable. The class will initiate as many processes as itterables in the args.
+        launches the input 'function' in a separate process. the args atribute
+        has to be itterable. The class will initiate as many processes as itterables in the args.
 
         Parameters
         ----------
-        function:
+        function :: function
             function object
-        args:
+        args :: list or tuple
             iterable of arguments
-        kwargs:
-            iterable of arguments
+        kwargs :: dictionary
+            keyword arguments that will be passed to the function
 
         Returns
         -------
@@ -30,7 +31,7 @@ class MultiProcessing():
             p.start()
             self.jobs.append(p)
 
-def function(N, text= '', var = 15.6, dict = {'key':'value'}):
+def function(N, text= '', var = 0, dict = {'key':'none'}):
     """
     an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.
     """
@@ -49,5 +50,5 @@ def test():
     """
     simple test showing how to use
     """
-    kwargs = {'text': '', 'var' : 15.6, 'dict' : {'key':'value'}}
+    kwargs = {'text': 'my new text', 'var' : 15.64, 'dict' : {'key':'my new value'}}
     mp = MultiProcessing(function, (1,2,3), kwargs = kwargs)
