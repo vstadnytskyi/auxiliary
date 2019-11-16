@@ -1,6 +1,9 @@
-================
-Multi Processing
-================
+===================
+Parallel Processing
+===================
+
+This is a specialized wrapper around multiprocessing.Process object. It
+launches multiple separate processes with the same input 'function' but different argument that comes from an iterable object like tuple or list.
 
 Start by importing UBCS LCP auxiliary package library.
 
@@ -16,7 +19,7 @@ you may need to upgrade the library if it was installed before
 
   pip3 install --upgrade ubcs_auxiliary
 
->>> from ubcs_auxiliary.multi_processing import MultiProcessing
+>>> from ubcs_auxiliary.multi_processing import ParallelProcessing
 >>> def function(N, **kwargs):
       """
       an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.
@@ -33,7 +36,7 @@ you may need to upgrade the library if it was installed before
       sleep(N)
       print('[{} s] Done sleeping for {} seconds'.format(round(time()-t1,4),N))
 >>> kwargs = {'text': 'my new text', 'var' : 15.64, 'dict' : {'key':'my new value'}}
->>> mp = MultiProcessing(function, (1,2,3), kwargs = kwargs)
+>>> mp = ParallelProcessing(function, (1,2,3), kwargs = kwargs)
 kwarg text = my new text
 kwarg dict = {'key': 'my new value'}
 kwarg var = 15.64
@@ -58,7 +61,7 @@ In [3]: [1.0013 s] Done sleeping for 1 seconds
 
   Or you can import
 
->>> from ubcs_auxiliary.multi_processing import MultiProcessing, test, function
+>>> from ubcs_auxiliary.multi_processing import ParallelProcessing, test, function
 >>> test()
 kwarg text = my new text
 kwarg dict = {'key': 'my new value'}
@@ -82,7 +85,7 @@ In [3]: [1.0013 s] Done sleeping for 1 seconds
 [2.0001 s] Done sleeping for 2 seconds
 [3.0002 s] Done sleeping for 3 seconds
 
-.. autoclass:: ubcs_auxiliary.multi_processing.MultiProcessing
+.. autoclass:: ubcs_auxiliary.multi_processing.ParallelProcessing
   :members:
 
   .. automethod:: __init__

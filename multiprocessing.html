@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Multi Processing &mdash; UBCS LCP auxiliary package library 0.0.11 documentation</title>
+  <title>Parallel Processing &mdash; UBCS LCP auxiliary package library 0.0.13 documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.11
+                0.0.13
               </div>
             
           
@@ -90,7 +90,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Multi Processing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Parallel Processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-history.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="min_versions.html">Minimum Version of Python and NumPy</a></li>
 </ul>
@@ -138,7 +138,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Multi Processing</li>
+      <li>Parallel Processing</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -157,8 +157,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="multi-processing">
-<h1>Multi Processing<a class="headerlink" href="#multi-processing" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="parallel-processing">
+<h1>Parallel Processing<a class="headerlink" href="#parallel-processing" title="Permalink to this headline">¶</a></h1>
+<p>This is a specialized wrapper around multiprocessing.Process object. It
+launches multiple separate processes with the same input ‘function’ but different argument that comes from an iterable object like tuple or list.</p>
 <p>Start by importing UBCS LCP auxiliary package library.</p>
 <p>first you can install the auxiliary library</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip3 install ubcs_auxiliary
@@ -168,7 +170,7 @@
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip3 install --upgrade ubcs_auxiliary
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ubcs_auxiliary.multi_processing</span> <span class="k">import</span> <span class="n">MultiProcessing</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ubcs_auxiliary.multi_processing</span> <span class="k">import</span> <span class="n">ParallelProcessing</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="go">      &quot;&quot;&quot;</span>
 <span class="go">      an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.</span>
@@ -185,7 +187,7 @@
 <span class="go">      sleep(N)</span>
 <span class="go">      print(&#39;[{} s] Done sleeping for {} seconds&#39;.format(round(time()-t1,4),N))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;my new text&#39;</span><span class="p">,</span> <span class="s1">&#39;var&#39;</span> <span class="p">:</span> <span class="mf">15.64</span><span class="p">,</span> <span class="s1">&#39;dict&#39;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span><span class="s1">&#39;my new value&#39;</span><span class="p">}}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span> <span class="o">=</span> <span class="n">MultiProcessing</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span> <span class="o">=</span> <span class="n">ParallelProcessing</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">)</span>
 <span class="go">kwarg text = my new text</span>
 <span class="go">kwarg dict = {&#39;key&#39;: &#39;my new value&#39;}</span>
 <span class="go">kwarg var = 15.64</span>
@@ -212,7 +214,7 @@
 <blockquote>
 <div><p>Or you can import</p>
 </div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ubcs_auxiliary.multi_processing</span> <span class="k">import</span> <span class="n">MultiProcessing</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">function</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ubcs_auxiliary.multi_processing</span> <span class="k">import</span> <span class="n">ParallelProcessing</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">function</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test</span><span class="p">()</span>
 <span class="go">kwarg text = my new text</span>
 <span class="go">kwarg dict = {&#39;key&#39;: &#39;my new value&#39;}</span>
@@ -238,13 +240,13 @@
 </pre></div>
 </div>
 <dl class="class">
-<dt id="ubcs_auxiliary.multi_processing.MultiProcessing">
-<em class="property">class </em><code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">MultiProcessing</code><span class="sig-paren">(</span><em class="sig-param">function</em>, <em class="sig-param">args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#MultiProcessing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.MultiProcessing" title="Permalink to this definition">¶</a></dt>
+<dt id="ubcs_auxiliary.multi_processing.ParallelProcessing">
+<em class="property">class </em><code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">ParallelProcessing</code><span class="sig-paren">(</span><em class="sig-param">function</em>, <em class="sig-param">args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#ParallelProcessing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.ParallelProcessing" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
-<dt id="ubcs_auxiliary.multi_processing.MultiProcessing.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">function</em>, <em class="sig-param">args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#MultiProcessing.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.MultiProcessing.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>launches the input ‘function’ in a separate process. the args atribute
-has to be itterable. The class will initiate as many processes as itterables in the args.</p>
+<dt id="ubcs_auxiliary.multi_processing.ParallelProcessing.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">function</em>, <em class="sig-param">args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#ParallelProcessing.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.ParallelProcessing.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a specialized wrapper around multiprocessing.Process object. It
+launches multiple separate processes with the same input ‘function’ but different argument that comes from an iterable object like tuple or list.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -264,7 +266,7 @@ has to be itterable. The class will initiate as many processes as itterables in 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span> <span class="o">=</span> <span class="n">MultiProcessing</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span> <span class="o">=</span> <span class="n">ParallelProcessing</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -280,6 +282,12 @@ has to be itterable. The class will initiate as many processes as itterables in 
 <dl class="function">
 <dt id="ubcs_auxiliary.multi_processing.test">
 <code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>simple test showing how to use</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubcs_auxiliary.multi_processing.test2">
+<code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">test2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#test2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.test2" title="Permalink to this definition">¶</a></dt>
 <dd><p>simple test showing how to use</p>
 </dd></dl>
 
