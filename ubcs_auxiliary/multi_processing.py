@@ -23,7 +23,6 @@ class MultiProcessing():
         >>> mp = MultiProcessing(function, (1,2,3))
         """
         import multiprocessing
-        import os
         print(args,kwargs)
         self.jobs = []
         for arg in args:
@@ -36,7 +35,6 @@ def function(N, **kwargs):
     an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.
     """
     from time import time, sleep
-    import os
 
     print_text_kwarg(**kwargs)
     print_dict_kwarg(**kwargs)
