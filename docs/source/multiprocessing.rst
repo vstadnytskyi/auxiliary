@@ -1,6 +1,6 @@
-================
+===================
 Parallel Processing
-================
+===================
 
 This is a specialized wrapper around multiprocessing.Process object. It
 launches multiple separate processes with the same input 'function' but different argument that comes from an iterable object like tuple or list.
