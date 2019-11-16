@@ -1,5 +1,5 @@
 class MultiProcessing():
-    def __init__(self,function,args):
+    def __init__(self, function, args, **kwargs):
         """
         launches the input 'function' in a separate process. the args atribute has to be itterable. The class will initiate as many processes as itterables in the args.
 
@@ -7,7 +7,9 @@ class MultiProcessing():
         ----------
         function:
             function object
-        *args:
+        args:
+            iterable of arguments
+        kwargs:
             iterable of arguments
 
         Returns
@@ -21,18 +23,21 @@ class MultiProcessing():
         """
         import multiprocessing
         import os
+        print(args,kwargs)
         self.jobs = []
         for arg in args:
-            p = multiprocessing.Process(target=function,args=(arg,))
+            p = multiprocessing.Process(target=function,args=(arg,), **kwargs)
             p.start()
             self.jobs.append(p)
 
-def function(N):
+def function(N, text= '', var = 15.6, dict = {'key':'value'}):
     """
     an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.
     """
     from time import time, sleep
     import os
+
+    print(f'kwargs are text = {text}, var = {var}, dict = {dict}')
     print('Starting Process: pid: {}'.format(os.getpid()))
     t1 = time()
     print('[{} s] Start sleeping for {} seconds'.format(round(time()-t1,4),N))
@@ -44,4 +49,5 @@ def test():
     """
     simple test showing how to use
     """
-    mp = MultiProcessing(function,(1,2,3))
+    kwargs = {'text': '', 'var' : 15.6, 'dict' : {'key':'value'}}
+    mp = MultiProcessing(function, (1,2,3), kwargs = kwargs)

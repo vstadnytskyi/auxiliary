@@ -26,7 +26,8 @@ you may need to upgrade the library if it was installed before
         print('[{} s] Sleeping... '.format(round(time()-t1,4)))
         sleep(N)
         print('[{} s] Done sleeping for {} seconds'.format(round(time()-t1,4),N))
->>> mp = MultiProcessing(function, (1,2,3))
+>>> kwargs = {'text': '', 'var' : 15.6, 'dict' : {'key':'value'}}
+>>> mp = MultiProcessing(function, (1,2,3), kwargs = kwargs)
     Starting Process: pid: 91038
     [0.0 s] Start sleeping for 1 seconds
     [0.0001 s] Sleeping...
