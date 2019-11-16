@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Multi Processing &mdash; UBCS LCP auxiliary package library 0.0.9 documentation</title>
+  <title>Multi Processing &mdash; UBCS LCP auxiliary package library 0.0.9.post1+g793388c documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.9
+                0.0.9.post1+g793388c
               </div>
             
           
@@ -169,38 +169,74 @@
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ubcs_auxiliary.multi_processing</span> <span class="k">import</span> <span class="n">MultiProcessing</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-<span class="go">        from time import time, sleep</span>
-<span class="go">        import os</span>
-<span class="go">        print(&#39;Starting Process: pid: {}&#39;.format(os.getpid()))</span>
-<span class="go">        t1 = time()</span>
-<span class="go">        print(&#39;[{} s] Start sleeping for {} seconds&#39;.format(round(time()-t1,4),N))</span>
-<span class="go">        print(&#39;[{} s] Sleeping... &#39;.format(round(time()-t1,4)))</span>
-<span class="go">        sleep(N)</span>
-<span class="go">        print(&#39;[{} s] Done sleeping for {} seconds&#39;.format(round(time()-t1,4),N))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="go">      &quot;&quot;&quot;</span>
+<span class="go">      an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.</span>
+<span class="go">      &quot;&quot;&quot;</span>
+<span class="go">      from time import time, sleep</span>
+<span class="go">      import os</span>
+<span class="go">      print_text_kwarg(**kwargs)</span>
+<span class="go">      print_dict_kwarg(**kwargs)</span>
+<span class="go">      print_var_kwarg(**kwargs)</span>
+<span class="go">      print(&#39;Starting Process: pid: {}&#39;.format(os.getpid()))</span>
+<span class="go">      t1 = time()</span>
+<span class="go">      print(&#39;[{} s] Start sleeping for {} seconds&#39;.format(round(time()-t1,4),N))</span>
+<span class="go">      print(&#39;[{} s] Sleeping... &#39;.format(round(time()-t1,4)))</span>
+<span class="go">      sleep(N)</span>
+<span class="go">      print(&#39;[{} s] Done sleeping for {} seconds&#39;.format(round(time()-t1,4),N))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;my new text&#39;</span><span class="p">,</span> <span class="s1">&#39;var&#39;</span> <span class="p">:</span> <span class="mf">15.64</span><span class="p">,</span> <span class="s1">&#39;dict&#39;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span><span class="s1">&#39;my new value&#39;</span><span class="p">}}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span> <span class="o">=</span> <span class="n">MultiProcessing</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">)</span>
-<span class="go">    Starting Process: pid: 91038</span>
-<span class="go">    [0.0 s] Start sleeping for 1 seconds</span>
-<span class="go">    [0.0001 s] Sleeping...</span>
-<span class="go">    Starting Process: pid: 91039</span>
-<span class="go">    [0.0 s] Start sleeping for 2 seconds</span>
-<span class="go">    [0.0001 s] Sleeping...</span>
-<span class="go">    Starting Process: pid: 91040</span>
-<span class="go">    [0.0 s] Start sleeping for 3 seconds</span>
-<span class="go">    [0.0002 s] Sleeping...</span>
-<span class="go">    [1.0003 s] Done sleeping for 1 seconds</span>
-<span class="go">    [2.0001 s] Done sleeping for 2 seconds</span>
-<span class="go">    [3.0013 s] Done sleeping for 3 seconds</span>
+<span class="go">kwarg text = my new text</span>
+<span class="go">kwarg dict = {&#39;key&#39;: &#39;my new value&#39;}</span>
+<span class="go">kwarg var = 15.64</span>
+<span class="go">Starting Process: pid: 14789</span>
+<span class="go">[0.0 s] Start sleeping for 1 seconds</span>
+<span class="go">[0.0002 s] Sleeping...</span>
+<span class="go">kwarg text = my new text</span>
+<span class="go">kwarg dict = {&#39;key&#39;: &#39;my new value&#39;}</span>
+<span class="go">kwarg var = 15.64</span>
+<span class="go">Starting Process: pid: 14790</span>
+<span class="go">[0.0 s] Start sleeping for 2 seconds</span>
+<span class="go">[0.0 s] Sleeping...</span>
+<span class="go">kwarg text = my new text</span>
+<span class="go">kwarg dict = {&#39;key&#39;: &#39;my new value&#39;}</span>
+<span class="go">kwarg var = 15.64</span>
+<span class="go">Starting Process: pid: 14792</span>
+<span class="go">[0.0 s] Start sleeping for 3 seconds</span>
+<span class="go">[0.0 s] Sleeping...</span>
+<span class="go">In [3]: [1.0013 s] Done sleeping for 1 seconds</span>
+<span class="go">[2.0001 s] Done sleeping for 2 seconds</span>
+<span class="go">[3.0002 s] Done sleeping for 3 seconds</span>
 </pre></div>
 </div>
 <blockquote>
 <div><p>Or you can import</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ubcs_auxiliary.multi_processing</span> <span class="k">import</span> <span class="n">MultiProcessing</span>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ubcs_auxiliary.multi_processing</span> <span class="k">import</span> <span class="n">MultiProcessing</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">function</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test</span><span class="p">()</span>
+<span class="go">kwarg text = my new text</span>
+<span class="go">kwarg dict = {&#39;key&#39;: &#39;my new value&#39;}</span>
+<span class="go">kwarg var = 15.64</span>
+<span class="go">Starting Process: pid: 14789</span>
+<span class="go">[0.0 s] Start sleeping for 1 seconds</span>
+<span class="go">[0.0002 s] Sleeping...</span>
+<span class="go">kwarg text = my new text</span>
+<span class="go">kwarg dict = {&#39;key&#39;: &#39;my new value&#39;}</span>
+<span class="go">kwarg var = 15.64</span>
+<span class="go">Starting Process: pid: 14790</span>
+<span class="go">[0.0 s] Start sleeping for 2 seconds</span>
+<span class="go">[0.0 s] Sleeping...</span>
+<span class="go">kwarg text = my new text</span>
+<span class="go">kwarg dict = {&#39;key&#39;: &#39;my new value&#39;}</span>
+<span class="go">kwarg var = 15.64</span>
+<span class="go">Starting Process: pid: 14792</span>
+<span class="go">[0.0 s] Start sleeping for 3 seconds</span>
+<span class="go">[0.0 s] Sleeping...</span>
+<span class="go">In [3]: [1.0013 s] Done sleeping for 1 seconds</span>
+<span class="go">[2.0001 s] Done sleeping for 2 seconds</span>
+<span class="go">[3.0002 s] Done sleeping for 3 seconds</span>
 </pre></div>
 </div>
-</div></blockquote>
 <dl class="class">
 <dt id="ubcs_auxiliary.multi_processing.MultiProcessing">
 <em class="property">class </em><code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">MultiProcessing</code><span class="sig-paren">(</span><em class="sig-param">function</em>, <em class="sig-param">args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#MultiProcessing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.MultiProcessing" title="Permalink to this definition">¶</a></dt>
@@ -237,7 +273,7 @@ has to be itterable. The class will initiate as many processes as itterables in 
 
 <span class="target" id="module-ubcs_auxiliary.multi_processing"></span><dl class="function">
 <dt id="ubcs_auxiliary.multi_processing.function">
-<code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">function</code><span class="sig-paren">(</span><em class="sig-param">N</em>, <em class="sig-param">text=''</em>, <em class="sig-param">var=0</em>, <em class="sig-param">dict={'key': 'none'}</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.function" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">function</code><span class="sig-paren">(</span><em class="sig-param">N</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.function" title="Permalink to this definition">¶</a></dt>
 <dd><p>an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.</p>
 </dd></dl>
 
