@@ -31,14 +31,17 @@ class MultiProcessing():
             p.start()
             self.jobs.append(p)
 
-def function(N, text= '', var = 0, dict = {'key':'none'}):
+def function(N, **kwargs):
     """
     an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.
     """
     from time import time, sleep
     import os
 
-    print(f'kwargs are text = {text}, var = {var}, dict = {dict}')
+    print_text_kwarg(**kwargs)
+    print_dict_kwarg(**kwargs)
+    print_var_kwarg(**kwargs)
+
     print('Starting Process: pid: {}'.format(os.getpid()))
     t1 = time()
     print('[{} s] Start sleeping for {} seconds'.format(round(time()-t1,4),N))
@@ -46,9 +49,16 @@ def function(N, text= '', var = 0, dict = {'key':'none'}):
     sleep(N)
     print('[{} s] Done sleeping for {} seconds'.format(round(time()-t1,4),N))
 
+def print_text_kwarg(**kwargs):
+    print(f"kwarg text = {kwargs['text']}")
+def print_dict_kwarg(**kwargs):
+    print(f"kwarg dict = {kwargs['dict']}")
+def print_var_kwarg(**kwargs):
+    print(f"kwarg var = {kwargs['var']}")
+
 def test():
     """
     simple test showing how to use
     """
     kwargs = {'text': 'my new text', 'var' : 15.64, 'dict' : {'key':'my new value'}}
-    mp = MultiProcessing(function, (1,2,3), kwargs = kwargs)
+    mp = MultiProcessing(function, args = (1,2,3), kwargs = kwargs)
