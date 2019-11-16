@@ -11,5 +11,6 @@ UBCS LCP auxiliary package library Documentation
 
    installation
    usage
+   multiprocessing
    release-history
    min_versions

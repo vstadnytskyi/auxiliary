@@ -19,6 +19,8 @@ def exponential_1(x,A,tau):
     return A*exp(-x/tau)
 
 def linear(x,a,b):
+    """
+    """
     return a + b*x
 
 def binary_to_array(value = 0, length = 8):
@@ -332,7 +334,10 @@ def linear_fit(x,y):
 
     return a, b, Sigma
 
-
+def interpolate(x,y,x_new,w = None,s = None,):
+    from scipy.interpolate import UnivariateSpline
+    spl = UnivariateSpline(x, y)
+    y_new = spl(x_new)
 
 if __name__ == '__main__':
     from matplotlib import pyplot as plt
