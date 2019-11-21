@@ -30,8 +30,8 @@ def find(topdir, name=[], exclude=[]):
     Type 'copyright', 'credits' or 'license' for more information
     IPython 7.8.0 -- An enhanced Interactive Python. Type '?' for help.
     In [1]: from time import time
-    In [2]: import anfinrud_auxiliary
-    In [3]: res = anfinrud_auxiliary.os.walk('/Volumes/C/All Projects/APS/Instrumentation/Software/Lauecollect/')
+    In [2]: import auxiliary
+    In [3]: res = auxiliary.os.walk('/')
     In [4]: t1 = time(); lst = list(res); t2 = time(); print(t2-t1, len(lst))
     3.9815242290496826 1346
 
@@ -40,13 +40,13 @@ def find(topdir, name=[], exclude=[]):
     IPython 5.8.0 -- An enhanced Interactive Python.
     In [1]: from time import time
     In [2]: import anfinrud_auxiliary
-    In [3]: res = anfinrud_auxiliary.os.walk('/Volumes/C/All Projects/APS/Instrumentation/Software/Lauecollect/')
+    In [3]: res = auxiliary.os.walk('')
     In [4]: t1 = time(); lst = list(res); t2 = time(); print(t2-t1, len(lst))
     (0.77646803855896, 1346)
     """
 
     def glob_to_regex(pattern):
-        return "^"+pattern.replace(".", "\.").replace("*", ".*").replace("?", ".")+"$"
+        return "^"+pattern.replace(".", "\\.").replace("*", ".*").replace("?", ".")+"$"
     try:
         from scandir import walk
     except ImportError:
@@ -98,7 +98,7 @@ def image_file_names_from_path(beamtime,path_name):
     image_files = sort(find(data_dir+path_name, name=terms, exclude=exclude()))
     return image_files
 
-def N_files_in_dir(folder = '/Volumes/C/All Projects/APS/Instrumentation/Software/Lauecollect/', match = '*'):
+def N_files_in_dir(folder = '', match = '*'):
     import os
     import fnmatch
     integer = len(fnmatch.filter(os.listdir(folder), match))
