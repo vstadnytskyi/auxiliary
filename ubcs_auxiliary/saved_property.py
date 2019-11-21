@@ -146,7 +146,7 @@ class SavedProperty():
 
     def init(self):
         """
-        wrapper that returns property object
+        wrapper that returns property object with get and set functions.
 
         Parameters
         ----------
