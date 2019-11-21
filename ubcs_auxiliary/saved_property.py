@@ -57,15 +57,21 @@ class DataBase():
         --------
         >>> filename = get_filename(root, 'name')
         """
+        from platform import system
+        if system() == 'Darwin':
+            bracket = '/'
+        if system() == 'Windows':
+            bracket = '\\'
+
 
         if root == "$TEMPDIR":
             from tempfile import gettempdir
-            root = gettempdir() + '/SavedProperty/'
+            root = gettempdir() + bracket +'SavedProperty' + bracket
         elif root == "$LOCALDIR" or root == "":
             from os import getcwd
-            root = getcwd() + '/SavedProperty/'
+            root = getcwd() + bracket+'SavedProperty'+ bracket
         else:
-            root = root + '/SavedProperty/'
+            root = root + bracket+ 'SavedProperty' + bracket
         filename = root + name + '_db.py'
         return filename, root, name
 
