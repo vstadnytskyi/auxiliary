@@ -60,9 +60,10 @@ class DataBase():
         from platform import system
         if system() == 'Darwin':
             bracket = '/'
-        if system() == 'Windows':
+        elif system() == 'Windows':
             bracket = '\\'
-
+        else:
+            bracket = '/'
 
         if root == "$TEMPDIR":
             from tempfile import gettempdir
