@@ -5,12 +5,14 @@
 ./_modules/ubcs_auxiliary/numerical.html
 ./_modules/ubcs_auxiliary/os.html
 ./_modules/ubcs_auxiliary/save_load_object.html
+./_modules/ubcs_auxiliary/saved_property.html
 ./_modules/ubcs_auxiliary/threading.html
 ./_sources/index.rst.txt
 ./_sources/installation.rst.txt
 ./_sources/min_versions.rst.txt
 ./_sources/multiprocessing.rst.txt
 ./_sources/release-history.rst.txt
+./_sources/saved-property.rst.txt
 ./_sources/usage.rst.txt
 ./_static/basic.css
 ./_static/copy-button.svg
@@ -80,6 +82,7 @@
 ./objects.inv
 ./py-modindex.html
 ./release-history.html
+./saved-property.html
 ./search.html
 ./searchindex.js
 ./usage.html

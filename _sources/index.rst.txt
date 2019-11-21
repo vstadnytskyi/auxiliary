@@ -12,5 +12,6 @@ UBCS LCP auxiliary package library Documentation
    installation
    usage
    multiprocessing
+   saved-property
    release-history
    min_versions
