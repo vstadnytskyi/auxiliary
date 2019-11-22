@@ -39,7 +39,7 @@ class DataBase():
 
     def get_filename(self,root,name):
         """
-        generates filename based on input root and name. There are few special keywords like $TEMPDIR, $LOCALDIR that will obtain the locations of temporary and local directories.
+        generates filename based on input root and name. There are few special keywords like TEMP, LOCAL that will obtain the locations of temporary and local directories. The function also ensures that the path is correct in different platforms.
 
         Parameters
         ----------
@@ -50,30 +50,39 @@ class DataBase():
 
         Returns
         -------
-        filename :: (string)
-            full path from the home directory, including the name of the file.
+        tuple :: (filename, root, name)
+            returns a tuple with 3 entries filename, root, name: (0) full filename (1) full path from the home directory; (2) the name of the file.
 
         Examples
         --------
         >>> filename = get_filename(root, 'name')
         """
         from platform import system
-        if system() == 'Darwin':
-            bracket = '/'
-        elif system() == 'Windows':
-            bracket = '\\'
-        else:
-            bracket = '/'
+        from os.path import exists
+        from os import mkdir
 
-        if root == "$TEMPDIR":
+        # create a variable br that is used to combine folders.
+        if system() == 'Darwin': # Mac OS
+            br = '/'
+        elif system() == 'Windows': # Windows
+            br = '\\'
+        else: # Linux
+            br = '/'
+        name += '_db.py'
+        if root == "TEMP":
             from tempfile import gettempdir
-            root = gettempdir() + bracket +'SavedProperty' + bracket
-        elif root == "$LOCALDIR" or root == "":
+            root = gettempdir() + br +'SavedProperty' + br
+        elif root == "LOCAL" or root == "":
             from os import getcwd
-            root = getcwd() + bracket+'SavedProperty'+ bracket
+            root = getcwd() + br+'SavedProperty'+ br
         else:
-            root = root + bracket+ 'SavedProperty' + bracket
-        filename = root + name + '_db.py'
+            root = root + br+ 'SavedProperty' + br
+        filename = root + name
+
+        # Created directory if such doesn't exist
+        if not exists(root+name):
+            mkdir(root+name)
+
         return filename, root, name
 
     def read(self):
