@@ -11,6 +11,7 @@ jobs:
     - "3.8-dev"  # 3.8 development branch
     - "nightly"  # nightly build
       # https://blog.travis-ci.com/2018-10-11-windows-early-release
+  allow_failures:
     - name: "Python 3.7.2 on macOS"
       os: osx
       osx_image: xcode11  # Python 3.7.2 running on macOS 10.14.3
