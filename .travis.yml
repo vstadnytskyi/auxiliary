@@ -48,7 +48,7 @@ env:
     # Doctr deploy key for vstadnytskyi/auxiliary
     - secure: "X/gFuf8yXnk5zTQ//OzK6OxO3vOWFnEHF++WI+MrAjX3Vib+Bf3Mv46ZON7UYV9VDoj63UF+VPe0qFOdcjcYkKRfa7HH+cnpMcd6wf8dVOf8f/nV5S5trhL2IGiOfiVwWGlRn5b3Iay1uk5PjEDpCHVWijU1kAUfa4rstyM1jDRbuTxPIrNXj3GwaAMt0rdpls/7+TEKB9aSxut32FCECm6XcUKy9N7IDekwr8IE/a29HNgJjUFfw/T1M58ioWN5zABwJj9/Wt7udAgJEZHRyIAavF6BDGqlnrGHjCi3K8JvtvRLkb0iOHI1XGO3AcaH9XWgOGrYQudDFlK39K4MUTbGdoNk63cj+lEryJxuQSIN3Gxuqapk2ByTMQuTBXvGMw04AoER79dZvb971tJe/pyUmSjMp5aAGsL+akV6xjfdK7Omzf1qFCoUouLjBOXR4PoiiUZaeSKkt0qEILmVQH5blxiMXj4F4c8rEkUm2JaLsF9UW5cJvTRGImJfQFUW9m4RQwsvA/OXL+Cr44RXVNFNWuJTPz3Mklmi6ZKd+YEjU/5N4MBeUM8RtCM+ytwnicE6fwF1LiWG6Vs/90921aTsPNYZxBZjAhoYuBezv6VbXEikZEkfvddI3YEaFjYIzEdYBWctDR6J+XatkrfYLUMk+jjnXpLfJMnlRzgHwTo="
 script:
-  - python3 platform-info.py || python platform-info.py
+#  - python3 platform-info.py || python platform-info.py
   - coverage run -m pytest  # Run the tests and check for test coverage.
   - coverage report -m  # Generate test coverage report.
   - codecov  # Upload the report to codecov.
