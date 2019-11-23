@@ -55,30 +55,21 @@ class DataBase():
 
         Examples
         --------
-        >>> filename = get_filename(root, 'name')
+        >>> filename, root, name = get_filename(root, 'name.db')
         """
         from platform import system
-        from os.path import exists
+        from os.path import exists, join
         from os import mkdir
-
-        # create a variable br that is used to combine folders.
-        if system() == 'Darwin': # Mac OS
-            br = '/'
-        elif system() == 'Windows': # Windows
-            br = '\\'
-        elif system() == 'Linux': # Linux
-            br = '/'
-
         name += '_db.py'
         if root == "TEMP":
             from tempfile import gettempdir
-            root = gettempdir() + br +'SavedProperty' + br
+            root = join(gettempdir(),'SavedProperty')
         elif root == "LOCAL" or root == "":
             from os import getcwd
-            root = getcwd() + br+'SavedProperty'+ br
+            root = join(getcwd(),'SavedProperty')
         else:
-            root = root + br+ 'SavedProperty' + br
-        filename = root + name
+            root = join(root,'SavedProperty')
+        filename = join(root,name)
 
         # Created directory if such doesn't exist
         if not exists(root):
