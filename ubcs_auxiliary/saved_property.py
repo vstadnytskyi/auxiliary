@@ -65,7 +65,7 @@ class DataBase():
         if system() == 'Darwin': # Mac OS
             br = '/'
         elif system() == 'Windows': # Windows
-            br = '\\'
+            br = '/'
         else: # Linux
             br = '/'
         name += '_db.py'
