@@ -28,9 +28,22 @@ jobs:
         - codecov  # Upload the report to codecov.
       #  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
       # https://blog.travis-ci.com/2018-10-11-windows-early-release
-    - name: "Python 3.7.2 on macOS"
+    - name: "Python 3.7.5 on macOS"
       os: osx
       osx_image: xcode11.2  # Python 3.7.2 running on macOS 10.14.3
+      language: shell       # 'language: python' is an error on Travis CI macOS
+      # python: 3.7         # 'python:' is ignored on Travis CI macOS
+      before_install:
+        python3 --version ; pip3 --version ; sw_vers
+      script:
+        - set -e  # If any of the following steps fail, just stop at that point.
+        - coverage run -m pytest  # Run the tests and check for test coverage.
+        - coverage report -m  # Generate test coverage report.
+        - codecov  # Upload the report to codecov.
+      #  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
+    - name: "Python 3.7.4 on macOS"
+      os: osx
+      osx_image: xcode11  # Python 3.7.4 running on macOS 10.14.3
       language: shell       # 'language: python' is an error on Travis CI macOS
       # python: 3.7         # 'python:' is ignored on Travis CI macOS
       before_install:
@@ -46,9 +59,10 @@ jobs:
       language: shell       # 'language: python' is an error on Travis CI Windows
       # python: 3.7         # 'python:' is ignored on Travis CI Windows
       before_install:
-        - choco install python  # this install takes at least 1 min 30 sec
-        - export PATH="/c/Python37:/c/Python37/Scripts:$PATH"
+        - choco install python --version 3.8.0
         - python -m pip install --upgrade pip
+      env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
+
       #env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
 #install: pip3 install --upgrade pip  # all three OSes agree about 'pip3'
 # 'python' points to Python 2.7 on macOS but points to Python 3.7 on Linux and Windows
