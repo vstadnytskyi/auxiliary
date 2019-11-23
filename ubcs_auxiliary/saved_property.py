@@ -65,9 +65,10 @@ class DataBase():
         if system() == 'Darwin': # Mac OS
             br = '/'
         elif system() == 'Windows': # Windows
+            br = '\\'
+        elif system() == 'Linux': # Linux
             br = '/'
-        else: # Linux
-            br = '/'
+
         name += '_db.py'
         if root == "TEMP":
             from tempfile import gettempdir
