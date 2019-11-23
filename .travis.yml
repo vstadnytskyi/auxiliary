@@ -28,6 +28,7 @@ jobs:
         - codecov  # Upload the report to codecov.
       #  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
       # https://blog.travis-ci.com/2018-10-11-windows-early-release
+    allow_failures:
     - name: "Python 3.7.2 on macOS"
       os: osx
       osx_image: xcode11  # Python 3.7.2 running on macOS 10.14.3
