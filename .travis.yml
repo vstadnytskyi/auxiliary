@@ -23,7 +23,7 @@ jobs:
         python3 --version ; pip3 --version ; sw_vers
     - name: "Python 3.7.4 on macOS"
       os: osx
-      osx_image: xcode11  # Python 3.7.4 running on macOS 10.14.3
+      osx_image: xcode10  # Python 3.7.4 running on macOS 10.14.3
       language: shell       # 'language: python' is an error on Travis CI macOS
       # python: 3.7         # 'python:' is ignored on Travis CI macOS
       before_install:
