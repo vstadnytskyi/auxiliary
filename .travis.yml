@@ -11,7 +11,6 @@ jobs:
     - "3.8-dev"  # 3.8 development branch
     - "nightly"  # nightly build
       # https://blog.travis-ci.com/2018-10-11-windows-early-release
-  allow_failures:
     - name: "Python 3.7.2 on macOS"
       os: osx
       osx_image: xcode11  # Python 3.7.2 running on macOS 10.14.3
@@ -40,10 +39,10 @@ cache:
 
 install:
   # Install this package and the packages listed in requirements.txt.
-  - pip install --upgrade pip
-  - pip install . #pip install --upgrade pip
+  - pip3 install --upgrade pip
+  - pip3 install . #pip install --upgrade pip
   # Install extra requirements for running tests and building docs.
-  - pip install -r requirements-dev.txt
+  - pip3 install -r requirements-dev.txt
 env:
   global:
     # Doctr deploy key for vstadnytskyi/auxiliary
@@ -56,5 +55,5 @@ script:
 #  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
   - set -e  # If any of the following steps fail, just stop at that point.
   - make -C docs html  # Build the documentation.
-  - pip install doctr
+  - pip3 install doctr
   - doctr deploy --built-docs docs/build/html .  # Publish the documentation.
