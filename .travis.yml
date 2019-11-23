@@ -37,9 +37,6 @@ jobs:
         python3 --version ; pip3 --version ; sw_vers
       script:
         - set -e  # If any of the following steps fail, just stop at that point.
-        - make -C docs html  # Build the documentation.
-        - pip3 install doctr
-        - doctr deploy --built-docs docs/build/html .  # Publish the documentation.
         - coverage run -m pytest  # Run the tests and check for test coverage.
         - coverage report -m  # Generate test coverage report.
         - codecov  # Upload the report to codecov.
