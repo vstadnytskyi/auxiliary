@@ -4,11 +4,6 @@ jobs:
   include:
     - name: "Python 3.8.0 on Xenial Linux"
       python: 3.8           # this works for Linux but is ignored on macOS or Windows
-      script:
-      #   - coverage run -m pytest  # Run the tests and check for test coverage.
-      #   - coverage report -m  # Generate test coverage report.
-      #   - codecov  # Upload the report to codecov.
-      # #  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
     - name: "Python 3.7.0 on Xenial Linux"
       python: 3.7           # this works for Linux but is ignored on macOS or Windows
       script:
@@ -16,17 +11,8 @@ jobs:
         - make -C docs html  # Build the documentation.
         - pip3 install doctr
         - doctr deploy --built-docs docs/build/html .  # Publish the documentation.
-      #   - coverage run -m pytest  # Run the tests and check for test coverage.
-      #   # - coverage report -m  # Generate test coverage report.
-      #   # - codecov  # Upload the report to codecov.
-      # #  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
     - name: "Python 3.6.0 on Xenial Linux"
       python: 3.6           # this works for Linux but is ignored on macOS or Windows
-      script:
-      #   - coverage run -m pytest  # Run the tests and check for test coverage.
-      #   # - coverage report -m  # Generate test coverage report.
-      #   # - codecov  # Upload the report to codecov.
-      # #  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
       # https://blog.travis-ci.com/2018-10-11-windows-early-release
     - name: "Python 3.7.5 on macOS"
       os: osx
@@ -35,12 +21,6 @@ jobs:
       # python: 3.7         # 'python:' is ignored on Travis CI macOS
       before_install:
         python3 --version ; pip3 --version ; sw_vers
-      script:
-      #   - set -e  # If any of the following steps fail, just stop at that point.
-      #   - coverage run -m pytest  # Run the tests and check for test coverage.
-      #   # - coverage report -m  # Generate test coverage report.
-      #   # - codecov  # Upload the report to codecov.
-      # #  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
     - name: "Python 3.7.4 on macOS"
       os: osx
       osx_image: xcode11  # Python 3.7.4 running on macOS 10.14.3
@@ -48,11 +28,6 @@ jobs:
       # python: 3.7         # 'python:' is ignored on Travis CI macOS
       before_install:
         python3 --version ; pip3 --version ; sw_vers
-      script:
-
-        # - coverage report -m  # Generate test coverage report.
-        # - codecov  # Upload the report to codecov.
-      #  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
     - name: "Python 3.7.4 on Windows"
       os: windows           # Windows 10.0.17134 N/A Build 17134
       language: shell       # 'language: python' is an error on Travis CI Windows
@@ -64,13 +39,17 @@ jobs:
         - pip3 install --upgrade pytest
         - pip3 install codecov
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
-      script:
+    - name: "Python 3.8.0 on Windows"
+      os: windows           # Windows 10.0.17134 N/A Build 17134
+      language: shell       # 'language: python' is an error on Travis CI Windows
+      # python: 3.7         # 'python:' is ignored on Travis CI Windows
+      before_install:
+        - choco install python --version 3.8.0
+        - python --version
+        - python -m pip install --upgrade pip
+        - pip3 install --upgrade pytest
+      env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
 
-      #  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
-#install: pip3 install --upgrade pip  # all three OSes agree about 'pip3'
-# 'python' points to Python 2.7 on macOS but points to Python 3.7 on Linux and Windows
-# 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
-#
 notifications:
   email: false
 cache:
