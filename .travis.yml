@@ -10,6 +10,14 @@ jobs:
       python: 3.6           # this works for Linux but is ignored on macOS or Windows
     - "3.8-dev"  # 3.8 development branch
     - "nightly"  # nightly build
+      # https://blog.travis-ci.com/2018-10-11-windows-early-release
+    - name: "Python 3.6 on Windows"
+      language : shell
+      python: "3.6"
+    - name: 'Python 3.6 on MacOS'
+      allow_failures:
+        os : osx
+        python: "3.6"
 cache:
   directories:
     - $HOME/.cache/pip
