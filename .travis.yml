@@ -8,7 +8,7 @@ jobs:
         - coverage run -m pytest  # Run the tests and check for test coverage.
         - coverage report -m  # Generate test coverage report.
         - codecov  # Upload the report to codecov.
-      # - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
+      #  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
     - name: "Python 3.7.0 on Xenial Linux"
       python: 3.7           # this works for Linux but is ignored on macOS or Windows
       script:
@@ -28,26 +28,16 @@ jobs:
         - codecov  # Upload the report to codecov.
       #  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
     - "3.8-dev"  # 3.8 development branch
-      script:
-        - coverage run -m pytest  # Run the tests and check for test coverage.
-        - coverage report -m  # Generate test coverage report.
-        - codecov  # Upload the report to codecov.
-      #  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
     - "nightly"  # nightly build
-      script:
-        - coverage run -m pytest  # Run the tests and check for test coverage.
-        - coverage report -m  # Generate test coverage report.
-        - codecov  # Upload the report to codecov.
-      #  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
 
       # https://blog.travis-ci.com/2018-10-11-windows-early-release
-    - name: "Python 3.7.2 on macOS"
-      os: osx
-      osx_image: xcode11  # Python 3.7.2 running on macOS 10.14.3
-      language: shell       # 'language: python' is an error on Travis CI macOS
-      # python: 3.7         # 'python:' is ignored on Travis CI macOS
-      before_install:
-        python3 --version ; pip3 --version ; sw_vers
+    # - name: "Python 3.7.2 on macOS"
+    #   os: osx
+    #   osx_image: xcode11  # Python 3.7.2 running on macOS 10.14.3
+    #   language: shell       # 'language: python' is an error on Travis CI macOS
+    #   # python: 3.7         # 'python:' is ignored on Travis CI macOS
+    #   before_install:
+    #     python3 --version ; pip3 --version ; sw_vers
     # - name: "Python 3.7.4 on Windows"
     #   os: windows           # Windows 10.0.17134 N/A Build 17134
     #   language: shell       # 'language: python' is an error on Travis CI Windows
@@ -77,5 +67,5 @@ env:
   global:
     # Doctr deploy key for vstadnytskyi/auxiliary
     - secure: "X/gFuf8yXnk5zTQ//OzK6OxO3vOWFnEHF++WI+MrAjX3Vib+Bf3Mv46ZON7UYV9VDoj63UF+VPe0qFOdcjcYkKRfa7HH+cnpMcd6wf8dVOf8f/nV5S5trhL2IGiOfiVwWGlRn5b3Iay1uk5PjEDpCHVWijU1kAUfa4rstyM1jDRbuTxPIrNXj3GwaAMt0rdpls/7+TEKB9aSxut32FCECm6XcUKy9N7IDekwr8IE/a29HNgJjUFfw/T1M58ioWN5zABwJj9/Wt7udAgJEZHRyIAavF6BDGqlnrGHjCi3K8JvtvRLkb0iOHI1XGO3AcaH9XWgOGrYQudDFlK39K4MUTbGdoNk63cj+lEryJxuQSIN3Gxuqapk2ByTMQuTBXvGMw04AoER79dZvb971tJe/pyUmSjMp5aAGsL+akV6xjfdK7Omzf1qFCoUouLjBOXR4PoiiUZaeSKkt0qEILmVQH5blxiMXj4F4c8rEkUm2JaLsF9UW5cJvTRGImJfQFUW9m4RQwsvA/OXL+Cr44RXVNFNWuJTPz3Mklmi6ZKd+YEjU/5N4MBeUM8RtCM+ytwnicE6fwF1LiWG6Vs/90921aTsPNYZxBZjAhoYuBezv6VbXEikZEkfvddI3YEaFjYIzEdYBWctDR6J+XatkrfYLUMk+jjnXpLfJMnlRzgHwTo="
-#script:
+script:
 #  - python3 platform-info.py || python platform-info.py
