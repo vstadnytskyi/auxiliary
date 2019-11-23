@@ -65,8 +65,12 @@ jobs:
         - pip3 install --upgrade pytest
         - pip3 install codecov
       env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
-
-      #env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
+      script:
+        - set -e  # If any of the following steps fail, just stop at that point.
+        - coverage run -m pytest  # Run the tests and check for test coverage.
+        - coverage report -m  # Generate test coverage report.
+        - codecov  # Upload the report to codecov.
+      #  - flake8  # Enforce code style ('relaxed' line length limit is set in .flake8 config file).
 #install: pip3 install --upgrade pip  # all three OSes agree about 'pip3'
 # 'python' points to Python 2.7 on macOS but points to Python 3.7 on Linux and Windows
 # 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
