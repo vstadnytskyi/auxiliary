@@ -80,8 +80,8 @@ class DataBase():
         filename = root + name
 
         # Created directory if such doesn't exist
-        if not exists(root+name):
-            mkdir(root+name)
+        if not exists(root):
+            mkdir(root)
 
         return filename, root, name
 
