@@ -1,12 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 """
-Auxiliary functions
 author: Valentyn Stadnytskyi
 created: Sept 9 2019
 
 """
-__vesrion__ = '0.0.0'
 
 def save_to_file(filename,object,):
     """
