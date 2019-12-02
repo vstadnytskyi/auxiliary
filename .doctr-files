@@ -12,6 +12,7 @@
 ./_sources/min_versions.rst.txt
 ./_sources/multiprocessing.rst.txt
 ./_sources/release-history.rst.txt
+./_sources/save-load-object.rst.txt
 ./_sources/saved-property.rst.txt
 ./_sources/usage.rst.txt
 ./_static/basic.css
@@ -82,6 +83,7 @@
 ./objects.inv
 ./py-modindex.html
 ./release-history.html
+./save-load-object.html
 ./saved-property.html
 ./search.html
 ./searchindex.js

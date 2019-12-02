@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.multi_processing &mdash; UBCS LCP auxiliary package library 0.post50+g8738369 documentation</title>
+  <title>ubcs_auxiliary.multi_processing &mdash; UBCS LCP auxiliary package library 0.post50+g1fbbc38 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.post50+g8738369
+                0.post50+g1fbbc38
               </div>
             
           
@@ -90,6 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../multiprocessing.html">Multiprocessing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../saved-property.html">Saved Property</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../save-load-object.html">Save Load Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../release-history.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../min_versions.html">Minimum Version of Python and NumPy</a></li>
 </ul>
@@ -221,7 +222,7 @@
         <span class="kn">import</span> <span class="nn">warnings</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;MultuProcessing class will be deprecated in future versions. The new name is ParallelProcessing&quot;</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">)</span></div></div>
 
-<div class="viewcode-block" id="function"><a class="viewcode-back" href="../../multiprocessing.html#ubcs_auxiliary.multi_processing.function">[docs]</a><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="function"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.multi_processing.function">[docs]</a><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -245,14 +246,14 @@
 <span class="k">def</span> <span class="nf">print_var_kwarg</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;kwarg var = </span><span class="si">{kwargs[&#39;var&#39;]}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="test"><a class="viewcode-back" href="../../multiprocessing.html#ubcs_auxiliary.multi_processing.test">[docs]</a><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+<div class="viewcode-block" id="test"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.multi_processing.test">[docs]</a><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    simple test showing how to use</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;my new text&#39;</span><span class="p">,</span> <span class="s1">&#39;var&#39;</span> <span class="p">:</span> <span class="mf">15.64</span><span class="p">,</span> <span class="s1">&#39;dict&#39;</span> <span class="p">:</span> <span class="p">{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span><span class="s1">&#39;my new value&#39;</span><span class="p">}}</span>
     <span class="n">mp</span> <span class="o">=</span> <span class="n">MultiProcessing</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="test2"><a class="viewcode-back" href="../../multiprocessing.html#ubcs_auxiliary.multi_processing.test2">[docs]</a><span class="k">def</span> <span class="nf">test2</span><span class="p">():</span>
+<div class="viewcode-block" id="test2"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.multi_processing.test2">[docs]</a><span class="k">def</span> <span class="nf">test2</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    simple test showing how to use</span>
 <span class="sd">    &quot;&quot;&quot;</span>

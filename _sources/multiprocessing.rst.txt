@@ -90,5 +90,5 @@ In [3]: [1.0013 s] Done sleeping for 1 seconds
 
   .. automethod:: __init__
 
-.. automodule:: ubcs_auxiliary.multi_processing
-  :members:
+#.. automodule:: ubcs_auxiliary.multi_processing
+#  :members:

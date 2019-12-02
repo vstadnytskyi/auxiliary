@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.save_load_object &mdash; UBCS LCP auxiliary package library 0.post50+g8738369 documentation</title>
+  <title>ubcs_auxiliary.save_load_object &mdash; UBCS LCP auxiliary package library 0.post50+g1fbbc38 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.post50+g8738369
+                0.post50+g1fbbc38
               </div>
             
           
@@ -90,6 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../multiprocessing.html">Multiprocessing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../saved-property.html">Saved Property</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../save-load-object.html">Save Load Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../release-history.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../min_versions.html">Minimum Version of Python and NumPy</a></li>
 </ul>
@@ -158,12 +159,10 @@
 <span></span><span class="ch">#!/usr/bin/python</span>
 <span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Auxiliary functions</span>
 <span class="sd">author: Valentyn Stadnytskyi</span>
 <span class="sd">created: Sept 9 2019</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="n">__vesrion__</span> <span class="o">=</span> <span class="s1">&#39;0.0.0&#39;</span>
 
 <div class="viewcode-block" id="save_to_file"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.save_load_object.save_to_file">[docs]</a><span class="k">def</span> <span class="nf">save_to_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="nb">object</span><span class="p">,):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -215,6 +214,9 @@
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;bytes&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">data</span></div>
+
+<span class="n">dump</span> <span class="o">=</span> <span class="n">save_to_file</span>
+<span class="n">load</span> <span class="o">=</span> <span class="n">load_from_file</span>
 </pre></div>
 
            </div>

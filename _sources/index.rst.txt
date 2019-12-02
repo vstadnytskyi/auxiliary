@@ -13,5 +13,6 @@ UBCS LCP auxiliary package library Documentation
    usage
    multiprocessing
    saved-property
+   save-load-object
    release-history
    min_versions

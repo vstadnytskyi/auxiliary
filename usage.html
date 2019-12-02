@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; UBCS LCP auxiliary package library 0.post50+g8738369 documentation</title>
+  <title>Usage &mdash; UBCS LCP auxiliary package library 0.post50+g1fbbc38 documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.post50+g8738369
+                0.post50+g1fbbc38
               </div>
             
           
@@ -89,9 +89,19 @@
             
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.threading">Threading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.advsleep">Advance Sleep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.os">OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.multi_processing">Parallel Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.numerical">Numerical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.plotting">Plotting with Matplotlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.save_load_object">Save Load Object</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="multiprocessing.html">Multiprocessing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="saved-property.html">Saved Property</a></li>
+<li class="toctree-l1"><a class="reference internal" href="save-load-object.html">Save Load Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-history.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="min_versions.html">Minimum Version of Python and NumPy</a></li>
 </ul>
@@ -164,7 +174,9 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ubcs_auxiliary</span>
 </pre></div>
 </div>
-<span class="target" id="module-ubcs_auxiliary.threading"></span><dl class="function">
+<div class="section" id="module-ubcs_auxiliary.threading">
+<span id="threading"></span><h2>Threading<a class="headerlink" href="#module-ubcs_auxiliary.threading" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
 <dt id="ubcs_auxiliary.threading.new_thread">
 <code class="sig-prename descclassname">ubcs_auxiliary.threading.</code><code class="sig-name descname">new_thread</code><span class="sig-paren">(</span><em class="sig-param">function</em>, <em class="sig-param">*args</em>, <em class="sig-param">daemon=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/threading.html#new_thread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.threading.new_thread" title="Permalink to this definition">¶</a></dt>
 <dd><p>launches the input ‘function’ in a separate thread with daemon == True.</p>
@@ -213,7 +225,10 @@
 <dd><p>alias for new_thread for back compatibility</p>
 </dd></dl>
 
-<span class="target" id="module-ubcs_auxiliary.advsleep"></span><p>advance Sleep functions
+</div>
+<div class="section" id="module-ubcs_auxiliary.advsleep">
+<span id="advance-sleep"></span><h2>Advance Sleep<a class="headerlink" href="#module-ubcs_auxiliary.advsleep" title="Permalink to this headline">¶</a></h2>
+<p>advance Sleep functions
 author: Valentyn Stadnytskyi
 data: 2017 - Nov 17 2018</p>
 <p>functions:
@@ -238,7 +253,10 @@ input:t - time to sleep, dt - check intervals, interupt - interupt function that
 <dd><p>sleep for t seconds.</p>
 </dd></dl>
 
-<span class="target" id="module-ubcs_auxiliary.os"></span><dl class="function">
+</div>
+<div class="section" id="module-ubcs_auxiliary.os">
+<span id="os"></span><h2>OS<a class="headerlink" href="#module-ubcs_auxiliary.os" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
 <dt id="ubcs_auxiliary.os.exclude">
 <code class="sig-prename descclassname">ubcs_auxiliary.os.</code><code class="sig-name descname">exclude</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/os.html#exclude"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.os.exclude" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of patterns to exclude from a search. Add
@@ -286,7 +304,31 @@ zinger-free-statistics are to be acquired. The zinger-free-statistics
 include Imean and Ivar, which are used to construct UC_psi.npy.</p>
 </dd></dl>
 
-<span class="target" id="module-ubcs_auxiliary.numerical"></span><p>plotting functions
+</div>
+<div class="section" id="module-ubcs_auxiliary.multi_processing">
+<span id="parallel-processing"></span><h2>Parallel Processing<a class="headerlink" href="#module-ubcs_auxiliary.multi_processing" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="ubcs_auxiliary.multi_processing.function">
+<code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">function</code><span class="sig-paren">(</span><em class="sig-param">N</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.function" title="Permalink to this definition">¶</a></dt>
+<dd><p>an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubcs_auxiliary.multi_processing.test">
+<code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>simple test showing how to use</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubcs_auxiliary.multi_processing.test2">
+<code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">test2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#test2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.test2" title="Permalink to this definition">¶</a></dt>
+<dd><p>simple test showing how to use</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-ubcs_auxiliary.numerical">
+<span id="numerical"></span><h2>Numerical<a class="headerlink" href="#module-ubcs_auxiliary.numerical" title="Permalink to this headline">¶</a></h2>
+<p>plotting functions
 author: Valentyn Stadnytskyi
 data: 2017 - Nov 17 2018</p>
 <dl class="function">
@@ -463,12 +505,66 @@ dtype (string)</p>
 <dd><p>sorts time vector</p>
 </dd></dl>
 
-<span class="target" id="module-ubcs_auxiliary.plotting"></span><p>plotting functions
+</div>
+<div class="section" id="module-ubcs_auxiliary.plotting">
+<span id="plotting-with-matplotlib"></span><h2>Plotting with Matplotlib<a class="headerlink" href="#module-ubcs_auxiliary.plotting" title="Permalink to this headline">¶</a></h2>
+<p>plotting functions
 author: Valentyn Stadnytskyi
 data: 2017 - Nov 17 2018</p>
-<span class="target" id="module-ubcs_auxiliary.save_load_object"></span><p>Auxiliary functions
-author: Valentyn Stadnytskyi
+</div>
+<div class="section" id="module-ubcs_auxiliary.save_load_object">
+<span id="save-load-object"></span><h2>Save Load Object<a class="headerlink" href="#module-ubcs_auxiliary.save_load_object" title="Permalink to this headline">¶</a></h2>
+<p>author: Valentyn Stadnytskyi
 created: Sept 9 2019</p>
+<dl class="function">
+<dt id="ubcs_auxiliary.save_load_object.dump">
+<code class="sig-prename descclassname">ubcs_auxiliary.save_load_object.</code><code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#ubcs_auxiliary.save_load_object.dump" title="Permalink to this definition">¶</a></dt>
+<dd><p>save a python object to a file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>Args:</strong></dt><dd><dl class="simple">
+<dt>filename (string)</dt><dd><p>the full path and filename</p>
+</dd>
+<dt>object (python object)</dt><dd><p>a python object</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>the example of usage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">save_to_file</span><span class="p">(</span><span class="s1">&#39;test.pkl&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="ubcs_auxiliary.save_load_object.load">
+<code class="sig-prename descclassname">ubcs_auxiliary.save_load_object.</code><code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ubcs_auxiliary.save_load_object.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>read object from a file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>filename</strong><span class="classifier">string</span></dt><dd><p>the full path and filename</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>object</strong><span class="classifier">object</span></dt><dd><p>input object to save.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>the example of usage</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_out</span> <span class="o">=</span> <span class="n">load_from_file</span><span class="p">(</span><span class="s1">&#39;list.extension&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
 <dl class="function">
 <dt id="ubcs_auxiliary.save_load_object.load_from_file">
 <code class="sig-prename descclassname">ubcs_auxiliary.save_load_object.</code><code class="sig-name descname">load_from_file</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/save_load_object.html#load_from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.save_load_object.load_from_file" title="Permalink to this definition">¶</a></dt>
@@ -518,6 +614,7 @@ created: Sept 9 2019</p>
 </div>
 </dd></dl>
 
+</div>
 </div>
 
 
