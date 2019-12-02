@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.advsleep &mdash; UBCS LCP auxiliary package library 0.post50+g97e024e documentation</title>
+  <title>ubcs_auxiliary.advsleep &mdash; UBCS LCP auxiliary package library 0.post50+g8738369 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.post50+g97e024e
+                0.post50+g8738369
               </div>
             
           
@@ -172,12 +172,12 @@
 <span class="sd">The Windows OS has ~15-17 ms latenct - the shortest time between attentions from OS.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">__vesrion__</span> <span class="o">=</span> <span class="s1">&#39;1.0.0&#39;</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span>  <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span>  <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">clock</span> <span class="k">as</span> <span class="n">perf_counter</span>
+    <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">clock</span> <span class="k">as</span> <span class="n">perf_counter</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">perf_counter</span>
+    <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">perf_counter</span>
 <span class="kn">import</span> <span class="nn">platform</span>
 
 
@@ -186,7 +186,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    sleep for t seconds.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span><span class="p">,</span><span class="n">perf_counter</span>
+    <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span><span class="p">,</span><span class="n">perf_counter</span>
     <span class="kn">import</span> <span class="nn">platform</span>
     <span class="n">min_time</span>
 
@@ -212,7 +212,7 @@
     <span class="sd">&quot;&quot;&quot;precision sleep function with interupt capabilities</span>
 <span class="sd">    input:t - time to sleep, dt - check intervals, interupt - interupt function that return boolean</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">perf_counter</span><span class="p">,</span><span class="n">sleep</span><span class="p">,</span><span class="n">time</span>
+    <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">perf_counter</span><span class="p">,</span><span class="n">sleep</span><span class="p">,</span><span class="n">time</span>
     <span class="kn">import</span> <span class="nn">types</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">interupt</span><span class="p">,</span><span class="n">types</span><span class="o">.</span><span class="n">FunctionType</span><span class="p">):</span>
         <span class="n">precision_sleep</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
@@ -234,7 +234,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        test_sleep t = 0.01 in seconds</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span><span class="p">,</span><span class="n">perf_counter</span>
+        <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span><span class="p">,</span><span class="n">perf_counter</span>
         <span class="n">t1</span> <span class="o">=</span>  <span class="n">perf_counter</span><span class="p">()</span>
         <span class="n">psleep</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
         <span class="n">t2</span> <span class="o">=</span> <span class="n">perf_counter</span><span class="p">()</span>
@@ -245,7 +245,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        test_sleep t = 0.01 in seconds</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span><span class="p">,</span><span class="n">perf_counter</span>
+        <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span><span class="p">,</span><span class="n">perf_counter</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">interupt</span><span class="p">)</span>
         <span class="n">t1</span> <span class="o">=</span>  <span class="n">perf_counter</span><span class="p">()</span>
         <span class="n">intsleep</span><span class="p">(</span><span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="p">,</span><span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span><span class="p">,</span> <span class="n">interupt</span> <span class="o">=</span> <span class="n">interupt</span><span class="p">)</span>

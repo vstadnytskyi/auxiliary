@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.numerical &mdash; UBCS LCP auxiliary package library 0.post50+g97e024e documentation</title>
+  <title>ubcs_auxiliary.numerical &mdash; UBCS LCP auxiliary package library 0.post50+g8738369 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.post50+g97e024e
+                0.post50+g8738369
               </div>
             
           
@@ -162,17 +162,17 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="n">__vesrion__</span> <span class="o">=</span> <span class="s1">&#39;1.0.0&#39;</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span>  <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span>  <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">clock</span> <span class="k">as</span> <span class="n">perf_counter</span>
+    <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">clock</span> <span class="k">as</span> <span class="n">perf_counter</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">perf_counter</span>
+    <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">perf_counter</span>
 <span class="kn">import</span> <span class="nn">platform</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">asarray</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">asarray</span>
 
 <span class="k">def</span> <span class="nf">exponential_1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">tau</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">exp</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">exp</span>
     <span class="k">return</span> <span class="n">A</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="n">tau</span><span class="p">)</span>
 
 <div class="viewcode-block" id="linear"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.numerical.linear">[docs]</a><span class="k">def</span> <span class="nf">linear</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
@@ -185,7 +185,7 @@
 <span class="sd">    takes an integer and converts it to 8 bit representation as an array.</span>
 <span class="sd">    If float number is passed, it will be converted to int.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">arange</span><span class="p">,</span><span class="n">ndarray</span><span class="p">,</span><span class="n">nan</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">arange</span><span class="p">,</span><span class="n">ndarray</span><span class="p">,</span><span class="n">nan</span>
     <span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
     <span class="n">binary</span> <span class="o">=</span> <span class="nb">format</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s1">&#39;#0&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">length</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
     <span class="n">arr</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="n">length</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
@@ -198,7 +198,7 @@
 <span class="sd">    takes an integer and converts it to 8 bit representation as an array.</span>
 <span class="sd">    If float number is passed, it will be converted to int.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">arange</span><span class="p">,</span><span class="n">ndarray</span><span class="p">,</span><span class="n">nan</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">arange</span><span class="p">,</span><span class="n">ndarray</span><span class="p">,</span><span class="n">nan</span>
     <span class="n">integer</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)):</span>
         <span class="n">integer</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
@@ -229,7 +229,7 @@
 <span class="sd">           :include-source:</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">zeros</span><span class="p">,</span> <span class="n">nan</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span> <span class="n">nanmax</span><span class="p">,</span> <span class="n">nanmin</span><span class="p">,</span> <span class="n">random</span><span class="p">,</span><span class="n">nanmean</span><span class="p">,</span> <span class="n">mean</span>
+        <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">zeros</span><span class="p">,</span> <span class="n">nan</span><span class="p">,</span><span class="n">arange</span><span class="p">,</span> <span class="n">nanmax</span><span class="p">,</span> <span class="n">nanmin</span><span class="p">,</span> <span class="n">random</span><span class="p">,</span><span class="n">nanmean</span><span class="p">,</span> <span class="n">mean</span>
         <span class="kn">import</span> <span class="nn">math</span>
 
         <span class="n">length</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -272,14 +272,14 @@
 
 <div class="viewcode-block" id="sort_vector"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.numerical.sort_vector">[docs]</a><span class="k">def</span> <span class="nf">sort_vector</span><span class="p">(</span><span class="n">in_vector</span> <span class="o">=</span> <span class="n">asarray</span><span class="p">([</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">])):</span>
     <span class="sd">&quot;&quot;&quot;sorts time vector&quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">sort</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sort</span>
     <span class="k">if</span> <span class="n">in_vector</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">out_vector</span> <span class="o">=</span> <span class="n">sort</span><span class="p">(</span><span class="n">in_vector</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">out_vector</span></div>
 
 <div class="viewcode-block" id="expand_vector"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.numerical.expand_vector">[docs]</a><span class="k">def</span> <span class="nf">expand_vector</span><span class="p">(</span><span class="n">in_vector</span> <span class="o">=</span> <span class="n">asarray</span><span class="p">([</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">]),</span><span class="n">ndim</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; makes input 1D vector as 2D with first dimenstion to be ndim&quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">zeros</span><span class="p">,</span><span class="n">expand_dims</span><span class="p">,</span><span class="n">concatenate</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">zeros</span><span class="p">,</span><span class="n">expand_dims</span><span class="p">,</span><span class="n">concatenate</span>
     <span class="n">out_vector</span> <span class="o">=</span> <span class="n">expand_dims</span><span class="p">(</span><span class="n">in_vector</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">add_vector</span> <span class="o">=</span> <span class="n">out_vector</span><span class="o">*</span><span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ndim</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
@@ -290,7 +290,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        returns estimated y_est value for give x_est from real x,y data set.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">polyfit</span><span class="p">,</span> <span class="n">poly1d</span><span class="p">,</span> <span class="n">nanargmin</span>
+        <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">polyfit</span><span class="p">,</span> <span class="n">poly1d</span><span class="p">,</span> <span class="n">nanargmin</span>
         <span class="n">idx</span> <span class="o">=</span> <span class="n">nanargmin</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_est</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
         <span class="n">x0</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
         <span class="n">debug</span><span class="p">(</span><span class="s1">&#39;x = </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span><span class="n">x</span><span class="p">)</span>
@@ -312,7 +312,7 @@
 <span class="sd">        - end decade</span>
 <span class="sd">        - round_to number of digits after decimal, default is 3</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">logspace</span><span class="p">,</span> <span class="n">around</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">logspace</span><span class="p">,</span> <span class="n">around</span>
     <span class="n">arr</span> <span class="o">=</span> <span class="n">around</span><span class="p">(</span><span class="n">logspace</span><span class="p">(</span><span class="n">start</span><span class="p">,</span>  <span class="n">end</span><span class="p">,</span> <span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span><span class="o">*</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span><span class="nb">abs</span><span class="p">(</span><span class="n">start</span><span class="o">-</span><span class="n">round_to</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">arr</span></div>
 
@@ -333,7 +333,7 @@
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; arr = local_log_scale(start_dec = -9, end_dec = 1, N_per_dec = 4, dtype = &#39;int64&#39;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">logspace</span><span class="p">,</span> <span class="n">around</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">logspace</span><span class="p">,</span> <span class="n">around</span>
     <span class="n">arr</span> <span class="o">=</span> <span class="n">logspace</span><span class="p">(</span><span class="n">start_dec</span><span class="p">,</span>  <span class="n">end_dec</span><span class="p">,</span> <span class="p">(</span><span class="n">end_dec</span><span class="o">-</span><span class="n">start_dec</span><span class="p">)</span><span class="o">*</span><span class="n">N_per_dec</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">arr</span></div>
 
@@ -369,7 +369,7 @@
     <span class="k">def</span> <span class="nf">lin_func</span><span class="p">(</span><span class="n">x_l</span><span class="p">,</span><span class="n">x_r</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">fit_mode</span> <span class="o">=</span> <span class="s1">&#39;mean&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">polyfit</span><span class="p">,</span> <span class="n">poly1d</span><span class="p">,</span> <span class="n">arange</span><span class="p">,</span> <span class="n">std</span>
+        <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">polyfit</span><span class="p">,</span> <span class="n">poly1d</span><span class="p">,</span> <span class="n">arange</span><span class="p">,</span> <span class="n">std</span>
         <span class="k">if</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="n">x</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="n">x_l</span><span class="p">,</span><span class="n">x_r</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span><span class="mi">2</span><span class="p">:</span>
@@ -404,7 +404,7 @@
     <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 
-    <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="n">arange</span><span class="p">,</span> <span class="n">argwhere</span><span class="p">,</span> <span class="n">concatenate</span><span class="p">,</span><span class="n">polyfit</span><span class="p">,</span> <span class="n">poly1d</span><span class="p">,</span> <span class="n">mod</span><span class="p">,</span> <span class="n">log10</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="n">arange</span><span class="p">,</span> <span class="n">argwhere</span><span class="p">,</span> <span class="n">concatenate</span><span class="p">,</span><span class="n">polyfit</span><span class="p">,</span> <span class="n">poly1d</span><span class="p">,</span> <span class="n">mod</span><span class="p">,</span> <span class="n">log10</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">transpose</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
     <span class="n">x_len</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">y_len</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -468,7 +468,7 @@
 <span class="sd">    &gt;&gt;&gt; a, b , sigma = linear_fit(x,y)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">isnan</span><span class="p">,</span><span class="n">nan</span><span class="p">,</span> <span class="nb">sum</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">isnan</span><span class="p">,</span><span class="n">nan</span><span class="p">,</span> <span class="nb">sum</span>
 
     <span class="n">Sx</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="mf">1.0</span><span class="p">)</span> <span class="c1">#Sx_i = Sx_i-1 +x_i</span>
     <span class="n">Sx2</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mf">2.00</span><span class="p">)</span> <span class="c1">#Sx2_i = Sx2_i-1 + x_i**2</span>
@@ -492,14 +492,14 @@
     <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">Sigma</span></div>
 
 <span class="k">def</span> <span class="nf">interpolate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x_new</span><span class="p">,</span><span class="n">w</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">s</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,):</span>
-    <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="k">import</span> <span class="n">UnivariateSpline</span>
+    <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">UnivariateSpline</span>
     <span class="n">spl</span> <span class="o">=</span> <span class="n">UnivariateSpline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="n">y_new</span> <span class="o">=</span> <span class="n">spl</span><span class="p">(</span><span class="n">x_new</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-    <span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">random</span><span class="p">,</span> <span class="n">arange</span>
-    <span class="kn">from</span> <span class="nn">pdb</span> <span class="k">import</span> <span class="n">pm</span>
+    <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">random</span><span class="p">,</span> <span class="n">arange</span>
+    <span class="kn">from</span> <span class="nn">pdb</span> <span class="kn">import</span> <span class="n">pm</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">+</span> <span class="mi">1</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">binned_data</span> <span class="o">=</span> <span class="n">bin_data</span><span class="p">(</span><span class="n">data</span>  <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">num_of_bins</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;float&#39;</span><span class="p">)</span>

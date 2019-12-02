@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.multi_processing &mdash; UBCS LCP auxiliary package library 0.post50+g97e024e documentation</title>
+  <title>ubcs_auxiliary.multi_processing &mdash; UBCS LCP auxiliary package library 0.post50+g8738369 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.post50+g97e024e
+                0.post50+g8738369
               </div>
             
           
@@ -156,7 +156,7 @@
             
   <h1>Source code for ubcs_auxiliary.multi_processing</h1><div class="highlight"><pre>
 <span></span><span class="k">class</span> <span class="nc">ParallelProcessing</span><span class="p">():</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="nb">iter</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="nb">iter</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is a specialized wrapper around multiprocessing.Process object. It</span>
 <span class="sd">        launches multiple separate processes with the same input &#39;function&#39; but different argument that comes from an iterable object like tuple or list.</span>
@@ -179,7 +179,7 @@
 <span class="sd">        --------</span>
 <span class="sd">        &gt;&gt;&gt; mp = ParallelProcessing(function, (1,2,3))</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="k">import</span> <span class="n">Process</span>
+        <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
@@ -188,7 +188,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 
 <div class="viewcode-block" id="MultiProcessing"><a class="viewcode-back" href="../../multiprocessing.html#ubcs_auxiliary.multi_processing.MultiProcessing">[docs]</a><span class="k">class</span> <span class="nc">MultiProcessing</span><span class="p">():</span>
-<div class="viewcode-block" id="MultiProcessing.__init__"><a class="viewcode-back" href="../../multiprocessing.html#ubcs_auxiliary.multi_processing.MultiProcessing.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="MultiProcessing.__init__"><a class="viewcode-back" href="../../multiprocessing.html#ubcs_auxiliary.multi_processing.MultiProcessing.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This is a specialized wrapper around multiprocessing.Process object. It</span>
 <span class="sd">        launches multiple separate processes with the same input &#39;function&#39; but different argument that comes from an iterable object like tuple or list.</span>
@@ -211,7 +211,7 @@
 <span class="sd">        --------</span>
 <span class="sd">        &gt;&gt;&gt; mp = ParallelProcessing(function, (1,2,3))</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="k">import</span> <span class="n">Process</span>
+        <span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Process</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">jobs</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
@@ -225,7 +225,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span>
+    <span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span><span class="p">,</span> <span class="n">sleep</span>
 
     <span class="n">print_text_kwarg</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">print_dict_kwarg</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -239,11 +239,11 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[</span><span class="si">{}</span><span class="s1"> s] Done sleeping for </span><span class="si">{}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">t1</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span><span class="n">N</span><span class="p">))</span></div>
 
 <span class="k">def</span> <span class="nf">print_text_kwarg</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;kwarg text = </span><span class="si">{kwargs[&#39;text&#39;]}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;kwarg text = </span><span class="si">{kwargs[&#39;text&#39;]}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">print_dict_kwarg</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;kwarg dict = </span><span class="si">{kwargs[&#39;dict&#39;]}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;kwarg dict = </span><span class="si">{kwargs[&#39;dict&#39;]}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">print_var_kwarg</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;kwarg var = </span><span class="si">{kwargs[&#39;var&#39;]}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;kwarg var = </span><span class="si">{kwargs[&#39;var&#39;]}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="test"><a class="viewcode-back" href="../../multiprocessing.html#ubcs_auxiliary.multi_processing.test">[docs]</a><span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;</span>

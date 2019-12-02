@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.saved_property &mdash; UBCS LCP auxiliary package library 0.post50+g97e024e documentation</title>
+  <title>ubcs_auxiliary.saved_property &mdash; UBCS LCP auxiliary package library 0.post50+g8738369 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.post50+g97e024e
+                0.post50+g8738369
               </div>
             
           
@@ -163,17 +163,17 @@
 
 <span class="sd">Python Version: 2.7 and 3.7</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">logging</span> <span class="k">import</span> <span class="n">debug</span><span class="p">,</span><span class="n">info</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">error</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="kn">import</span> <span class="n">debug</span><span class="p">,</span><span class="n">info</span><span class="p">,</span><span class="n">warning</span><span class="p">,</span><span class="n">error</span>
 
 <span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;1.5.6&quot;</span> <span class="c1"># Issue: WindowsError in remove(settings_file)</span>
-<span class="kn">from</span> <span class="nn">pdb</span> <span class="k">import</span> <span class="n">pm</span>
-<span class="kn">from</span> <span class="nn">threading</span> <span class="k">import</span> <span class="n">RLock</span>
+<span class="kn">from</span> <span class="nn">pdb</span> <span class="kn">import</span> <span class="n">pm</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">RLock</span>
 <span class="n">lock</span> <span class="o">=</span> <span class="n">RLock</span><span class="p">()</span>
 
-<span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">getcwd</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getcwd</span>
 
 <div class="viewcode-block" id="DataBase"><a class="viewcode-back" href="../../saved-property.html#ubcs_auxiliary.saved_property.DataBase">[docs]</a><span class="k">class</span> <span class="nc">DataBase</span><span class="p">():</span>
-<div class="viewcode-block" id="DataBase.__init__"><a class="viewcode-back" href="../../saved-property.html#ubcs_auxiliary.saved_property.DataBase.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">root</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
+<div class="viewcode-block" id="DataBase.__init__"><a class="viewcode-back" href="../../saved-property.html#ubcs_auxiliary.saved_property.DataBase.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">root</span><span class="p">,</span><span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        initializes the connection to the database.</span>
 
@@ -214,15 +214,15 @@
 <span class="sd">        --------</span>
 <span class="sd">        &gt;&gt;&gt; filename, root, name = get_filename(root, &#39;name.db&#39;)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">platform</span> <span class="k">import</span> <span class="n">system</span>
-        <span class="kn">from</span> <span class="nn">os.path</span> <span class="k">import</span> <span class="n">exists</span><span class="p">,</span> <span class="n">join</span>
-        <span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">mkdir</span>
+        <span class="kn">from</span> <span class="nn">platform</span> <span class="kn">import</span> <span class="n">system</span>
+        <span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">exists</span><span class="p">,</span> <span class="n">join</span>
+        <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">mkdir</span>
         <span class="n">name</span> <span class="o">+=</span> <span class="s1">&#39;_db.py&#39;</span>
         <span class="k">if</span> <span class="n">root</span> <span class="o">==</span> <span class="s2">&quot;TEMP&quot;</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">tempfile</span> <span class="k">import</span> <span class="n">gettempdir</span>
+            <span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">gettempdir</span>
             <span class="n">root</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">gettempdir</span><span class="p">(),</span><span class="s1">&#39;SavedProperty&#39;</span><span class="p">)</span>
         <span class="k">elif</span> <span class="n">root</span> <span class="o">==</span> <span class="s2">&quot;LOCAL&quot;</span> <span class="ow">or</span> <span class="n">root</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">os</span> <span class="k">import</span> <span class="n">getcwd</span>
+            <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">getcwd</span>
             <span class="n">root</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">getcwd</span><span class="p">(),</span><span class="s1">&#39;SavedProperty&#39;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">root</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="s1">&#39;SavedProperty&#39;</span><span class="p">)</span>
@@ -251,7 +251,7 @@
 <span class="sd">        &gt;&gt;&gt; data = read()</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">import</span> <span class="nn">yaml</span>
-        <span class="kn">from</span> <span class="nn">os.path</span> <span class="k">import</span> <span class="n">exists</span>
+        <span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">exists</span>
         <span class="k">if</span> <span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">):</span>
             <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
                 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
@@ -304,7 +304,7 @@
         <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="SavedProperty"><a class="viewcode-back" href="../../saved-property.html#ubcs_auxiliary.saved_property.SavedProperty">[docs]</a><span class="k">class</span> <span class="nc">SavedProperty</span><span class="p">():</span>
-<div class="viewcode-block" id="SavedProperty.__init__"><a class="viewcode-back" href="../../saved-property.html#ubcs_auxiliary.saved_property.SavedProperty.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">db</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="SavedProperty.__init__"><a class="viewcode-back" href="../../saved-property.html#ubcs_auxiliary.saved_property.SavedProperty.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">db</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">value</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span> <span class="o">=</span> <span class="n">db</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="n">value</span></div>

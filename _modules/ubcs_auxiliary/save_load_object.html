@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.save_load_object &mdash; UBCS LCP auxiliary package library 0.post50+g97e024e documentation</title>
+  <title>ubcs_auxiliary.save_load_object &mdash; UBCS LCP auxiliary package library 0.post50+g8738369 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.post50+g97e024e
+                0.post50+g8738369
               </div>
             
           
@@ -186,7 +186,7 @@
 
 <span class="sd">    &gt;&gt;&gt; save_to_file(&#39;test.pkl&#39;,[1,2,3])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">pickle</span> <span class="k">import</span> <span class="n">dump</span>
+    <span class="kn">from</span> <span class="nn">pickle</span> <span class="kn">import</span> <span class="n">dump</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">dump</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span><span class="n">f</span><span class="p">)</span></div>
 
@@ -211,7 +211,7 @@
 <span class="sd">    &gt;&gt;&gt; list_out = load_from_file(&#39;list.extension&#39;)</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">pickle</span> <span class="k">import</span> <span class="n">load</span>
+    <span class="kn">from</span> <span class="nn">pickle</span> <span class="kn">import</span> <span class="n">load</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;bytes&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">data</span></div>

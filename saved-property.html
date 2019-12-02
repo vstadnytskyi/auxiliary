@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Saved Property &mdash; UBCS LCP auxiliary package library 0.post50+g97e024e documentation</title>
+  <title>Saved Property &mdash; UBCS LCP auxiliary package library 0.post50+g8738369 documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.post50+g97e024e
+                0.post50+g8738369
               </div>
             
           
@@ -170,8 +170,8 @@
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip3 install --upgrade ubcs_auxiliary
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ubcs_auxiliary.saved_property</span> <span class="k">import</span> <span class="n">DataBase</span><span class="p">,</span> <span class="n">SavedProperty</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span>  <span class="nn">numpy</span> <span class="k">import</span> <span class="n">array</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ubcs_auxiliary.saved_property</span> <span class="kn">import</span> <span class="n">DataBase</span><span class="p">,</span> <span class="n">SavedProperty</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span>  <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">SomeClass</span><span class="p">():</span>
 <span class="go">        db = DataBase(root = tmpdir, name = &#39;simpledb&#39;)</span>
 <span class="go">        int_var = SavedProperty(db,&#39;int_var&#39;,1).init()</span>
@@ -318,7 +318,7 @@
 <code class="sig-name descname">init</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/saved_property.html#SavedProperty.init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.saved_property.SavedProperty.init" title="Permalink to this definition">¶</a></dt>
 <dd><p>wrapper that returns property object with get and set functions.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">saved_property</span> <span class="k">import</span> <span class="n">DataBase</span><span class="p">,</span> <span class="n">SavedProperty</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">saved_property</span> <span class="kn">import</span> <span class="n">DataBase</span><span class="p">,</span> <span class="n">SavedProperty</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">db</span> <span class="o">=</span> <span class="n">DataBase</span><span class="p">(</span><span class="n">root</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;simpledb&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">SavedProperty</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">,</span><span class="mf">5.0</span><span class="p">)</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 </pre></div>
