@@ -17,6 +17,9 @@ Start by importing UBCS LCP auxiliary package library.
 .. automodule:: ubcs_auxiliary.os
   :members:
 
+.. automodule:: ubcs_auxiliary.multi_processing
+  :members:
+
 .. automodule:: ubcs_auxiliary.numerical
   :members:
 

@@ -18,6 +18,5 @@ you may need to upgrade the library if it was installed before
 
   pip3 install --upgrade ubcs_auxiliary
 
-
 .. automodule:: ubcs_auxiliary.save_load_object
   :members:
