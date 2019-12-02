@@ -17,3 +17,6 @@ you may need to upgrade the library if it was installed before
 .. code-block:: shell
 
   pip3 install --upgrade ubcs_auxiliary
+
+#.. automodule:: ubcs_auxiliary.save_load_object
+#  :members:
