@@ -58,3 +58,6 @@ def load_from_file(filename):
     with open(filename,'rb') as f:
         data = load(f, encoding='bytes')
     return data
+
+dump = save_to_file
+load = load_from_file
