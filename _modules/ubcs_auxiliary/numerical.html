@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.numerical &mdash; UBCS LCP auxiliary package library 0.post50+g3f6399e documentation</title>
+  <title>ubcs_auxiliary.numerical &mdash; UBCS LCP auxiliary package library 0.post50+gdea52a1 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.post50+g3f6399e
+                0.post50+gdea52a1
               </div>
             
           
@@ -492,10 +492,78 @@
 
     <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">Sigma</span></div>
 
+<div class="viewcode-block" id="weighted_linear_fit"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.numerical.weighted_linear_fit">[docs]</a><span class="k">def</span> <span class="nf">weighted_linear_fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    return linear fit by calcualating</span>
+<span class="sd">    y_fit = a + b*x</span>
+<span class="sd">    page 104 Data reduction and error analysis for the physicxal sciences Philip R. Bevington</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x (1d numpy array)</span>
+<span class="sd">    y (1d numpy array)</span>
+<span class="sd">    w (1d numpy array)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    a</span>
+<span class="sd">    b</span>
+<span class="sd">    sigma_a</span>
+<span class="sd">    sigma_b</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; a, b , sigma_a, sigma_v = weighted_linear_fit(x,y,w)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">isnan</span><span class="p">,</span><span class="n">nan</span><span class="p">,</span> <span class="nb">sum</span><span class="p">,</span> <span class="n">sqrt</span>
+
+    <span class="n">Sx</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="mf">1.0</span><span class="p">)</span> <span class="c1">#Sx_i = Sx_i-1 +x_i</span>
+    <span class="n">Sx2</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">w</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span> <span class="c1">#Sx2_i = Sx2_i-1 + x_i**2</span>
+    <span class="n">Sy</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="mf">1.0</span><span class="p">)</span> <span class="c1">#Sy_i = Sy_i-1 + y_i</span>
+    <span class="n">Sy2</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span> <span class="c1">#Sy2_i = Sy2_i-1 + y_i**2</span>
+    <span class="n">Sxy</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="mf">1.0</span><span class="p">)</span> <span class="c1">#Sxy_i = Sxy_i-1 + x_i*y_i</span>
+    <span class="n">Sw2</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="c1">#N_i = N_i-1 + 1.0</span>
+    <span class="k">if</span> <span class="n">N</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">Delta</span> <span class="o">=</span> <span class="n">Sw2</span><span class="o">*</span><span class="n">Sx2</span> <span class="o">-</span> <span class="n">Sx</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># Delta_i = N_i*Sx2_i - Sx_i**2</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">Delta</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Sx2</span><span class="o">*</span><span class="n">Sy</span><span class="o">-</span><span class="n">Sx</span><span class="o">*</span><span class="n">Sxy</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">Delta</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Sw2</span><span class="o">*</span><span class="n">Sxy</span><span class="o">-</span><span class="n">Sx</span><span class="o">*</span><span class="n">Sy</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#page 115</span>
+    <span class="k">if</span> <span class="n">N</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">sigma_a</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="n">Delta</span><span class="p">)</span><span class="o">*</span><span class="n">Sx2</span><span class="p">)</span>
+        <span class="n">sigma_b</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="n">Delta</span><span class="p">)</span><span class="o">*</span><span class="n">Sw2</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">sigma_a</span> <span class="o">=</span> <span class="n">sigma_b</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Delta = &#39;</span><span class="p">,</span><span class="n">Delta</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sw2 = &#39;</span><span class="p">,</span><span class="n">Sw2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sx = &#39;</span><span class="p">,</span><span class="n">Sx</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sx2 = &#39;</span><span class="p">,</span><span class="n">Sx2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma_a</span><span class="p">,</span> <span class="n">sigma_b</span></div>
+
 <span class="k">def</span> <span class="nf">interpolate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x_new</span><span class="p">,</span><span class="n">w</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">s</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,):</span>
     <span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">UnivariateSpline</span>
     <span class="n">spl</span> <span class="o">=</span> <span class="n">UnivariateSpline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="n">y_new</span> <span class="o">=</span> <span class="n">spl</span><span class="p">(</span><span class="n">x_new</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">weighted_linear_fit_test_data</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">arange</span><span class="p">,</span> <span class="n">array</span><span class="p">,</span><span class="n">sqrt</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="mi">106</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">98</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">74</span><span class="p">,</span><span class="mi">73</span><span class="p">,</span><span class="mi">49</span><span class="p">,</span><span class="mi">38</span><span class="p">,</span><span class="mi">37</span><span class="p">,</span><span class="mi">22</span><span class="p">])</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span>
+
+<span class="k">def</span> <span class="nf">weighted_linear_fit_test</span><span class="p">():</span>
+    <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span> <span class="o">=</span> <span class="n">weighted_linear_fit_test_data</span><span class="p">()</span>
+    <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">sigma_a</span><span class="p">,</span><span class="n">sigma_b</span> <span class="o">=</span> <span class="n">weighted_linear_fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="n">w</span><span class="p">)</span>
+    <span class="n">string</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39;,&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39;,&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">sigma_a</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span><span class="o">+</span><span class="s1">&#39;,&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">sigma_b</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
