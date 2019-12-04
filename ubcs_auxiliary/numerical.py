@@ -334,10 +334,78 @@ def linear_fit(x,y):
 
     return a, b, Sigma
 
+def weighted_linear_fit(x,y,w):
+    """
+    return linear fit by calcualating
+    y_fit = a + b*x
+    page 104 Data reduction and error analysis for the physicxal sciences Philip R. Bevington
+
+    Parameters
+    ----------
+    x (1d numpy array)
+    y (1d numpy array)
+    w (1d numpy array)
+
+    Returns
+    -------
+    a
+    b
+    sigma_a
+    sigma_b
+
+    Examples
+    --------
+    >>> a, b , sigma_a, sigma_v = weighted_linear_fit(x,y,w)
+    """
+
+    from numpy import isnan,nan, sum, sqrt
+
+    Sx = sum((w**2)*x*1.0) #Sx_i = Sx_i-1 +x_i
+    Sx2 = sum((w*x)**2.0) #Sx2_i = Sx2_i-1 + x_i**2
+    Sy = sum((w**2)*y*1.0) #Sy_i = Sy_i-1 + y_i
+    Sy2 = sum((w**2)*y**2.0) #Sy2_i = Sy2_i-1 + y_i**2
+    Sxy = sum((w**2)*x*y*1.0) #Sxy_i = Sxy_i-1 + x_i*y_i
+    Sw2 = sum(w**2)
+    N = x.shape[0]#N_i = N_i-1 + 1.0
+    if N >= 2:
+        Delta = Sw2*Sx2 - Sx**2 # Delta_i = N_i*Sx2_i - Sx_i**2
+        a = (1.0/Delta)*(Sx2*Sy-Sx*Sxy)
+        b = (1.0/Delta)*(Sw2*Sxy-Sx*Sy)
+    else:
+        a = None
+        b = None
+        #page 115
+    if N > 2:
+        sigma_a = sqrt((1/Delta)*Sx2)
+        sigma_b = sqrt((1/Delta)*Sw2)
+    else:
+        sigma_a = sigma_b = None
+    print('Delta = ',Delta)
+    print('Sw2 = ',Sw2)
+    print('Sx = ',Sx)
+    print('Sx2 = ',Sx2)
+
+    return a, b, sigma_a, sigma_b
+
 def interpolate(x,y,x_new,w = None,s = None,):
     from scipy.interpolate import UnivariateSpline
     spl = UnivariateSpline(x, y)
     y_new = spl(x_new)
+
+def weighted_linear_fit_test_data():
+    from numpy import arange, array,sqrt
+    x = arange(0,150,15)
+    y = array([106,80,98,75,74,73,49,38,37,22])
+    w = 1/sqrt(y)
+    return x,y,w
+
+def weighted_linear_fit_test():
+    x,y,w = weighted_linear_fit_test_data()
+    a,b,sigma_a,sigma_b = weighted_linear_fit(x,y,w)
+    plt.errorbar(x,y,1/w)
+    string = str(round(a,3))+','+str(round(b,3))+','+str(round(sigma_a,3))+','+str(round(sigma_b,3))
+    plt.title(string)
+    plt.show()
 
 if __name__ == '__main__':
     from matplotlib import pyplot as plt
