@@ -358,8 +358,11 @@ def weighted_linear_fit(x,y,w):
     >>> a, b , sigma_a, sigma_v = weighted_linear_fit(x,y,w)
     """
 
-    from numpy import isnan,nan, sum, sqrt
-
+    from numpy import isnan,nan, sum, sqrt, min, max
+    x_max = max(x)
+    x_min = min(x)
+    coeff = abs(x_min-x_max)
+    x = x/coeff
     Sx = sum(w*x*1.0) #Sx_i = Sx_i-1 +x_i
     Sx2 = sum(w*x**2.0) #Sx2_i = Sx2_i-1 + x_i**2
     Sy = sum(w*y*1.0) #Sy_i = Sy_i-1 + y_i
@@ -368,15 +371,15 @@ def weighted_linear_fit(x,y,w):
     Sw = sum(w)
     N = x.shape[0]#N_i = N_i-1 + 1.0
     if N >= 2:
-        Delta = Sw*Sx2 - Sx**2 # Delta_i = N_i*Sx2_i - Sx_i**2
-        a = (1.0/Delta)*(Sx2*Sy-Sx*Sxy)
-        b = (1.0/Delta)*(Sw*Sxy-Sx*Sy)
+        Delta = (Sw*Sx2 - Sx**2)*coeff**2 # Delta_i = N_i*Sx2_i - Sx_i**2
+        a = (1.0/Delta)*(Sx2*Sy-Sx*Sxy)*coeff**2
+        b = (1.0/Delta)*(Sw*Sxy-Sx*Sy)*coeff
     else:
         a = None
         b = None
         #page 115
     if N > 2:
-        sigma_a = sqrt((1/Delta)*Sx2)
+        sigma_a = sqrt((1/Delta)*Sx2*coeff**2)
         sigma_b = sqrt((1/Delta)*Sw)
     else:
         sigma_a = sigma_b = None
@@ -384,6 +387,9 @@ def weighted_linear_fit(x,y,w):
     print('Sw2 = ',Sw)
     print('Sx = ',Sx)
     print('Sx2 = ',Sx2)
+    print('coeff = ',coeff)
+    print('sigma_a = ',sigma_a)
+    print('sigma_b = ',sigma_b)
 
     return a, b, sigma_a, sigma_b
 
@@ -396,23 +402,12 @@ def weighted_linear_fit_test_data():
     from numpy import arange, array,sqrt
     x = 5 + arange(0,150,15)/coeff
     y = array([106,80,98,75,74,73,49,38,37,22])
-    w = y
+    w = 1/y
     return x,y,w
 
 def weighted_linear_fit_test():
     from numpy import sqrt
     x,y,w = weighted_linear_fit_test_data()
-    a,b,sigma_a,sigma_b = weighted_linear_fit(x,y,w)
-    plt.figure()
-    plt.errorbar(x,y,1/sqrt(w),marker='s')
-    plt.plot(x,a+b*x)
-    string = str(round(a,3))+','+str(round(b,3))+','+str(round(sigma_a,3))+','+str(round(sigma_b,3))
-    plt.title(string)
-    plt.show()
-
-    from numpy import sqrt
-    x,y,w = weighted_linear_fit_test_data()
-    w = 1/w
     a,b,sigma_a,sigma_b = weighted_linear_fit(x,y,w)
     plt.figure()
 
@@ -437,6 +432,5 @@ if __name__ == '__main__':
     plt.close('all')
     for i in range(3):
         coeff = 10**i
-        x0 = 5-(20)/coeff
-
+        x0 = 5+(70)/coeff
         weighted_linear_fit_test()
