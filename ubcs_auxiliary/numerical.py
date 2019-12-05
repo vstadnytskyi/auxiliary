@@ -360,28 +360,28 @@ def weighted_linear_fit(x,y,w):
 
     from numpy import isnan,nan, sum, sqrt
 
-    Sx = sum((w**2)*x*1.0) #Sx_i = Sx_i-1 +x_i
-    Sx2 = sum((w*x)**2.0) #Sx2_i = Sx2_i-1 + x_i**2
-    Sy = sum((w**2)*y*1.0) #Sy_i = Sy_i-1 + y_i
-    Sy2 = sum((w**2)*y**2.0) #Sy2_i = Sy2_i-1 + y_i**2
-    Sxy = sum((w**2)*x*y*1.0) #Sxy_i = Sxy_i-1 + x_i*y_i
-    Sw2 = sum(w**2)
+    Sx = sum(w*x*1.0) #Sx_i = Sx_i-1 +x_i
+    Sx2 = sum(w*x**2.0) #Sx2_i = Sx2_i-1 + x_i**2
+    Sy = sum(w*y*1.0) #Sy_i = Sy_i-1 + y_i
+    Sy2 = sum(w*y**2.0) #Sy2_i = Sy2_i-1 + y_i**2
+    Sxy = sum(w*x*y*1.0) #Sxy_i = Sxy_i-1 + x_i*y_i
+    Sw = sum(w)
     N = x.shape[0]#N_i = N_i-1 + 1.0
     if N >= 2:
-        Delta = Sw2*Sx2 - Sx**2 # Delta_i = N_i*Sx2_i - Sx_i**2
+        Delta = Sw*Sx2 - Sx**2 # Delta_i = N_i*Sx2_i - Sx_i**2
         a = (1.0/Delta)*(Sx2*Sy-Sx*Sxy)
-        b = (1.0/Delta)*(Sw2*Sxy-Sx*Sy)
+        b = (1.0/Delta)*(Sw*Sxy-Sx*Sy)
     else:
         a = None
         b = None
         #page 115
     if N > 2:
         sigma_a = sqrt((1/Delta)*Sx2)
-        sigma_b = sqrt((1/Delta)*Sw2)
+        sigma_b = sqrt((1/Delta)*Sw)
     else:
         sigma_a = sigma_b = None
     print('Delta = ',Delta)
-    print('Sw2 = ',Sw2)
+    print('Sw2 = ',Sw)
     print('Sx = ',Sx)
     print('Sx2 = ',Sx2)
 
@@ -394,16 +394,33 @@ def interpolate(x,y,x_new,w = None,s = None,):
 
 def weighted_linear_fit_test_data():
     from numpy import arange, array,sqrt
-    x = arange(0,150,15)
+    x = 5 + arange(0,150,15)/coeff
     y = array([106,80,98,75,74,73,49,38,37,22])
-    w = 1/sqrt(y)
+    w = y
     return x,y,w
 
 def weighted_linear_fit_test():
+    from numpy import sqrt
     x,y,w = weighted_linear_fit_test_data()
     a,b,sigma_a,sigma_b = weighted_linear_fit(x,y,w)
-    plt.errorbar(x,y,1/w)
+    plt.figure()
+    plt.errorbar(x,y,1/sqrt(w),marker='s')
+    plt.plot(x,a+b*x)
     string = str(round(a,3))+','+str(round(b,3))+','+str(round(sigma_a,3))+','+str(round(sigma_b,3))
+    plt.title(string)
+    plt.show()
+
+    from numpy import sqrt
+    x,y,w = weighted_linear_fit_test_data()
+    w = 1/w
+    a,b,sigma_a,sigma_b = weighted_linear_fit(x,y,w)
+    plt.figure()
+
+    plt.errorbar(x,y,1/sqrt(w),marker='s')
+    plt.plot(x,a+b*x)
+    string = str(round(a,3))+','+str(round(b,3))+','+str(round(sigma_a,3))+','+str(round(sigma_b,3))
+    plt.errorbar(x0,a+b*(x0),sqrt(sigma_a**2+(x0*sigma_b)**2),marker = 's')
+    string += ','+str(round(sqrt(sigma_a**2+(x0*sigma_b)**2),3))
     plt.title(string)
     plt.show()
 
@@ -411,9 +428,15 @@ if __name__ == '__main__':
     from matplotlib import pyplot as plt
     from numpy import random, arange
     from pdb import pm
-    data = random.rand(1000,4)+ 1
-    x = arange(0,data.shape[0],1)
-    binned_data = bin_data(data  = data, x = x, num_of_bins = 300, dtype = 'float')
-    plt.plot(binned_data['x'],binned_data['y_mean'][0],'o')
-    plt.plot(x,data[:,0],'-')
-    plt.show()
+    # data = random.rand(1000,4)+ 1
+    # x = arange(0,data.shape[0],1)
+    # binned_data = bin_data(data  = data, x = x, num_of_bins = 300, dtype = 'float')
+    # plt.plot(binned_data['x'],binned_data['y_mean'][0],'o')
+    # plt.plot(x,data[:,0],'-')
+    # plt.show()
+    plt.close('all')
+    for i in range(3):
+        coeff = 10**i
+        x0 = 5-(20)/coeff
+
+        weighted_linear_fit_test()
