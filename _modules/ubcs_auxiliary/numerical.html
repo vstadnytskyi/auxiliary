@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.numerical &mdash; UBCS LCP auxiliary package library 0.0.19.post2+g5c9e1ab documentation</title>
+  <title>ubcs_auxiliary.numerical &mdash; UBCS LCP auxiliary package library 0.0.19.post3+g2c9fdfe documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.19.post2+g5c9e1ab
+                0.0.19.post3+g2c9fdfe
               </div>
             
           
@@ -517,9 +517,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">isnan</span><span class="p">,</span><span class="n">nan</span><span class="p">,</span> <span class="nb">sum</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">min</span><span class="p">,</span> <span class="nb">max</span>
-    <span class="n">x_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">x_min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">coeff</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x_min</span><span class="o">-</span><span class="n">x_max</span><span class="p">)</span>
+    <span class="n">coeff</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="n">coeff</span>
     <span class="n">Sx</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="mf">1.0</span><span class="p">)</span> <span class="c1">#Sx_i = Sx_i-1 +x_i</span>
     <span class="n">Sx2</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span> <span class="c1">#Sx2_i = Sx2_i-1 + x_i**2</span>
@@ -529,7 +527,7 @@
     <span class="n">Sw</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
     <span class="n">N</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="c1">#N_i = N_i-1 + 1.0</span>
     <span class="k">if</span> <span class="n">N</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">Delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">Sw</span><span class="o">*</span><span class="n">Sx2</span> <span class="o">-</span> <span class="n">Sx</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">coeff</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># Delta_i = N_i*Sx2_i - Sx_i**2</span>
+        <span class="n">Delta</span> <span class="o">=</span> <span class="p">(</span><span class="n">Sw</span><span class="o">*</span><span class="n">Sx2</span> <span class="o">-</span> <span class="n">Sx</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Delta_i = N_i*Sx2_i - Sx_i**2</span>
         <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">Delta</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Sx2</span><span class="o">*</span><span class="n">Sy</span><span class="o">-</span><span class="n">Sx</span><span class="o">*</span><span class="n">Sxy</span><span class="p">)</span><span class="o">*</span><span class="n">coeff</span><span class="o">**</span><span class="mi">2</span>
         <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">Delta</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Sw</span><span class="o">*</span><span class="n">Sxy</span><span class="o">-</span><span class="n">Sx</span><span class="o">*</span><span class="n">Sy</span><span class="p">)</span><span class="o">*</span><span class="n">coeff</span>
     <span class="k">else</span><span class="p">:</span>
@@ -537,8 +535,8 @@
         <span class="n">b</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="c1">#page 115</span>
     <span class="k">if</span> <span class="n">N</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">sigma_a</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="n">Delta</span><span class="p">)</span><span class="o">*</span><span class="n">Sx2</span><span class="o">*</span><span class="n">coeff</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">sigma_b</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="n">Delta</span><span class="p">)</span><span class="o">*</span><span class="n">Sw</span><span class="p">)</span>
+        <span class="n">sigma_a</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="n">Delta</span><span class="p">)</span><span class="o">*</span><span class="n">Sx2</span><span class="p">)</span>
+        <span class="n">sigma_b</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="n">Delta</span><span class="p">)</span><span class="o">*</span><span class="n">Sw</span><span class="o">/</span><span class="n">coeff</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">sigma_a</span> <span class="o">=</span> <span class="n">sigma_b</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Delta = &#39;</span><span class="p">,</span><span class="n">Delta</span><span class="p">)</span>
@@ -576,6 +574,7 @@
     <span class="n">string</span> <span class="o">+=</span> <span class="s1">&#39;,&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_a</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">x0</span><span class="o">*</span><span class="n">sigma_b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="mi">3</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_a</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">x0</span><span class="o">*</span><span class="n">sigma_b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()]</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -588,10 +587,18 @@
     <span class="c1"># plt.plot(x,data[:,0],&#39;-&#39;)</span>
     <span class="c1"># plt.show()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-        <span class="n">coeff</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="n">i</span>
+
+    <span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+        <span class="n">coeff</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
         <span class="n">x0</span> <span class="o">=</span> <span class="mi">5</span><span class="o">+</span><span class="p">(</span><span class="mi">70</span><span class="p">)</span><span class="o">/</span><span class="n">coeff</span>
-        <span class="n">weighted_linear_fit_test</span><span class="p">()</span>
+        <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">weighted_linear_fit_test</span><span class="p">())</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">array</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">array</span><span class="p">(</span><span class="n">lst</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">array</span><span class="p">(</span><span class="n">lst</span><span class="p">)[:,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;range of x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Sigma&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
            </div>

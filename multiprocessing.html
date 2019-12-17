@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Multiprocessing &mdash; UBCS LCP auxiliary package library 0.0.19.post2+g5c9e1ab documentation</title>
+  <title>Multiprocessing &mdash; UBCS LCP auxiliary package library 0.0.19.post3+g2c9fdfe documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.19.post2+g5c9e1ab
+                0.0.19.post3+g2c9fdfe
               </div>
             
           
@@ -172,7 +172,7 @@ launches multiple separate processes with the same input ‘function’ but diff
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip3 install --upgrade ubcs_auxiliary
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ubcs_auxiliary.multi_processing</span> <span class="kn">import</span> <span class="n">MultiProcessing</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ubcs_auxiliary.multi_processing</span> <span class="kn">import</span> <span class="n">MultiProcessing</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="go">      &quot;&quot;&quot;</span>
 <span class="go">      an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.</span>
@@ -216,7 +216,7 @@ launches multiple separate processes with the same input ‘function’ but diff
 <blockquote>
 <div><p>Or you can import</p>
 </div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ubcs_auxiliary.multi_processing</span> <span class="kn">import</span> <span class="n">MultiProcessing</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">function</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">ubcs_auxiliary.multi_processing</span> <span class="kn">import</span> <span class="n">MultiProcessing</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">function</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">test</span><span class="p">()</span>
 <span class="go">kwarg text = my new text</span>
 <span class="go">kwarg dict = {&#39;key&#39;: &#39;my new value&#39;}</span>
@@ -268,7 +268,7 @@ launches multiple separate processes with the same input ‘function’ but diff
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span> <span class="o">=</span> <span class="n">ParallelProcessing</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mp</span> <span class="o">=</span> <span class="n">ParallelProcessing</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
 </dd></dl>

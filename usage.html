@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; UBCS LCP auxiliary package library 0.0.19.post2+g5c9e1ab documentation</title>
+  <title>Usage &mdash; UBCS LCP auxiliary package library 0.0.19.post3+g2c9fdfe documentation</title>
   
 
   
@@ -63,7 +63,7 @@
             
             
               <div class="version">
-                0.0.19.post2+g5c9e1ab
+                0.0.19.post3+g2c9fdfe
               </div>
             
           
@@ -205,7 +205,7 @@
 </dl>
 <p class="rubric">Examples</p>
 <p>the example of usage</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="go">        from time import time,sleep</span>
 <span class="go">        t1 = time()</span>
 <span class="go">        sleep(N)</span>
@@ -284,7 +284,7 @@ returns a vector of integers on logarithmic scale starting from decade start, en
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">anfinrud_auxiliary</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;anfinrud_auxiliary/&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">anfinrud_auxiliary</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;anfinrud_auxiliary/&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="go">        ...:</span>
 <span class="go">    anfinrud_auxiliary/</span>
@@ -357,7 +357,7 @@ dtype (string)</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">random</span><span class="p">,</span> <span class="n">arange</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">random</span><span class="p">,</span> <span class="n">arange</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span><span class="o">+</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x_in</span> <span class="o">=</span> <span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">binned_data</span> <span class="o">=</span> <span class="n">bin_data</span><span class="p">(</span><span class="n">data</span>  <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">x_in</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_of_bins</span> <span class="o">=</span> <span class="mi">300</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;float&#39;</span><span class="p">)</span>
@@ -410,7 +410,7 @@ binned in bins of size dN and the rest is binned on logarithmic scale with M per
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">local_log_scale</span><span class="p">(</span><span class="n">start_dec</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="n">end_dec</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N_per_dec</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;int64&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">local_log_scale</span><span class="p">(</span><span class="n">start_dec</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="n">end_dec</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N_per_dec</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;int64&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -461,7 +461,7 @@ page 104 Data reduction and error analysis for the physicxal sciences Philip R. 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">linear_fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">linear_fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -484,7 +484,7 @@ dtype (string)</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">local_log_scale</span><span class="p">(</span><span class="n">start_dec</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="n">end_dec</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N_per_dec</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;int64&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">local_log_scale</span><span class="p">(</span><span class="n">start_dec</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="n">end_dec</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N_per_dec</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;int64&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -529,7 +529,7 @@ page 104 Data reduction and error analysis for the physicxal sciences Philip R. 
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">,</span> <span class="n">sigma_a</span><span class="p">,</span> <span class="n">sigma_v</span> <span class="o">=</span> <span class="n">weighted_linear_fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">,</span> <span class="n">sigma_a</span><span class="p">,</span> <span class="n">sigma_v</span> <span class="o">=</span> <span class="n">weighted_linear_fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -564,7 +564,7 @@ created: Sept 9 2019</p>
 </dl>
 <p class="rubric">Examples</p>
 <p>the example of usage</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">save_to_file</span><span class="p">(</span><span class="s1">&#39;test.pkl&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">save_to_file</span><span class="p">(</span><span class="s1">&#39;test.pkl&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -589,7 +589,7 @@ created: Sept 9 2019</p>
 </dl>
 <p class="rubric">Examples</p>
 <p>the example of usage</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_out</span> <span class="o">=</span> <span class="n">load_from_file</span><span class="p">(</span><span class="s1">&#39;list.extension&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_out</span> <span class="o">=</span> <span class="n">load_from_file</span><span class="p">(</span><span class="s1">&#39;list.extension&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -614,7 +614,7 @@ created: Sept 9 2019</p>
 </dl>
 <p class="rubric">Examples</p>
 <p>the example of usage</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_out</span> <span class="o">=</span> <span class="n">load_from_file</span><span class="p">(</span><span class="s1">&#39;list.extension&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_out</span> <span class="o">=</span> <span class="n">load_from_file</span><span class="p">(</span><span class="s1">&#39;list.extension&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -638,7 +638,7 @@ created: Sept 9 2019</p>
 </dl>
 <p class="rubric">Examples</p>
 <p>the example of usage</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">save_to_file</span><span class="p">(</span><span class="s1">&#39;test.pkl&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">save_to_file</span><span class="p">(</span><span class="s1">&#39;test.pkl&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </dd></dl>
