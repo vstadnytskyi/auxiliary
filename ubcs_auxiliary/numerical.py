@@ -359,9 +359,7 @@ def weighted_linear_fit(x,y,w):
     """
 
     from numpy import isnan,nan, sum, sqrt, min, max
-    x_max = max(x)
-    x_min = min(x)
-    coeff = abs(x_min-x_max)
+    coeff = abs(x.min()-x.max())
     x = x/coeff
     Sx = sum(w*x*1.0) #Sx_i = Sx_i-1 +x_i
     Sx2 = sum(w*x**2.0) #Sx2_i = Sx2_i-1 + x_i**2
@@ -371,7 +369,7 @@ def weighted_linear_fit(x,y,w):
     Sw = sum(w)
     N = x.shape[0]#N_i = N_i-1 + 1.0
     if N >= 2:
-        Delta = (Sw*Sx2 - Sx**2)*coeff**2 # Delta_i = N_i*Sx2_i - Sx_i**2
+        Delta = (Sw*Sx2 - Sx**2) # Delta_i = N_i*Sx2_i - Sx_i**2
         a = (1.0/Delta)*(Sx2*Sy-Sx*Sxy)*coeff**2
         b = (1.0/Delta)*(Sw*Sxy-Sx*Sy)*coeff
     else:
@@ -379,8 +377,8 @@ def weighted_linear_fit(x,y,w):
         b = None
         #page 115
     if N > 2:
-        sigma_a = sqrt((1/Delta)*Sx2*coeff**2)
-        sigma_b = sqrt((1/Delta)*Sw)
+        sigma_a = sqrt((1/Delta)*Sx2)
+        sigma_b = sqrt((1/Delta)*Sw/coeff**2)
     else:
         sigma_a = sigma_b = None
     print('Delta = ',Delta)
@@ -418,6 +416,7 @@ def weighted_linear_fit_test():
     string += ','+str(round(sqrt(sigma_a**2+(x0*sigma_b)**2),3))
     plt.title(string)
     plt.show()
+    return [sqrt(sigma_a**2+(x0*sigma_b)**2),x.max()-x.min()]
 
 if __name__ == '__main__':
     from matplotlib import pyplot as plt
@@ -430,7 +429,15 @@ if __name__ == '__main__':
     # plt.plot(x,data[:,0],'-')
     # plt.show()
     plt.close('all')
-    for i in range(3):
-        coeff = 10**i
+
+    lst = []
+    for i in range(20):
+        coeff = 10**(i-10)
         x0 = 5+(70)/coeff
-        weighted_linear_fit_test()
+        lst.append(weighted_linear_fit_test())
+    from numpy import array
+    plt.figure()
+    plt.loglog(array(lst)[:,1],array(lst)[:,0],'o')
+    plt.xlabel('range of x')
+    plt.ylabel('Sigma')
+    plt.show()

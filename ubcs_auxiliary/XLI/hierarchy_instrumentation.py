@@ -15,17 +15,13 @@ p = psutil.Process(os.getpid()) #source: https://psutil.readthedocs.io/en/releas
 
 from numpy import nan, mean, std, nanstd, asfarray, asarray, hstack, array, concatenate, delete, round, vstack, hstack, zeros, transpose, split, unique, nonzero, take, savetxt, min, max
 from serial import Serial
-from time import time, sleep, clock
+from time import time, sleep
 import sys
 import os.path
 import struct
 from pdb import pm
 from time import gmtime, strftime, time
 from logging import debug,info,warning,error
-if sys.version_info[0] ==3:
-    from _thread import start_new_thread
-else:
-    from thread import start_new_thread
 
 
 from struct import pack, unpack
@@ -43,7 +39,8 @@ class GUITemlpate():
 
 class IndicatorsTemplate():
 
-    def __init__(self):
+    def __init__(self, object):
+        self.object = object
         self.list = []
 
     def keys(self):
@@ -63,7 +60,7 @@ class IndicatorsTemplate():
         return dic
 
 
-        
+
     def get_running(self):
         """
         default get_running function in the intrumentation library
@@ -78,8 +75,9 @@ class IndicatorsTemplate():
     running = property(get_running,set_running)
 
 class ControlsTemplate():
-    def __init__(self):
+    def __init__(self, object):
         self.list = []
+        self.object = object
 
     def keys(self):
         if len(self.list) == 0:
@@ -100,7 +98,7 @@ class ControlsTemplate():
 
     def get_variable(self):
         try:
-            response = getattr(daq,'variable')
+            response = getattr(self.object,'variable')
         except:
             response = None #device.controls.running
             warning(traceback.format_exc())
@@ -111,7 +109,7 @@ class ControlsTemplate():
         an indicator from other instances within this proccess.
         """
         try:
-            setattr(device,'variable',value)
+            setattr(self.object,'variable',value)
         except:
             error(traceback.format_exc())
     variable = property(get_variable,set_variable)
@@ -132,8 +130,8 @@ class ControlsTemplate():
 
 class XLevelTemplate():
 
-    inds = IndicatorsTemplate()
-    ctrls = ControlsTemplate()
+    #inds = IndicatorsTemplate(self)
+    #ctrls = ControlsTemplate(self)
     """circular buffers dictionary contains information about all circular buffers and their type (Server, Client or Queue)"""
     circular_buffers = {}
 
@@ -142,7 +140,7 @@ class XLevelTemplate():
         self.running = False
         #self.daemon = False # OK for main thread to exit even if instance is still running
         self.description = ''
-        
+
     def first_time_setup(self):
         """aborts current operation
         """
@@ -174,7 +172,7 @@ class XLevelTemplate():
         """aborts and completely stops the XLevel code
         """
         raise NotImplementedError
-        
+
         response = {}
         response[b'flag'] = flag
         response[b'message'] = message
@@ -196,7 +194,7 @@ class XLevelTemplate():
         return response
         """
         raise NotImplementedError
-        
+
         response = {}
         response[b'flag'] = flag
         response[b'message'] = message
@@ -216,7 +214,7 @@ class XLevelTemplate():
         return response
         """
         raise NotImplementedError
-        
+
         response = {}
         response[b'flag'] = flag
         response[b'message'] = message
@@ -241,7 +239,7 @@ class XLevelTemplate():
         flag = True
         if isinstance(msg_in,dict):
             if b'all' in list(msg_in.keys()):
-                    response = self.ctrls.get() 
+                    response = self.ctrls.get()
                     ctrls_keys = self.ctrls.keys()
             else:
                 ctrls_keys = self.ctrls.keys()
@@ -313,7 +311,7 @@ class XLevelTemplate():
         except:
             error(traceback.format_exc())
             flag = False
-        
+
         response = {}
         response[b'flag'] = flag
         response[b'message'] = message
@@ -335,7 +333,7 @@ class XLevelTemplate():
             error(traceback.format_exc())
             response = False
         return response
-    
+
     def abort_task_queue(self):
         try:
             self.controls.set({b'task_queue':[]})
@@ -392,15 +390,15 @@ class XLevelTemplate():
 
     def get_circular_buffer(self, msg_in = None, client = None):
         """
-        returns data from server circular buffer. Input, name of the circular buffer and global pointer. 
+        returns data from server circular buffer. Input, name of the circular buffer and global pointer.
         msg_in has to be a dictionary with circular buffer name
-        the global_pointer sppecifies 
+        the global_pointer sppecifies
         msg_in = {b'buffer_name':b'name',b'g_pointer':999}
         """
         msg_out = {b'message':{}}
         flag = True
         err = ''
-        
+
         in_buffer_name = msg_in[b'buffer_name']
         in_g_pointer = msg_in[b'g_pointer']
         if in_buffer_name in self.circular_buffers.keys():
@@ -411,15 +409,15 @@ class XLevelTemplate():
                 data = self.circular_buffers[in_buffer_name].get_all()
             elif in_g_pointer < g_pointer:
                 if g_pointer - in_g_pointer > size[1]:
-                    data = self.circular_buffers[in_buffer_name].get_all()   
+                    data = self.circular_buffers[in_buffer_name].get_all()
                 else:
                     N = g_pointer - in_g_pointer
                     data = self.circular_buffers[in_buffer_name].get_N(N, M = pointer)
             else:
                 data = None
-            
+
             self.circular_buffers[in_buffer_name]
-            
+
         msg_out[b'flag'] = flag
         msg_out[b'message'][b'data'] = data
         msg_out[b'message'][b'g_pointer'] = g_pointer
@@ -437,7 +435,7 @@ class XLevelTemplate():
 
         from XLI.auxiliary import sort_vector, expand_vector, get_estimate
 
-            
+
         msg_out = {b'message':{}}
         flag = True
         err = ''
@@ -473,11 +471,11 @@ class XLevelTemplate():
                                 N_after = N+1
                                 N_before = N
                             debug('N_after %r, N_before %r' %(N_after,N_before))
-                                
+
                             y_est = get_estimate(x[idx-N_before:idx+N_after],y[idx-N_before:idx+N_after],x_est, order = order)
-                        
+
                         out_array[j,i] = y_est
-   
+
             else:
                 err = "buffer doesn't exist"
                 out_vector = msg_in[b'time_vector']
@@ -488,7 +486,7 @@ class XLevelTemplate():
 ########################################
 ###  Threading Section   ###
 ####################################
-    
+
 ###BINDING OF A SERVER MODULE WITH XLevel EXAMPLE
 
 ##from server_LL import server

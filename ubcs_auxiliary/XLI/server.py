@@ -8,7 +8,7 @@ data: Sept 2018 - Nov 20 2018
 0.0.2 - code under development
 0.0.3 - changed init_server function. It was altering the way how logging was working in higher up modules
 """
-__version__ = "0.0.3" 
+__version__ = "0.0.3"
 __date__ = "November 20, 2018"
 
 
@@ -27,11 +27,8 @@ import os.path
 from time import gmtime, strftime, time
 from logging import debug,info,warning,error
 
-if sys.version_info[0] ==3:
-    from _thread import start_new_thread
 
-else:
-    from thread import start_new_thread
+from ubcs_auxiliary.threading import new_thread
 
 from struct import pack, unpack
 from timeit import Timer, timeit
@@ -152,7 +149,7 @@ class Server_LL(object):
         '''
         creates a separete thread for server_thread function
         '''
-        start_new_thread(self._run,())
+        new_thread(self._run)
 
     def _run(self):
         """
@@ -379,7 +376,7 @@ class Server_LL(object):
         except:
             debug("subscriber %r in server.push_subscribed_updates doesn't exist" %(subscriber))
             subscriber = -1
-            
+
         if subscriber == -1:
             push_subscriber_lst = self.push_subscribe_lst
         else:
@@ -406,7 +403,7 @@ class Server_LL(object):
             else:
                 msg_dic[b'indicators'] = ''
 
-                
+
             if b'controls' in list(client_dic.keys()) and len(controls) !=0:
                 debug("push_subscribed_updatescontrols = %r" % controls)
                 if controls == [b'all']:
@@ -420,7 +417,7 @@ class Server_LL(object):
                 msg_dic[b'controls'] = self.commands[b'controls'](controls_dic)
             else:
                 msg_dic[b'controls'] = ''
-                
+
             debug('client_dic %r' % client_dic)
             debug('msg = '+str(msg_dic))
             response = 0
@@ -430,7 +427,7 @@ class Server_LL(object):
                                    message = msg_dic[b'indicators'] ,
                                    ip_address = client_dic[b'ip_address'],
                                    port = client_dic[b'port'])
-                    
+
                 if len(controls_dic) != 0:
                     response = self._transmit(command = 'controls',
                                    message = msg_dic[b'controls'] ,
