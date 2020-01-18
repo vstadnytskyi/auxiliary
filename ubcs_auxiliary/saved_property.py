@@ -3,12 +3,14 @@
 
 Authors: Valentyn Stadnytskyi
 Date created: 2019-11-21
+Date last modified: 2020-01-18
+Comment: Friedrich Schotte: Create directory as needed when writing, use "makedirs" instead of "mkdir" 
 
 Python Version: 2.7 and 3.7
 """
 from logging import debug,info,warning,error
 
-__version__ = "1.5.6" # Issue: WindowsError in remove(settings_file)
+__version__ = "1.5.7"
 from pdb import pm
 from threading import RLock
 lock = RLock()
@@ -58,8 +60,7 @@ class DataBase():
         >>> filename, root, name = get_filename(root, 'name.db')
         """
         from platform import system
-        from os.path import exists, join
-        from os import mkdir
+        from os.path import join
         name += '_db.py'
         if root == "TEMP":
             from tempfile import gettempdir
@@ -70,10 +71,6 @@ class DataBase():
         else:
             root = join(root,'SavedProperty')
         filename = join(root,name)
-
-        # Created directory if such doesn't exist
-        if not exists(root):
-            mkdir(root)
 
         return filename, root, name
 
@@ -120,6 +117,12 @@ class DataBase():
         --------
         >>> write()
         """
+        # Created directory if such doesn't exist
+        from os.path import dirname,exists
+        from os import makedirs
+        directory = dirname(self.filename)
+        if directory and not exists(directory): makedirs(directory)
+
         import yaml
         data = self.database
         with lock:
