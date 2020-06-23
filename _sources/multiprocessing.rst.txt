@@ -19,7 +19,7 @@ you may need to upgrade the library if it was installed before
 
   pip3 install --upgrade ubcs_auxiliary
 
->>> from ubcs_auxiliary.multi_processing import MultiProcessing
+>>> from ubcs_auxiliary.multiprocessing import MultiProcessing
 >>> def function(N, **kwargs):
       """
       an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.
@@ -61,7 +61,7 @@ In [3]: [1.0013 s] Done sleeping for 1 seconds
 
   Or you can import
 
->>> from ubcs_auxiliary.multi_processing import MultiProcessing, test, function
+>>> from ubcs_auxiliary.multiprocessing import MultiProcessing, test, function
 >>> test()
 kwarg text = my new text
 kwarg dict = {'key': 'my new value'}
@@ -85,10 +85,10 @@ In [3]: [1.0013 s] Done sleeping for 1 seconds
 [2.0001 s] Done sleeping for 2 seconds
 [3.0002 s] Done sleeping for 3 seconds
 
-.. autoclass:: ubcs_auxiliary.multi_processing.MultiProcessing
+.. autoclass:: ubcs_auxiliary.multiprocessing.MultiProcessing
   :members:
 
   .. automethod:: __init__
 
-#.. automodule:: ubcs_auxiliary.multi_processing
+#.. automodule:: ubcs_auxiliary.multiprocessing
 #  :members:

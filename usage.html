@@ -1,42 +1,42 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; UBCS LCP auxiliary package library 0.0.19.post5+g859f404 documentation</title>
+  <title>Usage &mdash; UBCS LCP auxiliary package library 0.0.19.post27+ge32abf9 documentation</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script type="text/javascript" src="_static/clipboard.min.js"></script>
-        <script type="text/javascript" src="_static/copybutton.js"></script>
-        <script type="text/javascript">var copybuttonSkipText = '>>> ';</script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Multiprocessing" href="multiprocessing.html" />
@@ -54,7 +54,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> UBCS LCP auxiliary package library
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> UBCS LCP auxiliary package library
           
 
           
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.0.19.post5+g859f404
+                0.0.19.post27+ge32abf9
               </div>
             
           
@@ -81,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -91,10 +92,10 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.threading">Threading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.multithreading">Threading</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.advsleep">Advance Sleep</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.os">OS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.multi_processing">Parallel Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.multiprocessing">Parallel Processing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.numerical">Numerical</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.plotting">Plotting with Matplotlib</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-ubcs_auxiliary.save_load_object">Save Load Object</a></li>
@@ -103,6 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="multiprocessing.html">Multiprocessing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="saved-property.html">Saved Property</a></li>
 <li class="toctree-l1"><a class="reference internal" href="save-load-object.html">Save Load Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical.html">Numerical Library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-history.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="min_versions.html">Minimum Version of Python and NumPy</a></li>
 </ul>
@@ -110,6 +112,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -148,7 +151,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Usage</li>
     
@@ -175,11 +178,11 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ubcs_auxiliary</span>
 </pre></div>
 </div>
-<div class="section" id="module-ubcs_auxiliary.threading">
-<span id="threading"></span><h2>Threading<a class="headerlink" href="#module-ubcs_auxiliary.threading" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="ubcs_auxiliary.threading.new_thread">
-<code class="sig-prename descclassname">ubcs_auxiliary.threading.</code><code class="sig-name descname">new_thread</code><span class="sig-paren">(</span><em class="sig-param">function</em>, <em class="sig-param">*args</em>, <em class="sig-param">daemon=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/threading.html#new_thread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.threading.new_thread" title="Permalink to this definition">¶</a></dt>
+<div class="section" id="module-ubcs_auxiliary.multithreading">
+<span id="threading"></span><h2>Threading<a class="headerlink" href="#module-ubcs_auxiliary.multithreading" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="ubcs_auxiliary.multithreading.new_thread">
+<code class="sig-prename descclassname">ubcs_auxiliary.multithreading.</code><code class="sig-name descname">new_thread</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">function</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multithreading.html#new_thread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multithreading.new_thread" title="Permalink to this definition">¶</a></dt>
 <dd><p>launches the input ‘function’ in a separate thread with daemon == True.</p>
 <p>Explanation: Some threads do background tasks, like sending keepalive packets, or performing periodic garbage collection, or whatever. These are only useful when the main program is running, and it’s okay to kill them off once the other, non-daemon, threads have exited.</p>
 <p>Without daemon threads, you’d have to keep track of them, and tell them to exit, before your program can completely quit. By setting them as daemon threads, you can let them run and forget about them, and when your program quits, any daemon threads are killed automatically.
@@ -191,9 +194,13 @@
 </dd>
 <dt><strong>*args:</strong></dt><dd><p>iterable of arguments</p>
 </dd>
-<dt><strong>daemon:</strong></dt><dd><p>flag, if the thread is daemon(True) or not(False).</p>
+<dt><strong>**kwargs:</strong></dt><dd><dl class="simple">
+<dt>dictionary of keywords</dt><dd><dl class="simple">
+<dt>daemon:</dt><dd><p>flag, if the thread is daemon(True) or not(False).</p>
 </dd>
-<dt><strong>**kwargs:</strong></dt><dd><p>dictionary of keywords</p>
+</dl>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd>
@@ -207,22 +214,24 @@
 <p class="rubric">Examples</p>
 <p>the example of usage</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="go">        print(&#39;keywords&#39;,kwargs)</span>
+<span class="go">        print(&#39;args&#39;,args)</span>
 <span class="go">        from time import time,sleep</span>
 <span class="go">        t1 = time()</span>
-<span class="go">        sleep(N)</span>
+<span class="go">        sleep(args[0])</span>
 <span class="go">        t2 = time()</span>
 <span class="go">        print(&#39;this thread slept for {} seconds&#39;.format(t2-t1))</span>
 <span class="go">        print(&#39;input parameters: args = {}, kwargs = {!r}&#39;.format(args[0],kwargs[&#39;keyword&#39;]))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">start_new_safe_thread</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">keyword</span> <span class="o">=</span> <span class="s1">&#39;this is key 1 value&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_thread</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">keyword</span> <span class="o">=</span> <span class="s1">&#39;this is key 1 value&#39;</span><span class="p">)</span>
 <span class="go">this thread slept for 1.002244234085083 seconds</span>
 <span class="go">input parameters: args = 1, kwargs = &#39;keywords argument&#39;</span>
 </pre></div>
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="ubcs_auxiliary.threading.start_new_safe_thread">
-<code class="sig-prename descclassname">ubcs_auxiliary.threading.</code><code class="sig-name descname">start_new_safe_thread</code><span class="sig-paren">(</span><em class="sig-param">function</em>, <em class="sig-param">*args</em>, <em class="sig-param">daemon=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/threading.html#start_new_safe_thread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.threading.start_new_safe_thread" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt id="ubcs_auxiliary.multithreading.start_new_safe_thread">
+<code class="sig-prename descclassname">ubcs_auxiliary.multithreading.</code><code class="sig-name descname">start_new_safe_thread</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">function</span></em>, <em class="sig-param"><span class="n">daemon</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multithreading.html#start_new_safe_thread"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multithreading.start_new_safe_thread" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias for new_thread for back compatibility</p>
 </dd></dl>
 
@@ -241,32 +250,32 @@ psleep - sleep specified amount of time with sub milisecond precision
 test_sleep - for testing purposes. will print how much time the code waited.
 This is important for the Windows platform programs if precise wait is required.
 The Windows OS has ~15-17 ms latenct - the shortest time between attentions from OS.</p>
-<dl class="function">
+<dl class="py function">
 <dt id="ubcs_auxiliary.advsleep.interupt_sleep">
-<code class="sig-prename descclassname">ubcs_auxiliary.advsleep.</code><code class="sig-name descname">interupt_sleep</code><span class="sig-paren">(</span><em class="sig-param">t=0.02</em>, <em class="sig-param">dt=0.01</em>, <em class="sig-param">interupt=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/advsleep.html#interupt_sleep"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.advsleep.interupt_sleep" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.advsleep.</code><code class="sig-name descname">interupt_sleep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span><span class="o">=</span><span class="default_value">0.02</span></em>, <em class="sig-param"><span class="n">dt</span><span class="o">=</span><span class="default_value">0.01</span></em>, <em class="sig-param"><span class="n">interupt</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/advsleep.html#interupt_sleep"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.advsleep.interupt_sleep" title="Permalink to this definition">¶</a></dt>
 <dd><p>precision sleep function with interupt capabilities
 input:t - time to sleep, dt - check intervals, interupt - interupt function that return boolean</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="ubcs_auxiliary.advsleep.precision_sleep">
-<code class="sig-prename descclassname">ubcs_auxiliary.advsleep.</code><code class="sig-name descname">precision_sleep</code><span class="sig-paren">(</span><em class="sig-param">t=0.02</em>, <em class="sig-param">min_time=0.017</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/advsleep.html#precision_sleep"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.advsleep.precision_sleep" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.advsleep.</code><code class="sig-name descname">precision_sleep</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t</span><span class="o">=</span><span class="default_value">0.02</span></em>, <em class="sig-param"><span class="n">min_time</span><span class="o">=</span><span class="default_value">0.017</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/advsleep.html#precision_sleep"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.advsleep.precision_sleep" title="Permalink to this definition">¶</a></dt>
 <dd><p>sleep for t seconds.</p>
 </dd></dl>
 
 </div>
 <div class="section" id="module-ubcs_auxiliary.os">
 <span id="os"></span><h2>OS<a class="headerlink" href="#module-ubcs_auxiliary.os" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="ubcs_auxiliary.os.exclude">
 <code class="sig-prename descclassname">ubcs_auxiliary.os.</code><code class="sig-name descname">exclude</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/os.html#exclude"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.os.exclude" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of patterns to exclude from a search. Add
 terms as required.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="ubcs_auxiliary.os.find">
-<code class="sig-prename descclassname">ubcs_auxiliary.os.</code><code class="sig-name descname">find</code><span class="sig-paren">(</span><em class="sig-param">topdir</em>, <em class="sig-param">name=[]</em>, <em class="sig-param">exclude=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/os.html#find"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.os.find" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.os.</code><code class="sig-name descname">find</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">topdir</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">[]</span></em>, <em class="sig-param"><span class="n">exclude</span><span class="o">=</span><span class="default_value">[]</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/os.html#find"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.os.find" title="Permalink to this definition">¶</a></dt>
 <dd><p>A list of files found starting at ‘topdir’ that match the patterns given
 by ‘name’, excluding those matching the patterns given by ‘exclude’.
 returns a vector of integers on logarithmic scale starting from decade start, ending decade end with M per decade</p>
@@ -296,9 +305,9 @@ returns a vector of integers on logarithmic scale starting from decade start, en
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="ubcs_auxiliary.os.image_file_names_from_path">
-<code class="sig-prename descclassname">ubcs_auxiliary.os.</code><code class="sig-name descname">image_file_names_from_path</code><span class="sig-paren">(</span><em class="sig-param">beamtime</em>, <em class="sig-param">path_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/os.html#image_file_names_from_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.os.image_file_names_from_path" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.os.</code><code class="sig-name descname">image_file_names_from_path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">beamtime</span></em>, <em class="sig-param"><span class="n">path_name</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/os.html#image_file_names_from_path"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.os.image_file_names_from_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns image file names found under path_name. Typically used with
 ‘Reference_*() , which specifies which directories contain data for which
 zinger-free-statistics are to be acquired. The zinger-free-statistics
@@ -306,23 +315,66 @@ include Imean and Ivar, which are used to construct UC_psi.npy.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-ubcs_auxiliary.multi_processing">
-<span id="parallel-processing"></span><h2>Parallel Processing<a class="headerlink" href="#module-ubcs_auxiliary.multi_processing" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="ubcs_auxiliary.multi_processing.function">
-<code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">function</code><span class="sig-paren">(</span><em class="sig-param">N</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.function" title="Permalink to this definition">¶</a></dt>
+<div class="section" id="module-ubcs_auxiliary.multiprocessing">
+<span id="parallel-processing"></span><h2>Parallel Processing<a class="headerlink" href="#module-ubcs_auxiliary.multiprocessing" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="ubcs_auxiliary.multiprocessing.function">
+<code class="sig-prename descclassname">ubcs_auxiliary.multiprocessing.</code><code class="sig-name descname">function</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multiprocessing.html#function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multiprocessing.function" title="Permalink to this definition">¶</a></dt>
 <dd><p>an example function for test purposes. It sleeps for N seconds. Prints statements when sleep starts and finishes.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ubcs_auxiliary.multi_processing.test">
-<code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.test" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt id="ubcs_auxiliary.multiprocessing.new_child_process">
+<code class="sig-prename descclassname">ubcs_auxiliary.multiprocessing.</code><code class="sig-name descname">new_child_process</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">function</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multiprocessing.html#new_child_process"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multiprocessing.new_child_process" title="Permalink to this definition">¶</a></dt>
+<dd><p>launches the input ‘function’ in a separate thread with daemon == True.</p>
+<p>Explanation: Some threads do background tasks, like sending keepalive packets, or performing periodic garbage collection, or whatever. These are only useful when the main program is running, and it’s okay to kill them off once the other, non-daemon, threads have exited.</p>
+<p>Without daemon threads, you’d have to keep track of them, and tell them to exit, before your program can completely quit. By setting them as daemon threads, you can let them run and forget about them, and when your program quits, any daemon threads are killed automatically.
+&#64;Chris Jester-Young <a class="reference external" href="https://stackoverflow.com/a/190017/8436767">https://stackoverflow.com/a/190017/8436767</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>function:</strong></dt><dd><p>function object</p>
+</dd>
+<dt><strong>*args:</strong></dt><dd><p>iterable of arguments</p>
+</dd>
+<dt><strong>**kwargs:</strong></dt><dd><p>dictionary of keywords</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>process:</dt><dd><p>process object</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>the example of usage</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="go">        print(&#39;keywords&#39;,kwargs)</span>
+<span class="go">        print(&#39;args&#39;,args)</span>
+<span class="go">        from time import time,sleep</span>
+<span class="go">        t1 = time()</span>
+<span class="go">        sleep(args[0])</span>
+<span class="go">        t2 = time()</span>
+<span class="go">        print(&#39;this thread slept for {} seconds&#39;.format(t2-t1))</span>
+<span class="go">        print(&#39;input parameters: args = {}, kwargs = {!r}&#39;.format(args[0],kwargs[&#39;keyword&#39;]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_child_process</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">keyword</span> <span class="o">=</span> <span class="s1">&#39;this is key 1 value&#39;</span><span class="p">)</span>
+<span class="go">this thread slept for 1.002244234085083 seconds</span>
+<span class="go">input parameters: args = 1, kwargs = &#39;keywords argument&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ubcs_auxiliary.multiprocessing.test">
+<code class="sig-prename descclassname">ubcs_auxiliary.multiprocessing.</code><code class="sig-name descname">test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multiprocessing.html#test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multiprocessing.test" title="Permalink to this definition">¶</a></dt>
 <dd><p>simple test showing how to use</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="ubcs_auxiliary.multi_processing.test2">
-<code class="sig-prename descclassname">ubcs_auxiliary.multi_processing.</code><code class="sig-name descname">test2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multi_processing.html#test2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multi_processing.test2" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt id="ubcs_auxiliary.multiprocessing.test2">
+<code class="sig-prename descclassname">ubcs_auxiliary.multiprocessing.</code><code class="sig-name descname">test2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/multiprocessing.html#test2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.multiprocessing.test2" title="Permalink to this definition">¶</a></dt>
 <dd><p>simple test showing how to use</p>
 </dd></dl>
 
@@ -332,16 +384,22 @@ include Imean and Ivar, which are used to construct UC_psi.npy.</p>
 <p>plotting functions
 author: Valentyn Stadnytskyi
 data: 2017 - Nov 17 2018</p>
-<dl class="function">
+<dl class="py function">
+<dt id="ubcs_auxiliary.numerical.add_noise">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">add_noise</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">mean</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">stdev</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">'int16'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#add_noise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.add_noise" title="Permalink to this definition">¶</a></dt>
+<dd><p>adds noise to a given image and re</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="ubcs_auxiliary.numerical.array_to_binary">
-<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">array_to_binary</code><span class="sig-paren">(</span><em class="sig-param">arr=array([1</em>, <em class="sig-param">1</em>, <em class="sig-param">1</em>, <em class="sig-param">1</em>, <em class="sig-param">1</em>, <em class="sig-param">1</em>, <em class="sig-param">1])</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#array_to_binary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.array_to_binary" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">array_to_binary</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arr</span><span class="o">=</span><span class="default_value">array([1, 1, 1, 1, 1, 1, 1])</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#array_to_binary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.array_to_binary" title="Permalink to this definition">¶</a></dt>
 <dd><p>takes an integer and converts it to 8 bit representation as an array.
 If float number is passed, it will be converted to int.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="ubcs_auxiliary.numerical.bin_data">
-<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">bin_data</code><span class="sig-paren">(</span><em class="sig-param">data=None</em>, <em class="sig-param">x=None</em>, <em class="sig-param">axis=1</em>, <em class="sig-param">num_of_bins=300</em>, <em class="sig-param">dtype='float'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#bin_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.bin_data" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">bin_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">axis</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">num_of_bins</span><span class="o">=</span><span class="default_value">300</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">'float'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#bin_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.bin_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns a vector of integers on logarithmic scale starting from decade start, ending decade end with M per decade
 Parameters
 ———-
@@ -374,7 +432,7 @@ dtype (string)</p>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">fig</span><span class="p">,</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">binned_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">binned_data</span><span class="p">[</span><span class="s1">&#39;y_min&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">binned_data</span><span class="p">[</span><span class="s1">&#39;y_max&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">binned_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">binned_data</span><span class="p">[</span><span class="s1">&#39;y_min&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">binned_data</span><span class="p">[</span><span class="s1">&#39;y_max&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">binned_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span><span class="n">binned_data</span><span class="p">[</span><span class="s1">&#39;y_mean&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -384,9 +442,9 @@ dtype (string)</p>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="ubcs_auxiliary.numerical.bin_on_logscale">
-<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">bin_on_logscale</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">N=100</em>, <em class="sig-param">dN=1</em>, <em class="sig-param">x0=0</em>, <em class="sig-param">M=16</em>, <em class="sig-param">order=1</em>, <em class="sig-param">mode='polyfit'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#bin_on_logscale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.bin_on_logscale" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">bin_on_logscale</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">N</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">dN</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">x0</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">M</span><span class="o">=</span><span class="default_value">16</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'polyfit'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#bin_on_logscale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.bin_on_logscale" title="Permalink to this definition">¶</a></dt>
 <dd><p>purpose: binning of data: first N points starting from x0 are
 binned in bins of size dN and the rest is binned on logarithmic scale with M per decade</p>
 <dl class="field-list simple">
@@ -416,33 +474,84 @@ binned in bins of size dN and the rest is binned on logarithmic scale with M per
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="ubcs_auxiliary.numerical.binary_to_array">
-<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">binary_to_array</code><span class="sig-paren">(</span><em class="sig-param">value=0</em>, <em class="sig-param">length=8</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#binary_to_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.binary_to_array" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">binary_to_array</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">length</span><span class="o">=</span><span class="default_value">8</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#binary_to_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.binary_to_array" title="Permalink to this definition">¶</a></dt>
 <dd><p>takes an integer and converts it to 8 bit representation as an array.
 If float number is passed, it will be converted to int.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
+<dt id="ubcs_auxiliary.numerical.enumerate_mask">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">enumerate_mask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mask</span></em>, <em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#enumerate_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.enumerate_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a boolean mask, enumerates spots and returns enumerated mask where the intensity of a pixel indicates the spot number.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="ubcs_auxiliary.numerical.expand_vector">
-<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">expand_vector</code><span class="sig-paren">(</span><em class="sig-param">in_vector=array([1</em>, <em class="sig-param">1</em>, <em class="sig-param">1</em>, <em class="sig-param">1</em>, <em class="sig-param">1</em>, <em class="sig-param">1</em>, <em class="sig-param">1])</em>, <em class="sig-param">ndim=2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#expand_vector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.expand_vector" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">expand_vector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_vector</span><span class="o">=</span><span class="default_value">array([1, 1, 1, 1, 1, 1, 1])</span></em>, <em class="sig-param"><span class="n">ndim</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#expand_vector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.expand_vector" title="Permalink to this definition">¶</a></dt>
 <dd><p>makes input 1D vector as 2D with first dimenstion to be ndim</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
+<dt id="ubcs_auxiliary.numerical.get_array_piece">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">get_array_piece</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arr</span></em>, <em class="sig-param"><span class="n">center</span><span class="o">=</span><span class="default_value">0, 0</span></em>, <em class="sig-param"><span class="n">radius</span><span class="o">=</span><span class="default_value">15</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">'uint16'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#get_array_piece"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.get_array_piece" title="Permalink to this definition">¶</a></dt>
+<dd><p>grabs a square box around center with given radius. Note that first entry in center is x coordinate (or cols) and second is y (rows)</p>
+<p>Example: center = (100,100) and radirus = 15.
+return array will contain data with shape (31,31) centered at pixel (100,100).</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="ubcs_auxiliary.numerical.get_estimate">
-<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">get_estimate</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">x_est</em>, <em class="sig-param">order=2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#get_estimate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.get_estimate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">get_estimate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">x_est</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#get_estimate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.get_estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns estimated y_est value for give x_est from real x,y data set.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
+<dt id="ubcs_auxiliary.numerical.get_histogram">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">get_histogram</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arr</span></em>, <em class="sig-param"><span class="n">length</span><span class="o">=</span><span class="default_value">16</span></em>, <em class="sig-param"><span class="n">step</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#get_histogram"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.get_histogram" title="Permalink to this definition">¶</a></dt>
+<dd><p>assumes unsigned int 16</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ubcs_auxiliary.numerical.get_random_array">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">get_random_array</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size</span><span class="o">=</span><span class="default_value">3000, 4096</span></em>, <em class="sig-param"><span class="n">range</span><span class="o">=</span><span class="default_value">0, 4094</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">'uint16'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#get_random_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.get_random_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns random array</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ubcs_auxiliary.numerical.grow_mask">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">grow_mask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mask</span></em>, <em class="sig-param"><span class="n">count</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#grow_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.grow_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Expands area where pixels have value=1 by ‘count’ pixels in each
+direction, including along the diagonal.</p>
+<p>Example: If count is 1 or omitted a single pixel grows to nine pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mask (2d numpy array)</strong></dt><dd></dd>
+<dt><strong>count (integer)</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>mask (2d numpy array)</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">mask2</span> <span class="o">=</span> <span class="n">grow_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt id="ubcs_auxiliary.numerical.linear">
-<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">linear</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">a</em>, <em class="sig-param">b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#linear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.linear" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">linear</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#linear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.linear" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="ubcs_auxiliary.numerical.linear_fit">
-<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">linear_fit</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#linear_fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.linear_fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">linear_fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#linear_fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.linear_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>return linear fit by calcualating
 y_fit = a + b*x
 page 104 Data reduction and error analysis for the physicxal sciences Philip R. Bevington</p>
@@ -467,9 +576,9 @@ page 104 Data reduction and error analysis for the physicxal sciences Philip R. 
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="ubcs_auxiliary.numerical.local_log_scale">
-<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">local_log_scale</code><span class="sig-paren">(</span><em class="sig-param">start_dec</em>, <em class="sig-param">end_dec</em>, <em class="sig-param">N_per_dec</em>, <em class="sig-param">dtype='int64'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#local_log_scale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.local_log_scale" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">local_log_scale</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start_dec</span></em>, <em class="sig-param"><span class="n">end_dec</span></em>, <em class="sig-param"><span class="n">N_per_dec</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">'int64'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#local_log_scale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.local_log_scale" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns a vector of integers on logarithmic scale starting from decade start, ending decade end with M per decade
 Parameters
 ———-
@@ -490,9 +599,9 @@ dtype (string)</p>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="ubcs_auxiliary.numerical.log_scale">
-<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">log_scale</code><span class="sig-paren">(</span><em class="sig-param">N=8</em>, <em class="sig-param">start=-9</em>, <em class="sig-param">end=3</em>, <em class="sig-param">round_to=3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#log_scale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.log_scale" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">log_scale</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span><span class="o">=</span><span class="default_value">8</span></em>, <em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">- 9</span></em>, <em class="sig-param"><span class="n">end</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">round_to</span><span class="o">=</span><span class="default_value">3</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#log_scale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.log_scale" title="Permalink to this definition">¶</a></dt>
 <dd><p>creates an array of numbers on logarithmic scale with:
 - number per decade
 - start decade
@@ -500,15 +609,27 @@ dtype (string)</p>
 - round_to number of digits after decimal, default is 3</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
+<dt id="ubcs_auxiliary.numerical.return_gaussian2D">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">return_gaussian2D</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape</span><span class="o">=</span><span class="default_value">100, 100</span></em>, <em class="sig-param"><span class="n">amplitude</span><span class="o">=</span><span class="default_value">3000</span></em>, <em class="sig-param"><span class="n">position</span><span class="o">=</span><span class="default_value">100, 100</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">5, 5</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">'uint16'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#return_gaussian2D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.return_gaussian2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>return 2D gaussian function in a given ‘position’ on the provided image. The input image can be made of all zeros.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ubcs_auxiliary.numerical.return_noise">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">return_noise</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">size</span><span class="o">=</span><span class="default_value">10, 10</span></em>, <em class="sig-param"><span class="n">mean</span><span class="o">=</span><span class="default_value">15</span></em>, <em class="sig-param"><span class="n">variance</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">'uin16'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#return_noise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.return_noise" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns an numpy array with given size, mean value and variance. If dtype</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="ubcs_auxiliary.numerical.sort_vector">
-<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">sort_vector</code><span class="sig-paren">(</span><em class="sig-param">in_vector=array([1</em>, <em class="sig-param">1</em>, <em class="sig-param">1</em>, <em class="sig-param">1</em>, <em class="sig-param">1</em>, <em class="sig-param">1</em>, <em class="sig-param">1])</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#sort_vector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.sort_vector" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">sort_vector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_vector</span><span class="o">=</span><span class="default_value">array([1, 1, 1, 1, 1, 1, 1])</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#sort_vector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.sort_vector" title="Permalink to this definition">¶</a></dt>
 <dd><p>sorts time vector</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="ubcs_auxiliary.numerical.weighted_linear_fit">
-<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">weighted_linear_fit</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">w</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#weighted_linear_fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.weighted_linear_fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">weighted_linear_fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">w</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#weighted_linear_fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.weighted_linear_fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>return linear fit by calcualating
 y_fit = a + b*x
 page 104 Data reduction and error analysis for the physicxal sciences Philip R. Bevington</p>
@@ -541,14 +662,77 @@ page 104 Data reduction and error analysis for the physicxal sciences Philip R. 
 <p>plotting functions
 author: Valentyn Stadnytskyi
 data: 2017 - Nov 17 2018</p>
+<dl class="py function">
+<dt id="ubcs_auxiliary.plotting.plot_frames_as_RGB">
+<code class="sig-prename descclassname">ubcs_auxiliary.plotting.</code><code class="sig-name descname">plot_frames_as_RGB</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frames</span><span class="o">=</span><span class="default_value">None, None, None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/plotting.html#plot_frames_as_RGB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.plotting.plot_frames_as_RGB" title="Permalink to this definition">¶</a></dt>
+<dd><p>takes a tuple of 3 mono-color frames and plots them as RGB. where RGB encoded the order of the supplied frames.</p>
+<p>All frames have to be the same size. Currently works for 3000x4096 size only.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ubcs_auxiliary.plotting.plot_image_with_mask">
+<code class="sig-prename descclassname">ubcs_auxiliary.plotting.</code><code class="sig-name descname">plot_image_with_mask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">mask</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/plotting.html#plot_image_with_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.plotting.plot_image_with_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>plot an image and overlay a mask over it. The mask shows</p>
+</dd></dl>
+
 </div>
 <div class="section" id="module-ubcs_auxiliary.save_load_object">
 <span id="save-load-object"></span><h2>Save Load Object<a class="headerlink" href="#module-ubcs_auxiliary.save_load_object" title="Permalink to this headline">¶</a></h2>
 <p>author: Valentyn Stadnytskyi
 created: Sept 9 2019</p>
-<dl class="function">
-<dt id="ubcs_auxiliary.save_load_object.dump">
-<code class="sig-prename descclassname">ubcs_auxiliary.save_load_object.</code><code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">object</em><span class="sig-paren">)</span><a class="headerlink" href="#ubcs_auxiliary.save_load_object.dump" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt id="ubcs_auxiliary.save_load_object.load_from_file">
+<code class="sig-prename descclassname">ubcs_auxiliary.save_load_object.</code><code class="sig-name descname">load_from_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">protocol</span><span class="o">=</span><span class="default_value">'pickle'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/save_load_object.html#load_from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.save_load_object.load_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>read object from a file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>filename</strong><span class="classifier">string</span></dt><dd><p>the full path and filename</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>object</strong><span class="classifier">object</span></dt><dd><p>input object to save.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>the example of usage</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_out</span> <span class="o">=</span> <span class="n">load_from_file</span><span class="p">(</span><span class="s1">&#39;list.extension&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ubcs_auxiliary.save_load_object.load_hdf5">
+<code class="sig-prename descclassname">ubcs_auxiliary.save_load_object.</code><code class="sig-name descname">load_hdf5</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/save_load_object.html#load_hdf5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.save_load_object.load_hdf5" title="Permalink to this definition">¶</a></dt>
+<dd><p>read object from a file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>filename</strong><span class="classifier">string</span></dt><dd><p>the full path and filename</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>object</strong><span class="classifier">object</span></dt><dd><p>input object to save.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>the example of usage</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_out</span> <span class="o">=</span> <span class="n">load_from_file</span><span class="p">(</span><span class="s1">&#39;list.extension&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ubcs_auxiliary.save_load_object.save_hdf5">
+<code class="sig-prename descclassname">ubcs_auxiliary.save_load_object.</code><code class="sig-name descname">save_hdf5</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">object</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/save_load_object.html#save_hdf5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.save_load_object.save_hdf5" title="Permalink to this definition">¶</a></dt>
 <dd><p>save a python object to a file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -565,64 +749,14 @@ created: Sept 9 2019</p>
 </dl>
 <p class="rubric">Examples</p>
 <p>the example of usage</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">save_to_file</span><span class="p">(</span><span class="s1">&#39;test.pkl&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">save_to_file</span><span class="p">(</span><span class="s1">&#39;test.hd5f&#39;</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </dd></dl>
 
-<dl class="function">
-<dt id="ubcs_auxiliary.save_load_object.load">
-<code class="sig-prename descclassname">ubcs_auxiliary.save_load_object.</code><code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#ubcs_auxiliary.save_load_object.load" title="Permalink to this definition">¶</a></dt>
-<dd><p>read object from a file</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>filename</strong><span class="classifier">string</span></dt><dd><p>the full path and filename</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>object</strong><span class="classifier">object</span></dt><dd><p>input object to save.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<p>the example of usage</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_out</span> <span class="o">=</span> <span class="n">load_from_file</span><span class="p">(</span><span class="s1">&#39;list.extension&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt id="ubcs_auxiliary.save_load_object.load_from_file">
-<code class="sig-prename descclassname">ubcs_auxiliary.save_load_object.</code><code class="sig-name descname">load_from_file</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/save_load_object.html#load_from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.save_load_object.load_from_file" title="Permalink to this definition">¶</a></dt>
-<dd><p>read object from a file</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>filename</strong><span class="classifier">string</span></dt><dd><p>the full path and filename</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>object</strong><span class="classifier">object</span></dt><dd><p>input object to save.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<p>the example of usage</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_out</span> <span class="o">=</span> <span class="n">load_from_file</span><span class="p">(</span><span class="s1">&#39;list.extension&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
+<dl class="py function">
 <dt id="ubcs_auxiliary.save_load_object.save_to_file">
-<code class="sig-prename descclassname">ubcs_auxiliary.save_load_object.</code><code class="sig-name descname">save_to_file</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">object</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/save_load_object.html#save_to_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.save_load_object.save_to_file" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.save_load_object.</code><code class="sig-name descname">save_to_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">object</span></em>, <em class="sig-param"><span class="n">protocol</span><span class="o">=</span><span class="default_value">'pickle'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/save_load_object.html#save_to_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.save_load_object.save_to_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>save a python object to a file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -667,11 +801,19 @@ created: Sept 9 2019</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2019, Valentyn Stadnytskyi
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -682,7 +824,6 @@ created: Sept 9 2019</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

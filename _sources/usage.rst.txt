@@ -11,7 +11,7 @@ Start by importing UBCS LCP auxiliary package library.
 Threading
 ---------
 
-.. automodule:: ubcs_auxiliary.threading
+.. automodule:: ubcs_auxiliary.multithreading
   :members:
 
 Advance Sleep
@@ -29,7 +29,7 @@ OS
 Parallel Processing
 -------------------
 
-.. automodule:: ubcs_auxiliary.multi_processing
+.. automodule:: ubcs_auxiliary.multiprocessing
   :members:
 
 Numerical
