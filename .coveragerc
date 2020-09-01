@@ -1,6 +1,6 @@
 [run]
 source =
-    lcp_video
+    ubcs_auxiliary
 [report]
 omit =
     */python?.?/*
