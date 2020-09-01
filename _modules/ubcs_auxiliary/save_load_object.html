@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.save_load_object &mdash; UBCS LCP auxiliary package library 0.0.19.post27+ge32abf9 documentation</title>
+  <title>ubcs_auxiliary.save_load_object &mdash; UBCS LCP auxiliary package library 0.post8.dev0+gc58cb94 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.0.19.post27+ge32abf9
+                0.post8.dev0+gc58cb94
               </div>
             
           
@@ -240,17 +240,18 @@
             <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="save_hdf5"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.save_load_object.save_hdf5">[docs]</a><span class="k">def</span> <span class="nf">save_hdf5</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="save_to_hdf5"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.save_load_object.save_to_hdf5">[docs]</a><span class="k">def</span> <span class="nf">save_to_hdf5</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">dic_in</span><span class="p">,</span> <span class="n">compression</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    save a python object to a file</span>
+<span class="sd">    save a dictionary to a .hdf5 file</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    Args:</span>
-<span class="sd">        filename (string)</span>
-<span class="sd">            the full path and filename</span>
-<span class="sd">        object (python object)</span>
-<span class="sd">            a python object</span>
+<span class="sd">    filename (string)</span>
+<span class="sd">        the full path and filename</span>
+<span class="sd">    dict (dictionary)</span>
+<span class="sd">        a python dictionary</span>
+<span class="sd">    compression (integer)</span>
+<span class="sd">        compression paramter</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -259,17 +260,23 @@
 <span class="sd">    --------</span>
 <span class="sd">    the example of usage</span>
 
-<span class="sd">    &gt;&gt;&gt; save_to_file(&#39;test.hd5f&#39;,[1,2,3])</span>
+<span class="sd">    &gt;&gt;&gt; save_to_hdf5(&#39;list.hd5f&#39;,[1,2,3])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">h5py</span> <span class="kn">import</span> <span class="n">File</span>
     <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">ndarray</span>
-    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span> <span class="o">==</span> <span class="n">ndarray</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">File</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-            <span class="n">file</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s2">&quot;ndarray&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span><span class="si">}</span><span class="s1"> is not supported yet.&#39;</span><span class="p">)</span></div>
+    <span class="k">with</span> <span class="n">File</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">dic_in</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="nb">object</span> <span class="o">=</span> <span class="n">dic_in</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span> <span class="o">==</span> <span class="n">ndarray</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">compression</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">file</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="nb">object</span><span class="p">,</span> <span class="n">compression</span> <span class="o">=</span> <span class="s1">&#39;gzip&#39;</span><span class="p">,</span> <span class="n">compression_opt</span> <span class="o">=</span> <span class="n">compression</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">file</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="load_hdf5"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.save_load_object.load_hdf5">[docs]</a><span class="k">def</span> <span class="nf">load_hdf5</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+
+<div class="viewcode-block" id="load_from_hdf5"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.save_load_object.load_from_hdf5">[docs]</a><span class="k">def</span> <span class="nf">load_from_hdf5</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    read object from a file</span>
 
@@ -287,13 +294,15 @@
 <span class="sd">    --------</span>
 <span class="sd">    the example of usage</span>
 
-<span class="sd">    &gt;&gt;&gt; list_out = load_from_file(&#39;list.extension&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; data_hdf5 = load_from_hdf5(&#39;list.extension.hdf5&#39;)</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">h5py</span> <span class="kn">import</span> <span class="n">File</span>
     <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">copy</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">with</span> <span class="n">File</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;ndarray&#39;</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="n">key</span><span class="p">][()]</span>
     <span class="k">return</span> <span class="n">data</span></div>
 </pre></div>
 

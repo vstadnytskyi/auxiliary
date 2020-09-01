@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.os &mdash; UBCS LCP auxiliary package library 0.0.19.post27+ge32abf9 documentation</title>
+  <title>ubcs_auxiliary.os &mdash; UBCS LCP auxiliary package library 0.post8.dev0+gc58cb94 documentation</title>
   
 
   
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                0.0.19.post27+ge32abf9
+                0.post8.dev0+gc58cb94
               </div>
             
           
@@ -163,7 +163,6 @@
 <div class="viewcode-block" id="find"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.os.find">[docs]</a><span></span><span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="n">topdir</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="p">[],</span> <span class="n">exclude</span><span class="o">=</span><span class="p">[]):</span>
     <span class="sd">&quot;&quot;&quot;A list of files found starting at &#39;topdir&#39; that match the patterns given</span>
 <span class="sd">    by &#39;name&#39;, excluding those matching the patterns given by &#39;exclude&#39;.</span>
-<span class="sd">    returns a vector of integers on logarithmic scale starting from decade start, ending decade end with M per decade</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -265,6 +264,67 @@
     <span class="kn">import</span> <span class="nn">fnmatch</span>
     <span class="n">integer</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fnmatch</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">folder</span><span class="p">),</span> <span class="n">match</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">integer</span>
+
+<div class="viewcode-block" id="listdir"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.os.listdir">[docs]</a><span class="k">def</span> <span class="nf">listdir</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.hdf5&#39;</span><span class="p">],</span> <span class="n">exclude</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">sort</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    returns list of files from a &#39;source&#39; directory that have terms listed in &#39;include&#39; and doesn&#39;t terms listed in &#39;exclude&#39;. Extra parameter &#39;sort&#39; can be used to sort the output list. If left blank, no sorting will be performed.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    source (string)</span>
+<span class="sd">    include (list)</span>
+<span class="sd">    exclude (list)</span>
+<span class="sd">    sort (string)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    file_list (list)</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; res = ubcs_auxiliary.os.get_list_of_files(&#39;/&#39;,[&#39;.hdf5&#39;])</span>
+
+<span class="sd">    Comments:</span>
+<span class="sd">    ---------</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">argsort</span><span class="p">,</span> <span class="n">array</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">root</span><span class="p">)]</span>
+    <span class="n">selected</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="p">[</span><span class="n">selected</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="p">((</span><span class="nb">all</span><span class="p">([</span><span class="n">term</span> <span class="ow">in</span> <span class="n">file</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">include</span><span class="p">]))</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">all</span><span class="p">([</span><span class="n">term2</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">file</span> <span class="k">for</span> <span class="n">term2</span> <span class="ow">in</span> <span class="n">exclude</span><span class="p">])))]</span>
+    <span class="k">return</span> <span class="n">selected</span></div>
+
+<div class="viewcode-block" id="find_recent_filename"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.os.find_recent_filename">[docs]</a><span class="k">def</span> <span class="nf">find_recent_filename</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">include</span><span class="p">,</span> <span class="n">exclude</span><span class="p">,</span> <span class="n">newest_first</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    find the list of files or folders that have any terms specified in the list &#39;include&#39; and do not have terms specified in &#39;exclude&#39;. The extra parameter reverse_order specified whether return the newest or oldest one.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    source (string)</span>
+<span class="sd">    include (list)</span>
+<span class="sd">    exclude (list)</span>
+<span class="sd">    sort (string)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    file_list (list)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">listdir</span><span class="p">,</span><span class="n">path</span>
+    <span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">getmtime</span>
+    <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">argsort</span><span class="p">,</span> <span class="n">array</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">listdir</span><span class="p">(</span><span class="n">root</span><span class="p">)]</span>
+    <span class="n">selected</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="p">[</span><span class="n">selected</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="p">((</span><span class="nb">all</span><span class="p">([</span><span class="n">term</span> <span class="ow">in</span> <span class="n">file</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">include</span><span class="p">]))</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">all</span><span class="p">([</span><span class="n">term2</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">file</span> <span class="k">for</span> <span class="n">term2</span> <span class="ow">in</span> <span class="n">exclude</span><span class="p">])))]</span>
+    <span class="n">path_names</span> <span class="o">=</span> <span class="n">selected</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">path_names</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">creation_times</span> <span class="o">=</span> <span class="p">[</span><span class="n">getmtime</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">path_names</span><span class="p">]</span>
+        <span class="n">sort_order</span> <span class="o">=</span> <span class="n">argsort</span><span class="p">(</span><span class="n">creation_times</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">newest_first</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">array</span><span class="p">(</span><span class="n">path_names</span><span class="p">)[</span><span class="n">sort_order</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">array</span><span class="p">(</span><span class="n">path_names</span><span class="p">)[</span><span class="n">sort_order</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span></div>
 </pre></div>
 
            </div>
