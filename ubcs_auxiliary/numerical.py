@@ -590,7 +590,7 @@ def get_histogram(arr,length = 16,step = 1):
     y,x = histogram(arr,bins = bins)
     return x[:-1],y
 
-def return_gaussian2D(shape = (100,100), amplitude = 3000, position = (100,100), sigma = (5,5), dtype = 'uint16'):
+def gaussian2D_from_shape(shape = (100,100), amplitude = 3000, position = (100,100), sigma = (5,5), dtype = 'uint16'):
     """
     return 2D gaussian function in a given 'position' on the provided image. The input image can be made of all zeros.
     """
@@ -605,14 +605,6 @@ def return_gaussian2D(shape = (100,100), amplitude = 3000, position = (100,100),
             gaussian[r,c] = amplitude*exp(-((r-r_mu)**2/(2.0*r_sigma**2))-( (c-c_mu)**2 /( 2.0 * c_sigma**2) ) )
 
     return gaussian.astype(dtype)
-
-def add_noise(image, mean = 3, stdev = 3, dtype = 'int16'):
-    """
-    adds noise to a given image and re
-    """
-    from numpy.random import rand
-    noise = rand(image.shape[0],image.shape[1])*stdev + mean
-    return (image+noise).astype(dtype)
 
 def bin_array(num, m):
     from numpy import uint8, binary_repr,array
@@ -630,6 +622,189 @@ def binarr_to_number(vector):
     for i in range(length):
        num += (2**(i))*vector[i]
     return num
+
+def nonzeromax(arr):
+    """
+    returns non-zero and nan maximum of a given array.
+    """
+    from numpy import nanmax, where
+    idx = where(arr != 0)
+    if idx[0].shape[0] > 0:
+        return nanmax(arr[idx])
+    else:
+        return None
+
+def nonzeromin(arr):
+    """
+    returns non-zero and nan minimum of a given array.
+    """
+    from numpy import nanmin, where
+    idx = where(arr != 0)
+    if idx[0].shape[0] > 0:
+        return nanmin(arr[idx])
+    else:
+        return None
+
+def gaussian1D(x, amp, x0, sigma, offset):
+    """
+    simple one-dimensional gaussian function
+    """
+    from numpy import exp
+    return amp*exp(-(x-x0)**2/(2*sigma*sigma))
+
+def gaussian2D_from_mesh(mesh, amplitude, x0, y0, x_sigma, y_sigma, offset = 0 , theta = 0):
+    """
+    returns two-dimensional gaussian
+    """
+    from numpy import cos, sin, exp
+    x = mesh[0]
+    y = mesh[1]
+    a = (cos(theta)**2)/(2*x_sigma**2) + (sin(theta)**2)/(2*y_sigma**2)
+    b = -(sin(2*theta))/(4*x_sigma**2) + (sin(2*theta))/(4*y_sigma**2)
+    c = (sin(theta)**2)/(2*x_sigma**2) + (cos(theta)**2)/(2*y_sigma**2)
+    z = offset + amplitude*exp( - (a*((x-x0)**2) + 2*b*(x-x0)*(y-y0) + c*((y-y0)**2)))
+    return z
+
+def noise(x,mean,sigma):
+    """
+    returns normal distributed noise array
+    of shape x with mean and sigma.
+    """
+    from numpy.random import normal
+    result = normal(mean,sigma,x.shape)
+    return result
+
+def pixelate_xy(x,y,pixel_length = 10, dtype = None, saturation_value = None):
+    """
+    returns pixelated x,y-data. The length of x and y has to be divisable by pixel_size.
+    """
+    from numpy import zeros
+    x_len = x.shape[0]
+    y_len = y.shape[0]
+
+    if x_len != y_len:
+        raise ValueError('The shape of x and y input vectors has to be the same')
+
+    if (x_len%pixel_length)!=0 or (y_len%pixel_length)!=0:
+        raise ValueError('The length of the input data arrays has to be divisable by pixel_length')
+
+    if dtype is None:
+        x_dtype = x.dtype
+        y_dtype = y.dtype
+    else:
+        x_dtype = dtype
+        y_dtype = dtype
+
+    x_new_len = int(x_len/pixel_length)
+    y_new_len = int(y_len/pixel_length)
+    x_new = zeros((x_new_len,), dtype = x_dtype)
+    y_new = zeros((y_new_len,), dtype = y_dtype)
+    for i in range(int(x_new_len)):
+        x_new[i] = x[i*pixel_length:(i+1)*pixel_length].mean()
+        y_new[i] = y[i*pixel_length:(i+1)*pixel_length].mean()
+    if saturation_value is not None:
+        y_new[y_new>=saturation_value] = saturation_value
+    return x_new,y_new
+
+def pixelate_image(x,y,z,pixel_size = 10, saturation_value = None):
+    """
+    returns pixilated image with pixel_size as input.
+    The shape has to be divisible by pixel_size
+    """
+    from numpy import zeros
+    x_shape = x.shape[0]
+    y_shape = y.shape[0]
+    z_shape = z.shape[0]
+    x_new_len = int(x_shape/pixel_size)
+    y_new_len = int(y_shape/pixel_size)
+    z_new_len = int(z_shape/pixel_size)
+    x_new = zeros((x_new_len,x_new_len))
+    y_new = zeros((y_new_len,y_new_len))
+    z_new = zeros((z_new_len,z_new_len))
+    for i in range(int(x_new_len)):
+        for j in range(int(x_new_len)):
+            y_new[i,j] = y[i*pixel_size:(i+1)*pixel_size,j*pixel_size:(j+1)*pixel_size].mean()
+            x_new[i,j] = x[i*pixel_size:(i+1)*pixel_size,j*pixel_size:(j+1)*pixel_size].mean()
+            z_new[i,j] = z[i*pixel_size:(i+1)*pixel_size,j*pixel_size:(j+1)*pixel_size].mean()
+    if saturation_value is not None:
+        z_new[z_new>=saturation_value] = saturation_value
+    return x_new,y_new,z_new
+
+def nearest_neibhour(row,col):
+    """
+    returns an matrix of indices where fast axis (axis = 0) corresponds to particle index and the resulting vector show the order of nearest neibhours.
+
+
+    Parameters
+    ----------
+    row (1d numpy array)
+    col (1d numpy array)
+    Returns
+    -------
+    matrix (2d numpt array)
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> row = np.asarray([100,200,400])
+    >>> col = np.asarray([100,200,300])
+    >>> nn = nearest_neibhour(row = row,col = col)
+    >>> nn
+    array([[0, 1, 2],
+       [1, 0, 2],
+       [2, 1, 0]])
+
+    .. plot::
+
+       import matplotlib.pyplot as plt
+       import numpy as np
+       from .. import numerical
+       row = np.asarray([100,-200,400,600])
+       col = np.asarray([100, 200,300,400])
+       nn = numerical.nearest_neibhour(row = row, col = col)
+       plt.grid()
+       for i in range(len(nn[0])
+           plt.scatter(row,col, s=800, marker = f'${i}$')
+       plt.show()
+    """
+    from numpy import zeros, nan, nanmin, amin, ones, sqrt, where, argsort
+
+    matrix = distance_matrix(row,col)
+    matrix_argsort = argsort(matrix,axis=1)
+    return matrix_argsort
+
+def distance_matrix(row,col):
+    """
+    returns a matrix of all pair-wise distances.
+
+    Parameters
+    ----------
+    row (1d numpy array)
+    col (1d numpy array)
+    Returns
+    -------
+    matrix (2d numpt array)
+
+    Examples
+    --------
+    >>> import numpy as np
+    >>> row = np.asarray([100,200,400])
+    >>> col = np.asarray([100,200,300])
+    >>> dist = distance_matrix(row = row,col = col)
+    >>> dist
+    array([[  0.        , 141.42135624, 360.55512755],
+       [141.42135624,   0.        , 223.60679775],
+       [360.55512755, 223.60679775,   0.        ]])
+    """
+    from numpy import zeros, meshgrid,sqrt
+    # vectorized form, might use more RAM
+    row_i, row_j = meshgrid(row, row, sparse=True)
+    row_m = ((row_i-row_j)**2)
+    col_i, col_j = meshgrid(col, col, sparse=True)
+    col_m = ((col_i-col_j)**2)
+    matrix = sqrt(row_m + col_m)
+    del col_m, row_m, row_i, row_j,col_i, col_j
+    return matrix
 
 if __name__ == '__main__':
     from matplotlib import pyplot as plt
@@ -654,23 +829,3 @@ if __name__ == '__main__':
     plt.xlabel('range of x')
     plt.ylabel('Sigma')
     plt.show()
-
-def nonzeromax(arr):
-    """
-    """
-    from numpy import nanmax, nonzero, where
-    idx = where(arr != 0)
-    if idx[0].shape[0] > 0:
-        return nanmax(arr[idx])
-    else:
-        return None
-
-def nonzeromin(arr):
-    """
-    """
-    from numpy import nanmin, nonzero, where, nan
-    idx = where(arr != 0)
-    if idx[0].shape[0] > 0:
-        return nanmin(arr[idx])
-    else:
-        return None
