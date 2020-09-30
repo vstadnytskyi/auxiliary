@@ -1,4 +1,5 @@
 ./_images/numerical_bin_data.png
+./_images/usage-1.png
 ./_modules/index.html
 ./_modules/ubcs_auxiliary/advsleep.html
 ./_modules/ubcs_auxiliary/multiprocessing.html
@@ -122,4 +123,8 @@
 ./saved-property.html
 ./search.html
 ./searchindex.js
+./usage-1.hires.png
+./usage-1.pdf
+./usage-1.png
+./usage-1.py
 ./usage.html

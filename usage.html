@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; UBCS LCP auxiliary package library 0.post8.dev0+gc58cb94 documentation</title>
+  <title>Usage &mdash; UBCS LCP auxiliary package library 0.post10.dev0+ga92bbf3 documentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.post8.dev0+gc58cb94
+                0.post10.dev0+ga92bbf3
               </div>
             
           
@@ -302,6 +302,22 @@ by ‘name’, excluding those matching the patterns given by ‘exclude’.</p>
 <span class="go">    anfinrud_auxiliary/__pycache__</span>
 </pre></div>
 </div>
+<p>Python 3.7.4 (v3.7.4:e09359112e, Jul  8 2019, 14:54:52)
+Type ‘copyright’, ‘credits’ or ‘license’ for more information
+IPython 7.8.0 – An enhanced Interactive Python. Type ‘?’ for help.
+In [1]: from time import time
+In [2]: import auxiliary
+In [3]: res = auxiliary.os.walk(‘/’)
+In [4]: t1 = time(); lst = list(res); t2 = time(); print(t2-t1, len(lst))
+3.9815242290496826 1346</p>
+<p>Python 2.7.16 (v2.7.16:413a49145e, Mar  2 2019, 14:32:10)
+Type “copyright”, “credits” or “license” for more information.
+IPython 5.8.0 – An enhanced Interactive Python.
+In [1]: from time import time
+In [2]: import anfinrud_auxiliary
+In [3]: res = auxiliary.os.walk(‘’)
+In [4]: t1 = time(); lst = list(res); t2 = time(); print(t2-t1, len(lst))
+(0.77646803855896, 1346)</p>
 </dd></dl>
 
 <dl class="py function">
@@ -429,12 +445,6 @@ include Imean and Ivar, which are used to construct UC_psi.npy.</p>
 <p>plotting functions
 author: Valentyn Stadnytskyi
 data: 2017 - Nov 17 2018</p>
-<dl class="py function">
-<dt id="ubcs_auxiliary.numerical.add_noise">
-<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">add_noise</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">mean</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">stdev</span><span class="o">=</span><span class="default_value">3</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">'int16'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#add_noise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.add_noise" title="Permalink to this definition">¶</a></dt>
-<dd><p>adds noise to a given image and re</p>
-</dd></dl>
-
 <dl class="py function">
 <dt id="ubcs_auxiliary.numerical.array_to_binary">
 <code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">array_to_binary</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arr</span><span class="o">=</span><span class="default_value">array([1, 1, 1, 1, 1, 1, 1])</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#array_to_binary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.array_to_binary" title="Permalink to this definition">¶</a></dt>
@@ -578,6 +588,34 @@ If float number is passed, it will be converted to int.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="ubcs_auxiliary.numerical.distance_matrix">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">distance_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">row</span></em>, <em class="sig-param"><span class="n">col</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#distance_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.distance_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns a matrix of all pair-wise distances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>row (1d numpy array)</strong></dt><dd></dd>
+<dt><strong>col (1d numpy array)</strong></dt><dd></dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>matrix (2d numpt array)</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">row</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">400</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span> <span class="o">=</span> <span class="n">distance_matrix</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="n">row</span><span class="p">,</span><span class="n">col</span> <span class="o">=</span> <span class="n">col</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span>
+<span class="go">array([[  0.        , 141.42135624, 360.55512755],</span>
+<span class="go">   [141.42135624,   0.        , 223.60679775],</span>
+<span class="go">   [360.55512755, 223.60679775,   0.        ]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt id="ubcs_auxiliary.numerical.enumerate_mask">
 <code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">enumerate_mask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mask</span></em>, <em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#enumerate_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.enumerate_mask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes a boolean mask, enumerates spots and returns enumerated mask where the intensity of a pixel indicates the spot number.</p>
@@ -587,6 +625,30 @@ If float number is passed, it will be converted to int.</p>
 <dt id="ubcs_auxiliary.numerical.expand_vector">
 <code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">expand_vector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">in_vector</span><span class="o">=</span><span class="default_value">array([1, 1, 1, 1, 1, 1, 1])</span></em>, <em class="sig-param"><span class="n">ndim</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#expand_vector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.expand_vector" title="Permalink to this definition">¶</a></dt>
 <dd><p>makes input 1D vector as 2D with first dimenstion to be ndim</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ubcs_auxiliary.numerical.exponential_1">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">exponential_1</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">x0</span></em>, <em class="sig-param"><span class="n">A</span></em>, <em class="sig-param"><span class="n">tau</span></em>, <em class="sig-param"><span class="n">offset</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#exponential_1"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.exponential_1" title="Permalink to this definition">¶</a></dt>
+<dd><p>exponential function with one exponent</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ubcs_auxiliary.numerical.gaussian1D">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">gaussian1D</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">amp</span></em>, <em class="sig-param"><span class="n">x0</span></em>, <em class="sig-param"><span class="n">sigma</span></em>, <em class="sig-param"><span class="n">offset</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#gaussian1D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.gaussian1D" title="Permalink to this definition">¶</a></dt>
+<dd><p>simple one-dimensional gaussian function</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ubcs_auxiliary.numerical.gaussian2D_from_mesh">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">gaussian2D_from_mesh</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mesh</span></em>, <em class="sig-param"><span class="n">amplitude</span></em>, <em class="sig-param"><span class="n">x0</span></em>, <em class="sig-param"><span class="n">y0</span></em>, <em class="sig-param"><span class="n">x_sigma</span></em>, <em class="sig-param"><span class="n">y_sigma</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">theta</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#gaussian2D_from_mesh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.gaussian2D_from_mesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns two-dimensional gaussian</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ubcs_auxiliary.numerical.gaussian2D_from_shape">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">gaussian2D_from_shape</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape</span><span class="o">=</span><span class="default_value">100, 100</span></em>, <em class="sig-param"><span class="n">amplitude</span><span class="o">=</span><span class="default_value">3000</span></em>, <em class="sig-param"><span class="n">position</span><span class="o">=</span><span class="default_value">100, 100</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">5, 5</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">'uint16'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#gaussian2D_from_shape"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.gaussian2D_from_shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>return 2D gaussian function in a given ‘position’ on the provided image. The input image can be made of all zeros.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -643,7 +705,14 @@ direction, including along the diagonal.</p>
 <dl class="py function">
 <dt id="ubcs_auxiliary.numerical.linear">
 <code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">linear</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#linear"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.linear" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>linear function</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ubcs_auxiliary.numerical.linear_coeff_from_points">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">linear_coeff_from_points</code><span class="sig-paren">(</span><em class="sig-param">x1</em>, <em class="sig-param">y1) p2(x2</em>, <em class="sig-param">y2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#linear_coeff_from_points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.linear_coeff_from_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>y = a*x+b</p>
+</dd></dl>
 
 <dl class="py function">
 <dt id="ubcs_auxiliary.numerical.linear_fit">
@@ -706,19 +775,71 @@ dtype (string)</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="ubcs_auxiliary.numerical.nearest_neibhour">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">nearest_neibhour</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">row</span></em>, <em class="sig-param"><span class="n">col</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#nearest_neibhour"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.nearest_neibhour" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns an matrix of indices where fast axis (axis = 0) corresponds to particle index and the resulting vector show the order of nearest neibhours.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>row (1d numpy array)</strong></dt><dd></dd>
+<dt><strong>col (1d numpy array)</strong></dt><dd></dd>
+<dt><strong>Returns</strong></dt><dd></dd>
+<dt><strong>——-</strong></dt><dd></dd>
+<dt><strong>matrix (2d numpt array)</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">row</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">150</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nn</span> <span class="o">=</span> <span class="n">nearest_neibhour</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="n">row</span><span class="p">,</span><span class="n">col</span> <span class="o">=</span> <span class="n">col</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nn</span>
+<span class="go">array([[0, 1, 4, 2, 3],</span>
+<span class="go">   [1, 4, 0, 2, 3],</span>
+<span class="go">   [2, 1, 3, 4, 0],</span>
+<span class="go">   [3, 2, 1, 4, 0],</span>
+<span class="go">   [4, 1, 0, 2, 3]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;and visualy can be represented as a scatter chart, where the marker is replaced with a closest neibhours. 0 - stands for the point for which neibhours are calculated.&quot;</span><span class="p">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="_images/usage-1.png" src="_images/usage-1.png" />
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ubcs_auxiliary.numerical.noise">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">noise</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">mean</span></em>, <em class="sig-param"><span class="n">sigma</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#noise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.noise" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns normal distributed noise array
+of shape x with mean and sigma.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="ubcs_auxiliary.numerical.nonzeromax">
 <code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">nonzeromax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arr</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#nonzeromax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.nonzeromax" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>returns non-zero and nan maximum of a given array.</p>
+</dd></dl>
 
 <dl class="py function">
 <dt id="ubcs_auxiliary.numerical.nonzeromin">
 <code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">nonzeromin</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arr</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#nonzeromin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.nonzeromin" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>returns non-zero and nan minimum of a given array.</p>
+</dd></dl>
 
 <dl class="py function">
-<dt id="ubcs_auxiliary.numerical.return_gaussian2D">
-<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">return_gaussian2D</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape</span><span class="o">=</span><span class="default_value">100, 100</span></em>, <em class="sig-param"><span class="n">amplitude</span><span class="o">=</span><span class="default_value">3000</span></em>, <em class="sig-param"><span class="n">position</span><span class="o">=</span><span class="default_value">100, 100</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">5, 5</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">'uint16'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#return_gaussian2D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.return_gaussian2D" title="Permalink to this definition">¶</a></dt>
-<dd><p>return 2D gaussian function in a given ‘position’ on the provided image. The input image can be made of all zeros.</p>
+<dt id="ubcs_auxiliary.numerical.pixelate_image">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">pixelate_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">pixel_size</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">saturation_value</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#pixelate_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.pixelate_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns pixilated image with pixel_size as input.
+The shape has to be divisible by pixel_size</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ubcs_auxiliary.numerical.pixelate_xy">
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">pixelate_xy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">pixel_length</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">dtype</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">saturation_value</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#pixelate_xy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.pixelate_xy" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns pixelated x,y-data. The length of x and y has to be divisable by pixel_size.</p>
 </dd></dl>
 
 <dl class="py function">
