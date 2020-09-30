@@ -22,9 +22,6 @@ def find(topdir, name=[], exclude=[]):
         anfinrud_auxiliary/tests/__pycache__
         anfinrud_auxiliary/__pycache__
 
-    Comments:
-    ---------
-
     Python 3.7.4 (v3.7.4:e09359112e, Jul  8 2019, 14:54:52)
     Type 'copyright', 'credits' or 'license' for more information
     IPython 7.8.0 -- An enhanced Interactive Python. Type '?' for help.
@@ -121,9 +118,6 @@ def listdir(root, include = ['.hdf5'], exclude = [], sort = ''):
     Examples
     --------
     >>> res = ubcs_auxiliary.os.get_list_of_files('/',['.hdf5'])
-
-    Comments:
-    ---------
     """
     import os
     from numpy import argsort, array

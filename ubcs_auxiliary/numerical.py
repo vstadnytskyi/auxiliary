@@ -14,12 +14,18 @@ else:
 import platform
 from numpy import asarray
 
-def exponential_1(x,A,tau):
+### Mathematical Functions
+def exponential_1(x,x0,A,tau, offset):
+    """
+    exponential function with one exponent
+    """
     from numpy import exp
-    return A*exp(-x/tau)
+    func = A*exp(-(x-x0)/tau)+offset
+    return func
 
 def linear(x,a,b):
     """
+    linear function
     """
     return a + b*x
 
@@ -746,26 +752,32 @@ def nearest_neibhour(row,col):
     Examples
     --------
     >>> import numpy as np
-    >>> row = np.asarray([100,200,400])
-    >>> col = np.asarray([100,200,300])
+    >>> row = np.asarray([100, 200,400, 600, 150])
+    >>> col = np.asarray([100, 200,300, 400, 300])
     >>> nn = nearest_neibhour(row = row,col = col)
     >>> nn
-    array([[0, 1, 2],
-       [1, 0, 2],
-       [2, 1, 0]])
+    array([[0, 1, 4, 2, 3],
+       [1, 4, 0, 2, 3],
+       [2, 1, 3, 4, 0],
+       [3, 2, 1, 4, 0],
+       [4, 1, 0, 2, 3]])
+
+    >>> print("and visualy can be represented as a scatter chart, where the marker is replaced with a closest neibhours. 0 - stands for the point for which neibhours are calculated.")"
 
     .. plot::
 
-       import matplotlib.pyplot as plt
-       import numpy as np
-       from .. import numerical
-       row = np.asarray([100,-200,400,600])
-       col = np.asarray([100, 200,300,400])
-       nn = numerical.nearest_neibhour(row = row, col = col)
-       plt.grid()
-       for i in range(len(nn[0])
-           plt.scatter(row,col, s=800, marker = f'${i}$')
-       plt.show()
+        >>> import matplotlib.pyplot as plt
+        >>> import numpy as np
+        >>> from ubcs_auxiliary import numerical
+        >>> row = np.asarray([100, 200,400, 600, 150])
+        >>> col = np.asarray([100, 200,300, 400, 300])
+        >>> nn = numerical.nearest_neibhour(row = row, col = col)
+        >>> plt.grid()
+        >>> for i in range(len(nn[1])):
+        >>>    plt.scatter(col[nn[1,i]],row[nn[1,i]], s=400, marker = f'${i}$')
+        >>> plt.title('example: point 1')
+        >>> plt.show()
+
     """
     from numpy import zeros, nan, nanmin, amin, ones, sqrt, where, argsort
 
@@ -806,26 +818,18 @@ def distance_matrix(row,col):
     del col_m, row_m, row_i, row_j,col_i, col_j
     return matrix
 
-if __name__ == '__main__':
-    from matplotlib import pyplot as plt
-    from numpy import random, arange
-    from pdb import pm
-    # data = random.rand(1000,4)+ 1
-    # x = arange(0,data.shape[0],1)
-    # binned_data = bin_data(data  = data, x = x, num_of_bins = 300, dtype = 'float')
-    # plt.plot(binned_data['x'],binned_data['y_mean'][0],'o')
-    # plt.plot(x,data[:,0],'-')
-    # plt.show()
-    plt.close('all')
+def linear_coeff_from_points(p1,p2):
+    """
+    p1(x1,y1)
+    p2(x2,y2)
 
-    lst = []
-    for i in range(20):
-        coeff = 10**(i-10)
-        x0 = 5+(70)/coeff
-        lst.append(weighted_linear_fit_test())
-    from numpy import array
-    plt.figure()
-    plt.loglog(array(lst)[:,1],array(lst)[:,0],'o')
-    plt.xlabel('range of x')
-    plt.ylabel('Sigma')
-    plt.show()
+    y = a*x+b
+    """
+    y1 = p1[1]
+    y2 = p2[1]
+    x1 = p1[0]
+    x2 = p2[0]
+
+    a = (y1-y2)/(x1-x2)
+    b = (x1/(x1-x2))*(y1-y2) + y1
+    return a,b
