@@ -661,6 +661,40 @@ def gaussian1D(x, amp, x0, sigma, offset):
 def gaussian2D_from_mesh(mesh, amplitude, x0, y0, x_sigma, y_sigma, offset = 0 , theta = 0):
     """
     returns two-dimensional gaussian
+
+    .. math::
+
+        a = \frac{\cos(\\theta)^2}{2\sigma_x^2} + \frac{\sin(\\theta)^2}{2\sigma_y^2}
+
+        b = -(\sin(2\\theta))/(4\sigma_x^2) + (\sin(2\\theta))/(4\sigma_y^2)
+
+        c = (\sin(\\theta)^2)/(2\sigma_x^2) + (\cos(\\theta)^2)/(2\sigma_y^2)
+
+        z = Amplitude*\exp^{( - (a*((x-x0)^2) + 2*b*(x-x0)*(y-y0) + c*((y-y0)^2)))} + offset
+
+    Parameters
+    ----------
+    mesh (2d numpy array)
+    amplitude (float)
+    x0 (float)
+    y0 (float)
+    x_sigma (float)
+    y_sigma  (float)
+    offset (float)
+    theta (float)
+
+    Returns
+    -------
+    z (2d numpy array)
+
+    Examples
+    --------
+    >>> x = np.linspace(0, 20, 21)
+    >>> y = np.linspace(0, 20, 21)
+    >>> x,y = np.meshgrid(x, y)
+    >>> xy = (x,y)
+    >>> amp, x0, y0, sigmax, sigmay,offset, theta = 100,10,10,3,3,0,0
+    >>> z = gaussian2D_from_mesh(xy,amp,x0,y0,sigmax,sigmay,offset)
     """
     from numpy import cos, sin, exp
     x = mesh[0]
@@ -671,7 +705,7 @@ def gaussian2D_from_mesh(mesh, amplitude, x0, y0, x_sigma, y_sigma, offset = 0 ,
     z = offset + amplitude*exp( - (a*((x-x0)**2) + 2*b*(x-x0)*(y-y0) + c*((y-y0)**2)))
     return z
 
-def noise(x,mean,sigma):
+def noise(arr,mean,sigma):
     """
     returns normal distributed noise array
     of shape x with mean and sigma.
@@ -716,6 +750,34 @@ def pixelate_image(x,y,z,pixel_size = 10, saturation_value = None):
     """
     returns pixilated image with pixel_size as input.
     The shape has to be divisible by pixel_size
+
+    .. math::
+
+        z =
+
+    Parameters
+    ----------
+    mesh (2d numpy array)
+    amplitude (float)
+    x0 (float)
+    y0 (float)
+    x_sigma (float)
+    y_sigma  (float)
+    offset (float)
+    theta (float)
+
+    Returns
+    -------
+    z (2d numpy array)
+
+    Examples
+    --------
+    >>> x = np.linspace(0, 20, 21)
+    >>> y = np.linspace(0, 20, 21)
+    >>> x,y = np.meshgrid(x, y)
+    >>> xy = (x,y)
+    >>> amp, x0, y0, sigmax, sigmay,offset, theta = 100,10,10,3,3,0,0
+    >>> z = gaussian2D_from_mesh(xy,amp,x0,y0,sigmax,sigmay,offset)
     """
     from numpy import zeros
     x_shape = x.shape[0]
