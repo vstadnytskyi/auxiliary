@@ -15,5 +15,6 @@ UBCS LCP auxiliary package library Documentation
    saved-property
    save-load-object
    numerical
+   examples
    release-history
    min_versions

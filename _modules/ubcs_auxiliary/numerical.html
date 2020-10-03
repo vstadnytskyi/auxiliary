@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>ubcs_auxiliary.numerical &mdash; UBCS LCP auxiliary package library 0.post10.dev0+ga92bbf3 documentation</title>
+  <title>ubcs_auxiliary.numerical &mdash; UBCS LCP auxiliary package library 0.post15.dev0+gaabc6a4 documentation</title>
   
 
   
@@ -33,6 +33,7 @@
         <script src="../../_static/language_data.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -62,7 +63,7 @@
             
             
               <div class="version">
-                0.post10.dev0+ga92bbf3
+                0.post15.dev0+gaabc6a4
               </div>
             
           
@@ -94,6 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../saved-property.html">Saved Property</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../save-load-object.html">Save Load Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../numerical.html">Numerical Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../release-history.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../min_versions.html">Minimum Version of Python and NumPy</a></li>
 </ul>
@@ -236,7 +238,7 @@
 <span class="sd">        &gt;&gt;&gt; x_in = arange(0,data.shape[0]+1,1)</span>
 <span class="sd">        &gt;&gt;&gt; binned_data = bin_data(data  = None, x = None, axis = 1, num_of_bins = 300, dtype = &#39;float&#39;)</span>
 
-<span class="sd">        .. plot:: ./examples/numerical_bin_data.py</span>
+<span class="sd">        .. plot:: ./examples_py/numerical_bin_data.py</span>
 <span class="sd">           :include-source:</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -305,7 +307,7 @@
 <span class="sd">        &gt;&gt;&gt; x_in = arange(0,data.shape[0]+1,1)</span>
 <span class="sd">        &gt;&gt;&gt; binned_data = bin_data(data  = None, x = None, axis = 1, num_of_bins = 300, dtype = &#39;float&#39;)</span>
 
-<span class="sd">        .. plot:: ./examples/numerical_bin_data.py</span>
+<span class="sd">        .. plot:: ./examples_py/numerical_bin_data.py</span>
 <span class="sd">           :include-source:</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -818,11 +820,37 @@
 <span class="sd">    simple one-dimensional gaussian function</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">exp</span>
-    <span class="k">return</span> <span class="n">amp</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">*</span><span class="n">sigma</span><span class="p">))</span></div>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">amp</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">*</span><span class="n">sigma</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">y</span></div>
 
 <div class="viewcode-block" id="gaussian2D_from_mesh"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.numerical.gaussian2D_from_mesh">[docs]</a><span class="k">def</span> <span class="nf">gaussian2D_from_mesh</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x_sigma</span><span class="p">,</span> <span class="n">y_sigma</span><span class="p">,</span> <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    returns two-dimensional gaussian</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mesh (2d numpy array)</span>
+<span class="sd">    amplitude (float)</span>
+<span class="sd">    x0 (float)</span>
+<span class="sd">    y0 (float)</span>
+<span class="sd">    x_sigma (float)</span>
+<span class="sd">    y_sigma  (float)</span>
+<span class="sd">    offset (float)</span>
+<span class="sd">    theta (float)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    z (2d numpy array)</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; x = np.linspace(0, 20, 21)</span>
+<span class="sd">    &gt;&gt;&gt; y = np.linspace(0, 20, 21)</span>
+<span class="sd">    &gt;&gt;&gt; x,y = np.meshgrid(x, y)</span>
+<span class="sd">    &gt;&gt;&gt; xy = (x,y)</span>
+<span class="sd">    &gt;&gt;&gt; amp, x0, y0, sigmax, sigmay,offset, theta = 100,10,10,3,3,0,0</span>
+<span class="sd">    &gt;&gt;&gt; z = gaussian2D_from_mesh(xy,amp,x0,y0,sigmax,sigmay,offset)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">exp</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">mesh</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -833,13 +861,13 @@
     <span class="n">z</span> <span class="o">=</span> <span class="n">offset</span> <span class="o">+</span> <span class="n">amplitude</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="p">((</span><span class="n">x</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">b</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">y0</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="o">*</span><span class="p">((</span><span class="n">y</span><span class="o">-</span><span class="n">y0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
     <span class="k">return</span> <span class="n">z</span></div>
 
-<div class="viewcode-block" id="noise"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.numerical.noise">[docs]</a><span class="k">def</span> <span class="nf">noise</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">mean</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
+<div class="viewcode-block" id="noise"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.numerical.noise">[docs]</a><span class="k">def</span> <span class="nf">noise</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="n">mean</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    returns normal distributed noise array</span>
 <span class="sd">    of shape x with mean and sigma.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">normal</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="n">sigma</span><span class="p">,</span><span class="n">arr</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span></div>
 
 <div class="viewcode-block" id="pixelate_xy"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.numerical.pixelate_xy">[docs]</a><span class="k">def</span> <span class="nf">pixelate_xy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">pixel_length</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">saturation_value</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
@@ -878,6 +906,34 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    returns pixilated image with pixel_size as input.</span>
 <span class="sd">    The shape has to be divisible by pixel_size</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        z =</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mesh (2d numpy array)</span>
+<span class="sd">    amplitude (float)</span>
+<span class="sd">    x0 (float)</span>
+<span class="sd">    y0 (float)</span>
+<span class="sd">    x_sigma (float)</span>
+<span class="sd">    y_sigma  (float)</span>
+<span class="sd">    offset (float)</span>
+<span class="sd">    theta (float)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    z (2d numpy array)</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; x = np.linspace(0, 20, 21)</span>
+<span class="sd">    &gt;&gt;&gt; y = np.linspace(0, 20, 21)</span>
+<span class="sd">    &gt;&gt;&gt; x,y = np.meshgrid(x, y)</span>
+<span class="sd">    &gt;&gt;&gt; xy = (x,y)</span>
+<span class="sd">    &gt;&gt;&gt; amp, x0, y0, sigmax, sigmay,offset, theta = 100,10,10,3,3,0,0</span>
+<span class="sd">    &gt;&gt;&gt; z = gaussian2D_from_mesh(xy,amp,x0,y0,sigmax,sigmay,offset)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">zeros</span>
     <span class="n">x_shape</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>

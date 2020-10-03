@@ -9,6 +9,7 @@
 ./_modules/ubcs_auxiliary/plotting.html
 ./_modules/ubcs_auxiliary/save_load_object.html
 ./_modules/ubcs_auxiliary/saved_property.html
+./_sources/examples.rst.txt
 ./_sources/index.rst.txt
 ./_sources/installation.rst.txt
 ./_sources/min_versions.rst.txt
@@ -106,10 +107,11 @@
 ./_static/searchtools.js
 ./_static/underscore-1.3.1.js
 ./_static/underscore.js
-./examples/numerical_bin_data.hires.png
-./examples/numerical_bin_data.pdf
-./examples/numerical_bin_data.png
-./examples/numerical_bin_data.py
+./examples.html
+./examples_py/numerical_bin_data.hires.png
+./examples_py/numerical_bin_data.pdf
+./examples_py/numerical_bin_data.png
+./examples_py/numerical_bin_data.py
 ./genindex.html
 ./index.html
 ./installation.html

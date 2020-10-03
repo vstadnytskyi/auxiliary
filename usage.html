@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; UBCS LCP auxiliary package library 0.post10.dev0+ga92bbf3 documentation</title>
+  <title>Usage &mdash; UBCS LCP auxiliary package library 0.post15.dev0+gaabc6a4 documentation</title>
   
 
   
@@ -33,6 +33,7 @@
         <script src="_static/language_data.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -64,7 +65,7 @@
             
             
               <div class="version">
-                0.post10.dev0+ga92bbf3
+                0.post15.dev0+gaabc6a4
               </div>
             
           
@@ -105,6 +106,7 @@
 <li class="toctree-l1"><a class="reference internal" href="saved-property.html">Saved Property</a></li>
 <li class="toctree-l1"><a class="reference internal" href="save-load-object.html">Save Load Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="numerical.html">Numerical Library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="release-history.html">Release History</a></li>
 <li class="toctree-l1"><a class="reference internal" href="min_versions.html">Minimum Version of Python and NumPy</a></li>
 </ul>
@@ -643,6 +645,34 @@ If float number is passed, it will be converted to int.</p>
 <dt id="ubcs_auxiliary.numerical.gaussian2D_from_mesh">
 <code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">gaussian2D_from_mesh</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mesh</span></em>, <em class="sig-param"><span class="n">amplitude</span></em>, <em class="sig-param"><span class="n">x0</span></em>, <em class="sig-param"><span class="n">y0</span></em>, <em class="sig-param"><span class="n">x_sigma</span></em>, <em class="sig-param"><span class="n">y_sigma</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">theta</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#gaussian2D_from_mesh"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.gaussian2D_from_mesh" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns two-dimensional gaussian</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mesh (2d numpy array)</strong></dt><dd></dd>
+<dt><strong>amplitude (float)</strong></dt><dd></dd>
+<dt><strong>x0 (float)</strong></dt><dd></dd>
+<dt><strong>y0 (float)</strong></dt><dd></dd>
+<dt><strong>x_sigma (float)</strong></dt><dd></dd>
+<dt><strong>y_sigma  (float)</strong></dt><dd></dd>
+<dt><strong>offset (float)</strong></dt><dd></dd>
+<dt><strong>theta (float)</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>z (2d numpy array)</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">amp</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">sigmax</span><span class="p">,</span> <span class="n">sigmay</span><span class="p">,</span><span class="n">offset</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">gaussian2D_from_mesh</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span><span class="n">amp</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="n">sigmax</span><span class="p">,</span><span class="n">sigmay</span><span class="p">,</span><span class="n">offset</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -812,7 +842,7 @@ dtype (string)</p>
 
 <dl class="py function">
 <dt id="ubcs_auxiliary.numerical.noise">
-<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">noise</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">mean</span></em>, <em class="sig-param"><span class="n">sigma</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#noise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.noise" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">noise</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">arr</span></em>, <em class="sig-param"><span class="n">mean</span></em>, <em class="sig-param"><span class="n">sigma</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#noise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.noise" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns normal distributed noise array
 of shape x with mean and sigma.</p>
 </dd></dl>
@@ -834,6 +864,36 @@ of shape x with mean and sigma.</p>
 <code class="sig-prename descclassname">ubcs_auxiliary.numerical.</code><code class="sig-name descname">pixelate_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">z</span></em>, <em class="sig-param"><span class="n">pixel_size</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">saturation_value</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ubcs_auxiliary/numerical.html#pixelate_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ubcs_auxiliary.numerical.pixelate_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>returns pixilated image with pixel_size as input.
 The shape has to be divisible by pixel_size</p>
+<div class="math notranslate nohighlight">
+\[z =\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mesh (2d numpy array)</strong></dt><dd></dd>
+<dt><strong>amplitude (float)</strong></dt><dd></dd>
+<dt><strong>x0 (float)</strong></dt><dd></dd>
+<dt><strong>y0 (float)</strong></dt><dd></dd>
+<dt><strong>x_sigma (float)</strong></dt><dd></dd>
+<dt><strong>y_sigma  (float)</strong></dt><dd></dd>
+<dt><strong>offset (float)</strong></dt><dd></dd>
+<dt><strong>theta (float)</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>z (2d numpy array)</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xy</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">amp</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">sigmax</span><span class="p">,</span> <span class="n">sigmay</span><span class="p">,</span><span class="n">offset</span><span class="p">,</span> <span class="n">theta</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">gaussian2D_from_mesh</span><span class="p">(</span><span class="n">xy</span><span class="p">,</span><span class="n">amp</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">y0</span><span class="p">,</span><span class="n">sigmax</span><span class="p">,</span><span class="n">sigmay</span><span class="p">,</span><span class="n">offset</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
