@@ -1,6 +1,6 @@
-=====
-Usage
-=====
+========
+Examples
+========
 
 Start by importing UBCS LCP auxiliary package library.
 
@@ -8,44 +8,13 @@ Start by importing UBCS LCP auxiliary package library.
 
     import ubcs_auxiliary
 
-Threading
----------
+Fitting 1D Gaussian
+----------------------------
 
-.. automodule:: ubcs_auxiliary.multithreading
-  :members:
+.. code-block:: python
 
-Advance Sleep
--------------
+    import ubcs_auxiliary
 
-.. automodule:: ubcs_auxiliary.advsleep
-  :members:
 
-OS
--------------
-
-.. automodule:: ubcs_auxiliary.os
-  :members:
-
-Parallel Processing
--------------------
-
-.. automodule:: ubcs_auxiliary.multiprocessing
-  :members:
-
-Numerical
--------------------
-
-.. automodule:: ubcs_auxiliary.numerical
-  :members:
-
-Plotting with Matplotlib
-------------------------
-
-.. automodule:: ubcs_auxiliary.plotting
-  :members:
-
-Save Load Object
--------------------
-
-.. automodule:: ubcs_auxiliary.save_load_object
-  :members:
+#    .. plot:: ./examples_py/numerical_bin_data.py
+#           :include-source:

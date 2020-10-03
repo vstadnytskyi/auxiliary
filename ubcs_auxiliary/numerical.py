@@ -656,7 +656,8 @@ def gaussian1D(x, amp, x0, sigma, offset):
     simple one-dimensional gaussian function
     """
     from numpy import exp
-    return amp*exp(-(x-x0)**2/(2*sigma*sigma))
+    y = amp*exp(-(x-x0)**2/(2*sigma*sigma))
+    return y
 
 def gaussian2D_from_mesh(mesh, amplitude, x0, y0, x_sigma, y_sigma, offset = 0 , theta = 0):
     """
@@ -711,7 +712,7 @@ def noise(arr,mean,sigma):
     of shape x with mean and sigma.
     """
     from numpy.random import normal
-    result = normal(mean,sigma,x.shape)
+    result = normal(mean,sigma,arr.shape)
     return result
 
 def pixelate_xy(x,y,pixel_length = 10, dtype = None, saturation_value = None):
