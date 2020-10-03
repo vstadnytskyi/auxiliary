@@ -143,7 +143,7 @@ def bin_xy(y  = None, x = None, axis = 1, num_of_bins = 300, dtype = 'float'):
         >>> x_in = arange(0,data.shape[0]+1,1)
         >>> binned_data = bin_data(data  = None, x = None, axis = 1, num_of_bins = 300, dtype = 'float')
 
-        .. plot:: ./examples/numerical_bin_data.py
+        .. plot:: ./examples_py/numerical_bin_data.py
            :include-source:
 
         """
