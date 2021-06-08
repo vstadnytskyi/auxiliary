@@ -50,13 +50,6 @@ jobs:
         - pip3 install --upgrade pytest
       env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
 
-notifications:
-  email: false
-cache:
-  directories:
-    - $HOME/.cache/pip
-    - $HOME/.ccache  # https://github.com/travis-ci/travis-ci/issues/5853
-
 install:
   # Install this package and the packages listed in requirements.txt.
   - pip3 install --upgrade pip
@@ -69,6 +62,14 @@ script:
   - coverage report -m  # Generate test coverage report.
   - codecov  # Upload the report to codecov.
 #  - python3 platform-info.py || python platform-info.py
+
+notifications:
+  email: false
+cache:
+  directories:
+    - $HOME/.cache/pip
+    - $HOME/.ccache  # https://github.com/travis-ci/travis-ci/issues/5853
+
 env:
   global:
     # Doctr deploy key for vstadnytskyi/auxiliary
