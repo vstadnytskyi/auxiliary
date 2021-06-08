@@ -12,3 +12,6 @@ from . import traveling_salesman
 from . import numerical
 from . import multithreading
 from . import multiprocessing
+from . import video
+from . import channel_archiver
+from .other import beep

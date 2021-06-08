@@ -124,6 +124,57 @@ def plot_images_grid(lst = [], vmax = None, vmin = None, titles = None):
         ax[i].set_title(titles[i])
         ax[i].set_axis_off()
 
+def grid_plot_3d_example():
+    import matplotlib.pyplot as plt
+    from matplotlib import cm
+    import numpy as np
+
+    from mpl_toolkits.mplot3d.axes3d import get_test_data
+    # This import registers the 3D projection, but is otherwise unused.
+    from mpl_toolkits.mplot3d import Axes3D  # noqa: F401 unused import
+
+
+    # set up a figure twice as wide as it is tall
+    fig = plt.figure(figsize=plt.figaspect(0.5))
+    grid = plt.GridSpec(4, 4, hspace=0.025, wspace=0.025)
+    #===============
+    #  First subplot
+    #===============
+    # set up the axes for the first plot
+    ax1 = fig.add_subplot(grid[0:3,0:3], projection='3d')
+
+    # plot a 3D surface like in the example mplot3d/surface3d_demo
+    X = np.arange(-5, 5, 0.25)
+    Y = np.arange(-5, 5, 0.25)
+    X, Y = np.meshgrid(X, Y)
+    R = np.sqrt(X**2 + Y**2)
+    Z = np.sin(R)
+    surf = ax1.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=cm.coolwarm,
+                           linewidth=0, antialiased=False)
+    ax.set_zlim(-1.01, 1.01)
+    fig.colorbar(surf, shrink=0.5, aspect=10)
+
+    #===============
+    # Second subplot
+    #===============
+    # set up the axes for the second plot
+    ax2 = fig.add_subplot(grid[3,3], projection='3d')
+
+    # plot a 3D wireframe like in the example mplot3d/wire3d_demo
+    X, Y, Z = get_test_data(0.05)
+    ax2.plot_wireframe(X, Y, Z, rstride=10, cstride=10)
+
+
+
+    plt.show()
+
+def example2(fig):
+    from matplotlib import pyplot as plt
+    fig = plt.figure()
+    ax1 = fig.add_subplot(121)
+    ax2 = fig.add_subplot(122)
+
+In [5]: lst = []
 if __name__ == '__main__':
     from numpy import arange, random
     #x = arange(0,100,1)

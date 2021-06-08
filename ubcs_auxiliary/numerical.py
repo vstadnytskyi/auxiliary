@@ -663,6 +663,16 @@ def gaussian2D_from_mesh(mesh, amplitude, x0, y0, x_sigma, y_sigma, offset = 0 ,
     """
     returns two-dimensional gaussian
 
+    .. math::
+
+        a = \frac{\cos(\\theta)^2}{2\sigma_x^2} + \frac{\sin(\\theta)^2}{2\sigma_y^2}
+
+        b = -(\sin(2\\theta))/(4\sigma_x^2) + (\sin(2\\theta))/(4\sigma_y^2)
+
+        c = (\sin(\\theta)^2)/(2\sigma_x^2) + (\cos(\\theta)^2)/(2\sigma_y^2)
+
+        z = Amplitude*\exp^{( - (a*((x-x0)^2) + 2*b*(x-x0)*(y-y0) + c*((y-y0)^2)))} + offset
+
 
     Parameters
     ----------
@@ -887,3 +897,16 @@ def linear_coeff_from_points(p1,p2):
     a = (y1-y2)/(x1-x2)
     b = (x1/(x1-x2))*(y1-y2) + y1
     return a,b
+
+def max_filter(image, footprintsize = 10, treshhold = 100):
+    """
+    returns mask with max values with given distance
+
+    to find the mask of max pixels. These are peak pixels in the image.
+    """
+    from scipy.ndimage import maximum_filter
+    from numpy import ones
+    footprint = ones((footprintsize,footprintsize))
+    max_mask = (maximum_filter(image,footprint = footprint) == image)&(image>=treshhold)
+
+    return max_mask

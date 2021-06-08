@@ -14,13 +14,13 @@ def find(topdir, name=[], exclude=[]):
 
     Examples
     --------
-    >>> res = anfinrud_auxiliary.os.walk('anfinrud_auxiliary/')
+    >>> res = anfinrud_auxiliary.os.walk('ubcs_auxiliary/')
     >>> for i in res: print(i[0])
             ...:
-        anfinrud_auxiliary/
-        anfinrud_auxiliary/tests
-        anfinrud_auxiliary/tests/__pycache__
-        anfinrud_auxiliary/__pycache__
+        ubcs_auxiliary/
+        ubcs_auxiliary/tests
+        ubcs_auxiliary/tests/__pycache__
+        ubcs_auxiliary/__pycache__
 
     Python 3.7.4 (v3.7.4:e09359112e, Jul  8 2019, 14:54:52)
     Type 'copyright', 'credits' or 'license' for more information
@@ -124,6 +124,7 @@ def listdir(root, include = ['.hdf5'], exclude = [], sort = ''):
     files = [os.path.join(root,file) for file in os.listdir(root)]
     selected = []
     [selected.append(file) for file in files if ((all([term in file for term in include])) and (all([term2 not in file for term2 in exclude])))]
+
     return selected
 
 def find_recent_filename(root, include, exclude, newest_first = True):
@@ -157,3 +158,79 @@ def find_recent_filename(root, include, exclude, newest_first = True):
             return array(path_names)[sort_order][0]
     else:
         return ''
+
+def get_current_pid_memory_usage(units = 'GB',verbose = False):
+    """
+    returns current process memory footprint.
+    """
+    import os
+    import psutil
+    pid = os.getpid()
+    py = psutil.Process(pid)
+    coeff = 1
+    if units == 'GB':
+        coeff = 2.**30
+    elif units == 'MB':
+        coeff = 2.**20
+    elif units == 'KB':
+        coeff = 2.**10
+    elif units == 'B':
+        coeff = 2.**0.0
+    elif units == 'b':
+        coeff = 1.0/8.0
+    memoryUse = py.memory_info()[0]/coeff  # memory use in GB...I think
+    if verbose:
+        print('memory use:', memoryUse)
+    else:
+        pass
+    return memoryUse
+
+def does_filename_have_counterpart(src_path,dst_root = None, counterpart_extension = ''):
+    """
+    checks if the 'src_path' has counterpart with extension 'counterpart_extension'.
+
+    Parameters
+    ----------
+    filename (string)
+
+    counterpart_extension (string)
+
+    Returns
+    -------
+    boolean (boolean)
+    """
+    import os
+    src_root, src_name = os.path.split(src_path)
+    if dst_root is None:
+        dst_root, dst_name = os.path.split(src_path)
+
+    splitted = src_name.split('.')
+    src_base = splitted[0]
+    src_extension = ''.join(splitted[1:])
+    counterpart = os.path.join(dst_root,src_base + counterpart_extension)
+    flag = os.path.exists(counterpart)
+    return flag
+
+
+def read_config_file(filename):
+    """
+    read yaml config file
+
+    Parameters
+    ----------
+    filename (string)
+
+    Returns
+    -------
+    dict (dictionary)
+    boolean (boolean)
+    """
+    import yaml
+    import os
+    flag =  os.path.isfile(filename)
+    if flag:
+        with open(filename,'r') as handle:
+            config = yaml.safe_load(handle.read())  # (2)
+    else:
+        config = {}
+    return config, flag
