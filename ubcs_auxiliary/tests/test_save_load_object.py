@@ -43,7 +43,7 @@ def test_save_load_hdf5(tmpdir):
     print(f'tempdir = {tmpdir}')
     print(f'{os.path.exists(tmpdir)}')
     arr_in = {'array':zeros((10,5))}
-    str_in = {'string':'this is string'}
+    str_in = {'string':b'this is string'}
     dict_in = {'1':1,'2':2}
     list_in = {'list':[1,2,3,4]}
     compound_in = {}
