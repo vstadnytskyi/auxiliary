@@ -174,7 +174,6 @@ def example2(fig):
     ax1 = fig.add_subplot(121)
     ax2 = fig.add_subplot(122)
 
-In [5]: lst = []
 if __name__ == '__main__':
     from numpy import arange, random
     #x = arange(0,100,1)

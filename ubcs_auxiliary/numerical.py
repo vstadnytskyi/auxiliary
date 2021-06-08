@@ -663,17 +663,6 @@ def gaussian2D_from_mesh(mesh, amplitude, x0, y0, x_sigma, y_sigma, offset = 0 ,
     """
     returns two-dimensional gaussian
 
-    .. math::
-
-        a = \frac{\cos(\\theta)^2}{2\sigma_x^2} + \frac{\sin(\\theta)^2}{2\sigma_y^2}
-
-        b = -(\sin(2\\theta))/(4\sigma_x^2) + (\sin(2\\theta))/(4\sigma_y^2)
-
-        c = (\sin(\\theta)^2)/(2\sigma_x^2) + (\cos(\\theta)^2)/(2\sigma_y^2)
-
-        z = Amplitude*\exp^{( - (a*((x-x0)^2) + 2*b*(x-x0)*(y-y0) + c*((y-y0)^2)))} + offset
-
-
     Parameters
     ----------
     mesh (2d numpy array)
