@@ -3,21 +3,27 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>ubcs_auxiliary.os &mdash; UBCS LCP auxiliary package library 0.post15.dev0+gaabc6a4 documentation</title>
+  <title>ubcs_auxiliary.os &mdash; UBCS LCP auxiliary package library 0.post29+gad27e0d documentation</title>
   
 
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/plot_directive.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
 
   
   
+
   
+  
+
   
 
   
@@ -27,13 +33,12 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -53,7 +58,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> UBCS LCP auxiliary package library
+            <a href="../../index.html" class="icon icon-home"> UBCS LCP auxiliary package library
           
 
           
@@ -63,7 +68,7 @@
             
             
               <div class="version">
-                0.post15.dev0+gaabc6a4
+                0.post29+gad27e0d
               </div>
             
           
@@ -138,6 +143,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -178,13 +185,13 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; res = anfinrud_auxiliary.os.walk(&#39;anfinrud_auxiliary/&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; res = anfinrud_auxiliary.os.walk(&#39;ubcs_auxiliary/&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; for i in res: print(i[0])</span>
 <span class="sd">            ...:</span>
-<span class="sd">        anfinrud_auxiliary/</span>
-<span class="sd">        anfinrud_auxiliary/tests</span>
-<span class="sd">        anfinrud_auxiliary/tests/__pycache__</span>
-<span class="sd">        anfinrud_auxiliary/__pycache__</span>
+<span class="sd">        ubcs_auxiliary/</span>
+<span class="sd">        ubcs_auxiliary/tests</span>
+<span class="sd">        ubcs_auxiliary/tests/__pycache__</span>
+<span class="sd">        ubcs_auxiliary/__pycache__</span>
 
 <span class="sd">    Python 3.7.4 (v3.7.4:e09359112e, Jul  8 2019, 14:54:52)</span>
 <span class="sd">    Type &#39;copyright&#39;, &#39;credits&#39; or &#39;license&#39; for more information</span>
@@ -288,6 +295,7 @@
     <span class="n">files</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">root</span><span class="p">)]</span>
     <span class="n">selected</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="p">[</span><span class="n">selected</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="p">((</span><span class="nb">all</span><span class="p">([</span><span class="n">term</span> <span class="ow">in</span> <span class="n">file</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">include</span><span class="p">]))</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">all</span><span class="p">([</span><span class="n">term2</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">file</span> <span class="k">for</span> <span class="n">term2</span> <span class="ow">in</span> <span class="n">exclude</span><span class="p">])))]</span>
+
     <span class="k">return</span> <span class="n">selected</span></div>
 
 <div class="viewcode-block" id="find_recent_filename"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.os.find_recent_filename">[docs]</a><span class="k">def</span> <span class="nf">find_recent_filename</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">include</span><span class="p">,</span> <span class="n">exclude</span><span class="p">,</span> <span class="n">newest_first</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
@@ -321,34 +329,107 @@
             <span class="k">return</span> <span class="n">array</span><span class="p">(</span><span class="n">path_names</span><span class="p">)[</span><span class="n">sort_order</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="s1">&#39;&#39;</span></div>
+
+<div class="viewcode-block" id="get_current_pid_memory_usage"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.os.get_current_pid_memory_usage">[docs]</a><span class="k">def</span> <span class="nf">get_current_pid_memory_usage</span><span class="p">(</span><span class="n">units</span> <span class="o">=</span> <span class="s1">&#39;GB&#39;</span><span class="p">,</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    returns current process memory footprint.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">import</span> <span class="nn">psutil</span>
+    <span class="n">pid</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">()</span>
+    <span class="n">py</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span>
+    <span class="n">coeff</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">units</span> <span class="o">==</span> <span class="s1">&#39;GB&#39;</span><span class="p">:</span>
+        <span class="n">coeff</span> <span class="o">=</span> <span class="mf">2.</span><span class="o">**</span><span class="mi">30</span>
+    <span class="k">elif</span> <span class="n">units</span> <span class="o">==</span> <span class="s1">&#39;MB&#39;</span><span class="p">:</span>
+        <span class="n">coeff</span> <span class="o">=</span> <span class="mf">2.</span><span class="o">**</span><span class="mi">20</span>
+    <span class="k">elif</span> <span class="n">units</span> <span class="o">==</span> <span class="s1">&#39;KB&#39;</span><span class="p">:</span>
+        <span class="n">coeff</span> <span class="o">=</span> <span class="mf">2.</span><span class="o">**</span><span class="mi">10</span>
+    <span class="k">elif</span> <span class="n">units</span> <span class="o">==</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span>
+        <span class="n">coeff</span> <span class="o">=</span> <span class="mf">2.</span><span class="o">**</span><span class="mf">0.0</span>
+    <span class="k">elif</span> <span class="n">units</span> <span class="o">==</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span>
+        <span class="n">coeff</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">8.0</span>
+    <span class="n">memoryUse</span> <span class="o">=</span> <span class="n">py</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">coeff</span>  <span class="c1"># memory use in GB...I think</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;memory use:&#39;</span><span class="p">,</span> <span class="n">memoryUse</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">memoryUse</span></div>
+
+<div class="viewcode-block" id="does_filename_have_counterpart"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.os.does_filename_have_counterpart">[docs]</a><span class="k">def</span> <span class="nf">does_filename_have_counterpart</span><span class="p">(</span><span class="n">src_path</span><span class="p">,</span><span class="n">dst_root</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">counterpart_extension</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    checks if the &#39;src_path&#39; has counterpart with extension &#39;counterpart_extension&#39;.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename (string)</span>
+
+<span class="sd">    counterpart_extension (string)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    boolean (boolean)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="n">src_root</span><span class="p">,</span> <span class="n">src_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">src_path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dst_root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">dst_root</span><span class="p">,</span> <span class="n">dst_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">src_path</span><span class="p">)</span>
+
+    <span class="n">splitted</span> <span class="o">=</span> <span class="n">src_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="n">src_base</span> <span class="o">=</span> <span class="n">splitted</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">src_extension</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">splitted</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">counterpart</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dst_root</span><span class="p">,</span><span class="n">src_base</span> <span class="o">+</span> <span class="n">counterpart_extension</span><span class="p">)</span>
+    <span class="n">flag</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">counterpart</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">flag</span></div>
+
+
+<div class="viewcode-block" id="read_config_file"><a class="viewcode-back" href="../../usage.html#ubcs_auxiliary.os.read_config_file">[docs]</a><span class="k">def</span> <span class="nf">read_config_file</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    read yaml config file</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filename (string)</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict (dictionary)</span>
+<span class="sd">    boolean (boolean)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">yaml</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="n">flag</span> <span class="o">=</span>  <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">handle</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>  <span class="c1"># (2)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">return</span> <span class="n">config</span><span class="p">,</span> <span class="n">flag</span></div>
 </pre></div>
 
            </div>
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2019, Valentyn Stadnytskyi
+        &#169; Copyright 2019, Valentyn Stadnytskyi.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
