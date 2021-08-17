@@ -82,3 +82,6 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+gh-pages
+gh-pages.pub

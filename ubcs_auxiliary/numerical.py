@@ -87,6 +87,9 @@ def bin_data(data  = None, x = None, axis = 1, num_of_bins = 300, dtype = 'float
             length = data.shape[0]
             width = 1
 
+        if x is None:
+            x = arange(0,length,1)
+
         if length <= num_of_bins:
             y_max = data
             y_min = data
