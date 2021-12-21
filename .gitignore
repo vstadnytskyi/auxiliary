@@ -83,5 +83,7 @@ target/
 #Ipython Notebook
 .ipynb_checkpoints
 
+#github secrets
+github_secret_*
 gh-pages
 gh-pages.pub
