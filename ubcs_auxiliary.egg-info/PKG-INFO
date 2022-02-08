@@ -1,6 +1,6 @@
 Metadata-Version: 1.2
 Name: ubcs-auxiliary
-Version: 0+unknown
+Version: 0.2.0.post0.dev0+g40abbcb
 Summary: LCP-NIH auxiliary package library
 Home-page: https://github.com/vstadnytskyi/auxiliary
 Author: Valentyn Stadnytskyi
