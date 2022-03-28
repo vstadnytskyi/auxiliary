@@ -1,5 +1,5 @@
 ==================================
-UBCS LCP auxiliary package library
+VaSt auxiliary package library
 ==================================
 
 .. image:: https://img.shields.io/travis/vstadnytskyi/auxiliary.svg
@@ -9,7 +9,7 @@ UBCS LCP auxiliary package library
         :target: https://pypi.python.org/pypi/ubcs-auxiliary
 
 
-UBCS LCP auxiliary package library
+VsSt auxiliary package library
 
 * Free software: 3-clause BSD license
 * Documentation: (COMING SOON!) https://vstadnytskyi.github.io/auxiliary.
