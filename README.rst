@@ -1,5 +1,5 @@
 ==================================
-VaSt auxiliary package library
+VStad auxiliary package library
 ==================================
 
 .. image:: https://img.shields.io/travis/vstadnytskyi/auxiliary.svg
@@ -9,7 +9,7 @@ VaSt auxiliary package library
         :target: https://pypi.python.org/pypi/ubcs-auxiliary
 
 
-VsSt auxiliary package library
+VStad auxiliary package library
 
 * Free software: 3-clause BSD license
 * Documentation: (COMING SOON!) https://vstadnytskyi.github.io/auxiliary.
