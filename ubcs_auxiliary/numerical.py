@@ -654,6 +654,26 @@ def nonzeromin(arr):
     else:
         return None
 
+def mean_ignore(arr, axis, ignore = 0):
+    """
+    computes mean ignoring 'ignore' value
+    """
+    import numpy as np
+    mask = arr == ignore
+    arr_float64 = arr.astype('float64')
+    arr_float64[mask] = np.nan
+    return np.nanmean(arr_float64,axis=axis)
+
+def std_ignore(arr, axis, ignore = 0):
+    """
+    computes mean ignoring 'ignore' value
+    """
+    import numpy as np
+    mask = arr == ignore
+    arr_float64 = arr.astype('float64')
+    arr_float64[mask] = np.nan
+    return np.nanstd(arr_float64,axis=axis)
+
 def gaussian1D(x, amp, x0, sigma, offset):
     """
     simple one-dimensional gaussian function
