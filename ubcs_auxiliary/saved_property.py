@@ -80,7 +80,7 @@ class DataBase():
 
         Parameters
         ----------
-
+            None
         Returns
         -------
         dictionary :: (dictionary)
@@ -109,9 +109,12 @@ class DataBase():
 
         Parameters
         ----------
+            None
 
         Returns
         -------
+            None
+
 
         Examples
         --------
@@ -138,9 +141,11 @@ class DataBase():
 
         Parameters
         ----------
+            None
 
         Returns
         -------
+            None
 
         Examples
         --------
@@ -164,10 +169,11 @@ class SavedProperty():
 
         Parameters
         ----------
-
+            None
         Returns
         -------
-
+            None
+            
         Examples
         --------
         >>> from saved_property import DataBase, SavedProperty
@@ -187,6 +193,7 @@ class SavedProperty():
 
         Returns
         -------
+            None
 
         Examples
         --------
@@ -201,7 +208,7 @@ class SavedProperty():
 
         Parameters
         ----------
-
+            None
         Returns
         -------
         value :: (object)
