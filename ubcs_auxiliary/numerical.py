@@ -922,3 +922,41 @@ def max_filter(image, footprintsize = 10, treshhold = 100):
     max_mask = (maximum_filter(image,footprint = footprint) == image)&(image>=treshhold)
 
     return max_mask
+
+
+def get_spot_shape(data):
+    from cv2 import moments
+    return moments(data)
+
+def pick_peaks(arr, threshold = 20):
+    """
+    """
+    from numpy import argwhere
+    idx = argwhere(arr[5,:,:,1] > threshold)
+    mask = arr[5,:,:,1] > threshold
+    return mask
+
+def get_spots_masks(mask):
+    """
+    takes boolean mask and
+    """
+    from skimage import measure
+    from numpy import where, zeros_like, bool
+    blobs = measure.label(mask==1)
+    spots = []
+    for blob_number in range(1,blobs.max()+1):
+        temp_mask = zeros_like(mask,dtype = bool)
+        these_pixels = where(blobs==blob_number)
+        if len(these_pixels[0]) < 5000:
+            temp_mask[these_pixels] = True
+            spots.append(temp_mask)
+    return spots
+
+def get_N_of_spots(mask):
+    """
+    returns number of spots found
+    """
+    from skimage import measure
+    blobs = measure.label(mask==1)
+    N = blobs.max()
+    return N
