@@ -107,7 +107,7 @@ def save_to_hdf5(filename, dic_in, compression = 0):
             object = dic_in[key]
             if type(object) == ndarray:
                 if compression > 0:
-                    file.create_dataset(key, data=object, compression = 'gzip', compression_opt = compression)
+                    file.create_dataset(key, data=object, compression = 'gzip', compression_opts = compression)
                 else:
                     file.create_dataset(key, data=object)
             else:
