@@ -19,3 +19,26 @@ def beep():
     from IPython.display import Audio
     sound_file = 'http://www.soundjay.com/button/beep-07.wav'
     Audio(sound_file, autoplay=True)
+
+def append_index_file(filename = None, comments = '', params = None):    
+    """
+    This funtiction is designed to append an index file represented as a text document with information about from which jupyter notebook it was called, comments to append and parameters to append.
+    """
+    import ipynbname
+    from time import ctime, time, sleep
+    if filename is not None:
+        with open(filename, "a") as append_index:  # append mode
+
+            append_index.write(f"------ Jupyter Notebook Entry Starts: {ctime(time())} ------ \n")
+            comments += f'\n'
+            commnets += f'This message was generated from {ipynbname.path()} \n'
+            comments += f'------ Jupyter Notebook Entry Parameters ------ \n'
+            if params is not None:
+                for key in params.keys():
+                    comments += f'key = {key}\n'
+            else:
+                comments += f'no parameters were specified \n'
+            comments += f'------ Jupyter Notebook Entry Ends ------ \n \n'
+            append_index.write(f"{comments}")
+    else:
+        print('filename is None. Please provide proper filename')
