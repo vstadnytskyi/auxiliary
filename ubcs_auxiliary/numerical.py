@@ -926,7 +926,20 @@ def max_filter(image, footprintsize = 10, treshhold = 100):
 
 def get_spot_shape(data):
     from cv2 import moments
-    return moments(data)
+    import numpy as np
+    dic = moments(data)
+    m = dic
+    dic['x center'] = m['m10']/m['m00']
+    dic['y center'] = m['m01']/m['m00']
+    mu_prime = {}
+    mu_prime['11']= m['mu11']/m['m00']
+    mu_prime['20']= m['mu20']/m['m00']
+    mu_prime['02']= m['mu02']/m['m00']
+    dic['lambda 1'] = 0.5*(mu_prime['20']+mu_prime['02']) + 0.5*np.sqrt(4*mu_prime['11']**2+(mu_prime['20']-mu_prime['02'])**2)
+    dic['lambda 2'] = 0.5*(mu_prime['20']+mu_prime['02']) - 0.5*np.sqrt(4*mu_prime['11']**2+(mu_prime['20']-mu_prime['02'])**2)
+    dic['eccentricity'] = np.sqrt(1-dic['lambda 2']/dic['lambda 1'])
+    dic['theta'] = 0.5*np.arctan(2*mu_prime['11']/(mu_prime['20']-mu_prime['02']))
+    return dic
 
 def pick_peaks(arr, threshold = 20):
     """
