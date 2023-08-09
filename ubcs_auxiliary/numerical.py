@@ -973,3 +973,49 @@ def get_N_of_spots(mask):
     blobs = measure.label(mask==1)
     N = blobs.max()
     return N
+
+
+
+def distortion_filter(img, k1 = 0.2, k2 = 0.05, distortion = 'barrel'):
+    """
+    distortion filter take input image (_img_) and applies simple distortion model. The output image can be distorted with pillow or barrel distortion.
+    
+    """
+    import scipy
+    import numpy as np
+
+    h,w = img.shape # img size
+    x,y = np.meshgrid(np.float32(np.arange(w)),np.float32(np.arange(h))) # meshgrid for interpolation mapping
+
+    # center and scale the grid for radius calculation (distance from center of image)
+    x_c = w/2 
+    y_c = h/2 
+    x = x - x_c
+    y = y - y_c
+    x = x/x_c
+    y = y/y_c
+
+    radius = np.sqrt(x**2 + y**2) # distance from the center of image
+
+    m_r = 1 + k1*radius + k2*radius**2 # radial distortion model
+
+    # apply the model 
+    if distortion == 'barrel':
+        print('barrel')
+        x= x * m_r 
+        y = y * m_r
+    elif distortion == 'pillow':
+        print('pillow')
+        x = x / m_r 
+        y = y / m_r
+    else:
+        print('nor barrel nor pillow')
+        x = x
+        y = y
+    # reset all the shifting
+    x= x*x_c + x_c
+    y = y*y_c + y_c
+
+    img_altered = scipy.ndimage.map_coordinates(img, [y.ravel(),x.ravel()])
+    img_altered.resize(img.shape)
+    return img_altered
