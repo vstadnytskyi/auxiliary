@@ -590,12 +590,16 @@ def return_noise(size = (10,10), mean = 15, variance = 2, dtype = 'uin16'):
     noise = normal(loc=mean, scale=sqrt(variance), size=size).astype(dtype)
     return noise
 
-def get_histogram(arr,length = 16,step = 1):
+def get_histogram(arr,start = None, stop = None,length = None,step = 1):
     """
     assumes unsigned int 16
     """
     from numpy import arange, histogram
-    bins = arange(0,length,step) #calculating histogram
+    if length == None:
+        bins = arange(start,stop,step) #calculating histogram
+    else:
+        #for back competability with old codes.
+        bins = arange(0,length,step)
     y,x = histogram(arr,bins = bins)
     return x[:-1],y
 
