@@ -603,6 +603,32 @@ def get_histogram(arr,start = None, stop = None,length = None,step = 1):
     y,x = histogram(arr,bins = bins)
     return x[:-1],y
 
+def fit_gaussian_1D(x,y):
+    """
+    return parameters and covariance for gaussian fit
+
+    Example: If count is 1 or omitted a single pixel grows to nine pixels.
+
+    Parameters
+    ----------
+    mask (2d numpy array)
+    count (integer)
+
+    Returns
+    -------
+    mask (2d numpy array)
+
+    Examples
+    --------
+    >>>  mask2 = grow_mask(mask,2)
+    """
+    import numpy as np 
+    from scipy.optimize import curve_fit 
+    parameters, covariance = curve_fit(gaussian1D, x, y, bounds=([100,490,0,0], [5000, 510, 10,0.000001])) 
+
+    fit_y = gaussian1D(x, *parameters) 
+    return x,fit_y, parameters, covariance  
+
 def gaussian2D_from_shape(shape = (100,100), amplitude = 3000, position = (100,100), sigma = (5,5), dtype = 'uint16'):
     """
     return 2D gaussian function in a given 'position' on the provided image. The input image can be made of all zeros.
@@ -678,12 +704,13 @@ def std_ignore(arr, axis, ignore = 0):
     arr_float64[mask] = np.nan
     return np.nanstd(arr_float64,axis=axis)
 
-def gaussian1D(x, amp, x0, sigma, offset):
+def gaussian1D(x, amp, x0, sigma, offset = 0):
     """
     simple one-dimensional gaussian function
     """
     from numpy import exp
-    y = amp*exp(-(x-x0)**2/(2*sigma*sigma))
+    #Define gaussian function
+    y = amp*exp(-(x-x0)**2/(2*sigma*sigma)) + offset
     return y
 
 def gaussian2D_from_mesh(mesh, amplitude, x0, y0, x_sigma, y_sigma, offset = 0 , theta = 0):
